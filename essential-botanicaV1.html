@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Botanica — Essential Flower Website</title>
+<meta name="description" content="A natural, earthy one-page flower studio website for preserved flowers, dried florals and botanical gifts.">
+<style>
+:root{
+  --sand:#f2eee6;
+  --paper:#fbfaf7;
+  --forest:#263c33;
+  --sage:#8ea394;
+  --clay:#b07d62;
+  --muted:#6d7771;
+  --line:#dcd4c8;
+  --shadow:0 18px 50px rgba(45,57,50,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--sand);
+  color:var(--forest);
+  font-family:Inter,Arial,sans-serif;
+}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.container{width:min(1180px,calc(100% - 40px));margin:auto}
+
+header{
+  position:sticky;top:0;z-index:40;
+  background:rgba(242,238,230,.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  min-height:76px;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+}
+.brand{
+  display:flex;align-items:center;gap:12px;
+  font-family:Georgia,serif;font-size:27px;font-weight:700;
+}
+.brand-mark{
+  width:42px;height:42px;border-radius:50%;
+  border:1px solid var(--forest);
+  display:grid;place-items:center;font-size:20px;
+}
+.menu{display:flex;gap:7px;flex-wrap:wrap}
+.menu a{padding:10px 14px;border-radius:999px;color:var(--muted)}
+.menu a:hover{background:#e3e8e2;color:var(--forest)}
+.order-btn{
+  background:var(--forest);color:white;
+  padding:12px 18px;border-radius:999px;font-weight:700;
+}
+
+.hero{
+  min-height:calc(100vh - 76px);
+  display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;
+  padding:70px 0;
+}
+.eyebrow{
+  font-size:12px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--clay);font-weight:800;
+}
+h1,h2,h3{font-family:Georgia,serif}
+h1{
+  font-size:clamp(56px,7vw,102px);
+  line-height:.94;margin:16px 0 22px;font-weight:500;
+}
+h1 span{color:var(--clay)}
+.lead{font-size:18px;line-height:1.75;color:var(--muted);max-width:610px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{
+  padding:14px 20px;border-radius:999px;border:1px solid var(--line);
+  background:var(--paper);font-weight:700;
+}
+.btn.primary{background:var(--forest);border-color:var(--forest);color:white}
+
+.hero-art{
+  position:relative;
+  display:grid;grid-template-columns:.8fr 1.2fr;gap:18px;
+  min-height:640px;
+}
+.hero-art img{
+  width:100%;height:100%;object-fit:cover;border-radius:180px 180px 24px 24px;
+  box-shadow:var(--shadow);
+}
+.hero-art .small{height:72%;align-self:end;border-radius:120px 120px 24px 24px}
+.hero-tag{
+  position:absolute;left:15%;top:8%;
+  background:rgba(251,250,247,.94);
+  padding:15px 17px;border-radius:18px;border:1px solid var(--line);
+  box-shadow:var(--shadow);
+}
+
+.section{padding:100px 0}
+.alt{background:#e6e8df}
+.section-head{
+  display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:34px;
+}
+.section h2{font-size:clamp(42px,5vw,68px);margin:10px 0 0;font-weight:500}
+.section-copy{max-width:520px;color:var(--muted);line-height:1.7}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{
+  background:var(--paper);border:1px solid var(--line);border-radius:26px;overflow:hidden;
+  box-shadow:0 12px 30px rgba(45,57,50,.07);
+}
+.card img{width:100%;height:320px;object-fit:cover}
+.card-body{padding:22px}
+.card h3{font-size:27px;margin:0 0 8px}
+.card p{color:var(--muted);line-height:1.6}
+.price{color:var(--clay);font-weight:800}
+
+.about{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:55px;align-items:center;
+}
+.about-copy{
+  background:var(--paper);border:1px solid var(--line);border-radius:30px;
+  padding:42px;box-shadow:var(--shadow);
+}
+.about img{width:100%;height:590px;object-fit:cover;border-radius:30px}
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+.feature{
+  padding:17px;border:1px solid var(--line);border-radius:16px;background:#f7f5ef;
+}
+
+.contact{
+  display:grid;grid-template-columns:.82fr 1.18fr;gap:42px;align-items:start;
+}
+.contact-panel{
+  background:var(--forest);color:white;padding:38px;border-radius:30px;
+}
+.contact-panel p{color:#cad5cf;line-height:1.7}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form input,.form select,.form textarea{
+  width:100%;padding:15px;border:1px solid var(--line);border-radius:14px;background:#fff;
+}
+.form textarea{grid-column:1/-1;min-height:140px}
+.form button{grid-column:1/-1}
+
+footer{
+  padding:28px 0;border-top:1px solid var(--line);text-align:center;
+  color:var(--muted);font-size:13px;
+}
+@media(max-width:900px){
+  .menu{display:none}
+  .hero,.about,.contact{grid-template-columns:1fr}
+  .hero-art{min-height:520px}
+  .cards{grid-template-columns:1fr}
+  .section-head{display:block}
+}
+@media(max-width:620px){
+  .container{width:min(100% - 26px,1180px)}
+  h1{font-size:52px}
+  .hero-art{grid-template-columns:1fr;min-height:auto}
+  .hero-art .small{height:300px}
+  .hero-art img{height:430px}
+  .feature-grid,.form{grid-template-columns:1fr}
+  .form textarea,.form button{grid-column:auto}
+  .order-btn{font-size:13px;padding:10px 13px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home">
+      <span class="brand-mark">B</span>
+      Botanica
+    </a>
+    <nav class="menu">
+      <a href="#collection">Collection</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="order-btn" href="#contact">Order via WhatsApp</a>
+  </div>
+</header>
+
+<main>
+<section class="container hero" id="home">
+  <div>
+    <div class="eyebrow">Botanical gifting · Natural textures</div>
+    <h1>Flowers with a <span>grounded</span> soul.</h1>
+    <p class="lead">
+      Earth-toned bouquets, preserved flowers and botanical gifts designed for quiet, thoughtful moments.
+    </p>
+    <div class="actions">
+      <a class="btn primary" href="#collection">View Collection</a>
+      <a class="btn" href="#contact">Make an Enquiry</a>
+    </div>
+  </div>
+
+  <div class="hero-art">
+    <img class="small" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=900&q=86" alt="Dried flower arrangement">
+    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1200&q=88" alt="Natural flower bouquet">
+    <div class="hero-tag">
+      <strong>Preserved collection</strong>
+      <div style="color:#6d7771;margin-top:5px">Long-lasting flowers with a natural finish.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="collection">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Our collection</div>
+        <h2>Natural arrangements</h2>
+      </div>
+      <p class="section-copy">Designed for homes, thoughtful gifting and customers who love soft, organic styling.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1495231916356-a86217efff12?auto=format&fit=crop&w=900&q=86" alt="">
+        <div class="card-body">
+          <h3>Wild Garden</h3>
+          <p>Soft seasonal flowers arranged with a loose, garden-inspired finish.</p>
+          <span class="price">From RM159</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=86" alt="">
+        <div class="card-body">
+          <h3>Forest Calm</h3>
+          <p>Green foliage, white blooms and natural textures for a quiet statement.</p>
+          <span class="price">From RM179</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=900&q=86" alt="">
+        <div class="card-body">
+          <h3>Everlasting</h3>
+          <p>A preserved arrangement designed to remain beautiful for months.</p>
+          <span class="price">From RM199</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container about">
+    <div class="about-copy">
+      <div class="eyebrow">Our studio</div>
+      <h2>Inspired by nature, made by hand.</h2>
+      <p class="lead">Botanica is a small floral studio focused on natural textures, earthy colour palettes and arrangements that feel warm, calm and personal.</p>
+      <div class="feature-grid">
+        <div class="feature"><strong>Seasonal sourcing</strong><br><span style="color:#6d7771">Flowers selected according to freshness and character.</span></div>
+        <div class="feature"><strong>Eco-minded wrapping</strong><br><span style="color:#6d7771">Simple materials with a refined, low-waste presentation.</span></div>
+        <div class="feature"><strong>Custom palettes</strong><br><span style="color:#6d7771">Natural tones tailored to the occasion.</span></div>
+        <div class="feature"><strong>Local delivery</strong><br><span style="color:#6d7771">Pickup and selected delivery areas available.</span></div>
+      </div>
+    </div>
+    <img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=1100&q=86" alt="Botanical floral studio">
+  </div>
+</section>
+
+<section class="section alt" id="contact">
+  <div class="container contact">
+    <div>
+      <div class="eyebrow">Order enquiry</div>
+      <h2>Tell us what you have in mind.</h2>
+      <p class="lead">Share the occasion, preferred style, budget and delivery date. We will confirm availability through WhatsApp.</p>
+    </div>
+
+    <div class="contact-panel">
+      <form class="form" onsubmit="sendWhatsApp(event)">
+        <input id="name" placeholder="Your name" required>
+        <input id="phone" placeholder="Phone number" required>
+        <select id="type">
+          <option>Fresh bouquet</option>
+          <option>Preserved flowers</option>
+          <option>Dried arrangement</option>
+          <option>Custom gift</option>
+        </select>
+        <input id="budget" placeholder="Budget, e.g. RM200">
+        <textarea id="details" placeholder="Preferred colours, flowers, occasion, delivery date and location"></textarea>
+        <button class="btn primary" type="submit">Continue on WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 Botanica — Essential package · Botanica theme · V1</footer>
+
+<script>
+function sendWhatsApp(event){
+  event.preventDefault();
+  const text =
+    `Hi Botanica,%0A%0A` +
+    `Name: ${document.getElementById('name').value}%0A` +
+    `Phone: ${document.getElementById('phone').value}%0A` +
+    `Type: ${document.getElementById('type').value}%0A` +
+    `Budget: ${document.getElementById('budget').value}%0A` +
+    `Details: ${document.getElementById('details').value}`;
+  window.open(`https://wa.me/60123456789?text=${text}`,'_blank');
+}
+</script>
+</body>
+</html>

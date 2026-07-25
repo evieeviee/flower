@@ -1,0 +1,248 @@
+<!-- 
+  Package: Signature Maison Fleur V2 (Pro Multi-Section Package)
+  Theme: Dark Luxury Atelier & High-Fashion Botanical Studio
+  Filename: signature-maisonfleurV2.html
+  Layout: Full Interactive Portfolio + Interactive Modal + Location Showcase
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Advanced Local SEO Meta Tags -->
+  <title>Maison Fleur by Flower & Blossom | Premium Local Floral Studio</title>
+  <meta name="description" content="Kuala Lumpur's premier luxury florist. Specializing in bespoke bouquets, wedding flower styling, and high-end event installations. Order directly via WhatsApp.">
+  <meta name="keywords" content="luxury florist KL, wedding flower designer, bespoke bouquet, floral atelier">
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Florist",
+    "name": "Maison Fleur by Flower & Blossom",
+    "image": "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=1200&q=80",
+    "telephone": "+60162823327",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "143 Jalan Hang Lekir",
+      "addressLocality": "Kuala Lumpur",
+      "postalCode": "50000",
+      "addressCountry": "MY"
+    },
+    "priceRange": "$$$"
+  }
+  </script>
+
+  <style>
+    :root {
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --bg: #0d110e;
+      --card-bg: #161c18;
+      --text: #e2e8f0;
+      --wa-green: #25D366;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Playfair Display', Georgia, serif; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* Header Navigation */
+    header {
+      background: rgba(13, 17, 14, 0.95); backdrop-filter: blur(10px);
+      padding: 1.2rem 3rem; display: flex; justify-content: space-between; align-items: center;
+      position: fixed; top: 0; width: 100%; z-index: 100; border-bottom: 1px solid rgba(212,175,55,0.2);
+    }
+    .brand { color: var(--gold); font-size: 1.5rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
+    nav a {
+      color: #a0aec0; text-decoration: none; margin-left: 2rem;
+      font-family: -apple-system, sans-serif; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: var(--gold); }
+
+    /* Hero Section */
+    .hero {
+      height: 90vh;
+      background: linear-gradient(to bottom, rgba(13,17,14,0.4), rgba(13,17,14,0.95)),
+                  url('https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=1600&q=80') center/cover;
+      display: flex; flex-direction: column; justify-content: center; padding: 0 4rem;
+    }
+    .hero-tag { font-family: -apple-system, sans-serif; color: var(--gold); font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; }
+    .hero-title { font-size: 4rem; font-weight: 300; line-height: 1.1; margin: 1rem 0; color: #fff; }
+    .hero-subtitle { font-family: -apple-system, sans-serif; color: #a0aec0; max-width: 500px; font-size: 1.1rem; }
+    .hero-btns { display: flex; gap: 1rem; margin-top: 2rem; font-family: -apple-system, sans-serif; }
+    
+    .btn-gold {
+      background: linear-gradient(135deg, #d4af37, #aa820a); color: #0d110e;
+      padding: 1rem 2rem; border-radius: 4px; text-decoration: none; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 1px; cursor: pointer; border: none;
+    }
+    .btn-wa-gold {
+      background: var(--wa-green); color: #fff;
+      padding: 1rem 2rem; border-radius: 4px; text-decoration: none; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+
+    /* Container & Section Styling */
+    section { padding: 6rem 4rem; }
+    .section-title { font-size: 2.5rem; font-weight: 300; margin-bottom: 2.5rem; color: #fff; text-align: center; }
+
+    /* Gallery Cards Grid */
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    .atelier-card {
+      background: var(--card-bg); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px; overflow: hidden; transition: all 0.3s ease;
+    }
+    .atelier-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+    .atelier-img { width: 100%; height: 280px; object-fit: cover; }
+    .atelier-body { padding: 1.8rem; font-family: -apple-system, sans-serif; }
+    .atelier-title { font-family: Georgia, serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 0.5rem; }
+    .atelier-price { font-size: 1.2rem; font-weight: 700; color: #fff; margin: 1rem 0; }
+
+    /* Location Section */
+    .location-box {
+      background: var(--card-bg); border: 1px solid rgba(212,175,55,0.3);
+      border-radius: 16px; padding: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      align-items: center; font-family: -apple-system, sans-serif;
+    }
+
+    /* Interactive Modal */
+    .modal {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+      z-index: 10000; align-items: center; justify-content: center; padding: 2rem;
+    }
+    .modal-content {
+      background: var(--card-bg); border: 1px solid var(--gold);
+      padding: 2.5rem; border-radius: 16px; max-width: 500px; width: 100%;
+      position: relative; font-family: -apple-system, sans-serif;
+    }
+    .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; color: var(--gold); cursor: pointer; }
+    .modal-content input, .modal-content textarea {
+      width: 100%; padding: 0.8rem; margin: 0.8rem 0;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      color: #fff; border-radius: 6px;
+    }
+
+    footer { text-align: center; padding: 3rem; font-family: -apple-system, sans-serif; color: #718096; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header>
+    <div class="brand">Maison Fleur</div>
+    <nav>
+      <a href="#collections">Collections</a>
+      <a href="#location">Visit Atelier</a>
+      <a href="#" onclick="openModal()">Get Quote</a>
+    </nav>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <p class="hero-tag">Signature Package V2</p>
+    <h1 class="hero-title">Architectural Floral Art</h1>
+    <p class="hero-subtitle">Bespoke arrangements and floral direction for luxury residences, weddings, and high-profile events.</p>
+    <div class="hero-actions hero-btns">
+      <a href="https://wa.me/60162823327?text=Hi%20Maison%20Fleur,%20I%20would%20like%20to%20inquire%20about%20a%20custom%20bouquet." class="btn-wa-gold">Order via WhatsApp</a>
+      <button class="btn-gold" onclick="openModal()">Request Custom Quote</button>
+    </div>
+  </section>
+
+  <!-- Collections Showcase Grid -->
+  <section id="collections">
+    <h2 class="section-title">Signature Atelier Collections</h2>
+    <div class="gallery-grid">
+      <!-- Collection 1 -->
+      <article class="atelier-card">
+        <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=800&q=80" class="atelier-img" alt="Sculptural Rose">
+        <div class="atelier-body">
+          <h3 class="atelier-title">The Grand Velvet Rose</h3>
+          <p style="color:#a0aec0; font-size:0.9rem;">18 Ecuadorian velvet roses in hand-blown smoked glass vase.</p>
+          <div class="atelier-price">RM 280.00</div>
+          <a href="https://wa.me/60162823327?text=Inquiring%20about%20Grand%20Velvet%20Rose" class="btn-wa-gold" style="padding:0.6rem 1rem; font-size:0.8rem;">Inquire on WhatsApp</a>
+        </div>
+      </article>
+
+      <!-- Collection 2 -->
+      <article class="atelier-card">
+        <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=800&q=80" class="atelier-img" alt="Pastel Installation">
+        <div class="atelier-body">
+          <h3 class="atelier-title">Opulent Peony Meadow</h3>
+          <p style="color:#a0aec0; font-size:0.9rem;">Soft coral peonies, white hydrangeas, and imported garden stems.</p>
+          <div class="atelier-price">RM 450.00</div>
+          <a href="https://wa.me/60162823327?text=Inquiring%20about%20Opulent%20Peony%20Meadow" class="btn-wa-gold" style="padding:0.6rem 1rem; font-size:0.8rem;">Inquire on WhatsApp</a>
+        </div>
+      </article>
+
+      <!-- Collection 3 -->
+      <article class="atelier-card">
+        <img src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=800&q=80" class="atelier-img" alt="Event Styling">
+        <div class="atelier-body">
+          <h3 class="atelier-title">Wedding & Event Direction</h3>
+          <p style="color:#a0aec0; font-size:0.9rem;">Full floral styling, entrance arches, and bridal party bouquets.</p>
+          <div class="atelier-price">Custom Commission</div>
+          <button onclick="openModal()" class="btn-gold" style="padding:0.6rem 1rem; font-size:0.8rem;">Request Quote</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Location & Walk-In Info -->
+  <section id="location">
+    <div class="location-box">
+      <div>
+        <p style="color:var(--gold); font-size:0.8rem; letter-spacing:2px; text-transform:uppercase;">Flagship Atelier</p>
+        <h2 style="font-size:2.2rem; color:#fff; font-weight:300; margin:0.5rem 0 1rem 0;">Visit Our Studio</h2>
+        <p style="color:#a0aec0; margin-bottom:1rem;">143 Jalan Hang Lekir, City Centre, 50000 Kuala Lumpur</p>
+        <p style="color:#a0aec0; margin-bottom:1.5rem;"><strong>Hours:</strong> Open Daily: 9:00 AM – 9:00 PM</p>
+        <a href="https://maps.google.com/?q=Jalan+Hang+Lekir+Kuala+Lumpur" target="_blank" class="btn-gold" style="display:inline-block; text-decoration:none;">Open in Google Maps 📍</a>
+      </div>
+      <div style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 2rem;">
+        <h4 style="color:var(--gold); font-size:1.2rem; margin-bottom:0.8rem;">Verified Client Review</h4>
+        <p style="font-style:italic; color:#e2e8f0;">"The most tasteful floral arrangements in KL. Handled our wedding decor flawlessly and their WhatsApp response is instant!"</p>
+        <p style="margin-top:1rem; color:#a0aec0; font-size:0.85rem;">— 4.8 ★ ★ ★ ★ ★ on Google Business</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Modal Widget -->
+  <div class="modal" id="quoteModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h3 style="color:var(--gold); font-size:1.5rem; margin-bottom:0.5rem;">Custom Order Inquiry</h3>
+      <p style="color:#a0aec0; font-size:0.85rem; margin-bottom:1rem;">Fill in your details and our florist will respond within 15 minutes on WhatsApp.</p>
+      <form onsubmit="sendToWhatsApp(event)">
+        <input type="text" id="custName" placeholder="Your Name" required>
+        <input type="text" id="custOccasion" placeholder="Occasion (e.g. Birthday, Anniversary, Wedding)" required>
+        <input type="text" id="custBudget" placeholder="Estimated Budget (e.g. RM 150)" required>
+        <textarea id="custDetails" rows="3" placeholder="Any specific flower preference or color theme?"></textarea>
+        <button type="submit" class="btn-wa-gold" style="width:100%; justify-content:center; margin-top:1rem; border:none; cursor:pointer;">
+          Send Inquiry via WhatsApp 💬
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Maison Fleur by Flower & Blossom Atelier. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function openModal() { document.getElementById('quoteModal').style.display = 'flex'; }
+    function closeModal() { document.getElementById('quoteModal').style.display = 'none'; }
+    
+    function sendToWhatsApp(e) {
+      e.preventDefault();
+      const name = document.getElementById('custName').value;
+      const occasion = document.getElementById('custOccasion').value;
+      const budget = document.getElementById('custBudget').value;
+      const details = document.getElementById('custDetails').value;
+      
+      const msg = `Hi Maison Fleur! I would like to inquire about a custom order:%0A%0A- Name: ${name}%0A- Occasion: ${occasion}%0A- Budget: ${budget}%0A- Details: ${details}`;
+      window.open(`https://wa.me/60162823327?text=${msg}`, '_blank');
+      closeModal();
+    }
+  </script>
+</body>
+</html>

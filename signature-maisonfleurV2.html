@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- LOCAL SEO SCHEMA -->
   <title>Maison Fleur Atelier | Premium Floral Engine</title>
   <meta name="description" content="Kuala Lumpur's premier bespoke floral studio. Interactive multi-page ordering platform with instant WhatsApp integration.">
 
@@ -52,112 +51,28 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
       -webkit-font-smoothing: antialiased;
       width: 100%;
+      min-height: 100vh;
     }
 
-    /* Desktop Viewport Rules */
-    @media (min-width: 961px) {
-      body, html {
-        height: 100vh;
-        overflow: hidden;
-      }
-
-      .app-viewport {
-        display: grid;
-        grid-template-columns: 340px 1fr;
-        height: 100vh;
-        width: 100vw;
-      }
-
-      .main-stage {
-        height: 100vh;
-        overflow: hidden;
-      }
-
-      .page-panel {
-        position: absolute;
-        inset: 0;
-        padding: 3rem 4rem;
-        display: none;
-        flex-direction: column;
-        justify-content: space-between;
-        overflow-y: auto;
-      }
-    }
-
-    /* Sidebar Styling */
-    .sidebar {
-      background: rgba(12, 16, 13, 0.98);
-      border-right: 1px solid var(--border);
-      padding: 2.2rem 1.8rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      z-index: 20;
-    }
-
-    .brand-section {
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .brand-title {
-      font-family: 'Cinzel', serif;
-      font-size: 1.6rem;
-      color: var(--gold-primary);
-      letter-spacing: 2px;
-      font-weight: 700;
-    }
-
-    .brand-subtitle {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 0.2rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    /* Tab Navigation Links */
-    .nav-tabs {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      margin-top: 1.5rem;
-    }
-
-    .tab-btn {
-      background: transparent;
-      border: 1px solid transparent;
-      color: var(--text-muted);
-      padding: 0.9rem 1.1rem;
-      border-radius: 12px;
-      text-align: left;
-      font-family: inherit;
-      font-size: 0.88rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Common Buttons & Elements */
+    .btn-wa-main {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-    }
-
-    .tab-btn-content {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .tab-btn:hover {
+      justify-content: center;
+      gap: 0.6rem;
+      width: 100%;
+      background: var(--wa-green);
       color: #fff;
-      background: rgba(255, 255, 255, 0.04);
+      padding: 0.85rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.88rem;
+      transition: background 0.2s ease;
+      border: none;
+      cursor: pointer;
     }
-
-    .tab-btn.active {
-      background: var(--panel-bg);
-      border-color: var(--gold-primary);
-      color: var(--gold-primary);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    }
+    .btn-wa-main:hover { background: var(--wa-green-hover); }
 
     .badge {
       background: rgba(223, 177, 91, 0.15);
@@ -168,72 +83,119 @@
       font-weight: 700;
     }
 
-    .sidebar-widget {
-      background: var(--card-bg);
-      border: 1px solid var(--border-subtle);
-      border-radius: 14px;
-      padding: 1rem;
+    /* DESKTOP TOP HEADER NAV */
+    .desktop-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(12, 16, 13, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .cart-summary-text {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .cart-total-display {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--gold-primary);
-      margin-top: 0.2rem;
-    }
-
-    .btn-wa-main {
+    .brand-section {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      width: 100%;
-      background: var(--wa-green);
-      color: #fff;
-      padding: 0.9rem;
-      border-radius: 12px;
-      text-decoration: none;
+      gap: 1rem;
+    }
+
+    .brand-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: var(--gold-primary);
+      letter-spacing: 2px;
       font-weight: 700;
+    }
+
+    .brand-subtitle {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-left: 1px solid var(--border-subtle);
+      padding-left: 0.8rem;
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 0.6rem 1rem;
+      border-radius: 10px;
+      font-family: inherit;
       font-size: 0.88rem;
-      margin-top: 0.8rem;
-      transition: background 0.2s ease;
-      border: none;
+      font-weight: 600;
       cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
-    .btn-wa-main:hover { background: var(--wa-green-hover); }
+    .nav-tab-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.04);
+    }
 
-    /* Main Screen Stage */
+    .nav-tab-btn.active {
+      background: var(--panel-bg);
+      border-color: var(--gold-primary);
+      color: var(--gold-primary);
+    }
+
+    /* Desktop Cart Trigger Pill */
+    .cart-pill {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 0.5rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .cart-pill:hover { border-color: var(--gold-hover); }
+
+    /* STAGE LAYOUT */
     .main-stage {
-      position: relative;
-      background: radial-gradient(circle at top right, rgba(223, 177, 91, 0.06), transparent 60%);
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 5rem 2rem;
     }
 
-    .page-panel.active { 
-      display: flex; 
-      animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    .page-panel {
+      display: none;
+      flex-direction: column;
+      animation: fadeIn 0.35s ease forwards;
     }
 
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(12px); }
+    .page-panel.active { display: flex; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .page-header h1 {
       font-family: 'Cinzel', serif;
-      font-size: 2.6rem;
+      font-size: 2.5rem;
       color: #fff;
       margin-bottom: 0.4rem;
     }
-
     .page-header p { color: var(--text-muted); font-size: 0.95rem; }
 
-    /* Filter Chips for Catalog */
+    /* FILTER BAR & CARDS */
     .filter-bar {
       display: flex;
       flex-wrap: wrap;
@@ -259,7 +221,6 @@
       border-color: var(--gold-primary);
     }
 
-    /* Grid Layouts */
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -287,12 +248,7 @@
     .card-title { font-size: 1.05rem; color: #fff; font-family: 'Cinzel', serif; }
     .card-price { font-size: 1.15rem; font-weight: 700; color: var(--gold-primary); margin-top: 0.4rem; }
 
-    .btn-action-row {
-      display: flex;
-      gap: 0.5rem;
-      margin-top: 0.8rem;
-    }
-
+    .btn-action-row { display: flex; gap: 0.5rem; margin-top: 0.8rem; }
     .btn-cart-add {
       flex: 1;
       background: rgba(223, 177, 91, 0.15);
@@ -305,13 +261,9 @@
       cursor: pointer;
       transition: all 0.2s ease;
     }
+    .btn-cart-add:hover { background: var(--gold-primary); color: #000; }
 
-    .btn-cart-add:hover {
-      background: var(--gold-primary);
-      color: #000;
-    }
-
-    /* Live Customizer Engine Form */
+    /* LIVE CUSTOMIZER ENGINE */
     .customizer-grid {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
@@ -359,7 +311,6 @@
       border-bottom: 1px dashed var(--border-subtle);
     }
 
-    /* Location Switcher UI */
     .location-switch-btn {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--border-subtle);
@@ -377,53 +328,149 @@
       color: #000;
     }
 
-    /* Responsive Controls */
+    /* MOBILE NAVIGATION COMPONENTS */
+    .mobile-header { display: none; }
+    .mobile-bottom-nav { display: none; }
+    .mobile-drawer { display: none; }
+    .drawer-overlay { display: none; }
+
+    /* RESPONSIVE BREAKPOINT (MOBILE & TABLET) */
     @media (max-width: 960px) {
-      body, html {
-        height: auto;
-        width: 100%;
-        overflow-x: hidden;
-        overflow-y: auto;
-      }
+      .desktop-header { display: none; }
 
-      .app-viewport { 
-        display: block; 
-        width: 100%;
-      }
-
-      .sidebar { 
+      /* Mobile Top Sticky Bar */
+      .mobile-header {
         position: sticky;
         top: 0;
-        padding: 1rem 1.2rem; 
-        border-right: none; 
-        border-bottom: 1px solid var(--border-subtle); 
+        z-index: 90;
+        background: rgba(12, 16, 13, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+        padding: 0.9rem 1.2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
 
-      .nav-tabs { 
-        flex-direction: row; 
-        overflow-x: auto; 
-        margin-top: 0.8rem; 
-        padding-bottom: 0.4rem; 
-        -webkit-overflow-scrolling: touch;
+      .mobile-brand {
+        font-family: 'Cinzel', serif;
+        font-size: 1.15rem;
+        color: var(--gold-primary);
+        font-weight: 700;
       }
 
-      .tab-btn {
-        padding: 0.6rem 0.8rem;
-        white-space: nowrap;
+      .mobile-cart-badge {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        color: var(--gold-primary);
+        font-weight: 700;
       }
 
-      .sidebar-widget { display: none; }
-
-      .main-stage { 
-        height: auto;
-        min-height: calc(100vh - 130px);
+      /* Mobile Fixed Bottom Tab Bar */
+      .mobile-bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 65px;
+        background: rgba(12, 16, 13, 0.96);
+        backdrop-filter: blur(16px);
+        border-top: 1px solid var(--border);
+        z-index: 100;
+        justify-content: space-around;
+        align-items: center;
+        padding-bottom: env(safe-area-inset-bottom);
       }
 
-      .page-panel { 
-        position: relative;
-        display: none;
+      .bottom-tab {
+        background: none;
+        border: none;
+        color: var(--text-muted);
+        display: flex;
         flex-direction: column;
-        padding: 2rem 1.2rem; 
+        align-items: center;
+        gap: 3px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        cursor: pointer;
+        flex: 1;
+        transition: color 0.2s ease;
+      }
+
+      .bottom-tab .tab-icon { font-size: 1.25rem; }
+      .bottom-tab.active { color: var(--gold-primary); }
+
+      /* Off-Canvas Navigation Drawer */
+      .mobile-drawer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background: rgba(12, 16, 13, 0.98);
+        border-left: 1px solid var(--border);
+        padding: 2rem 1.5rem;
+        z-index: 200;
+        transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .mobile-drawer.open { right: 0; }
+
+      .drawer-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(4px);
+        z-index: 150;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        display: block;
+      }
+
+      .drawer-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .drawer-nav-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        margin-top: 1.5rem;
+      }
+
+      .drawer-nav-item {
+        background: transparent;
+        border: 1px solid transparent;
+        color: var(--text);
+        padding: 0.85rem 1rem;
+        border-radius: 10px;
+        text-align: left;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+      }
+
+      .drawer-nav-item.active {
+        background: var(--panel-bg);
+        border-color: var(--gold-primary);
+        color: var(--gold-primary);
+      }
+
+      /* Adjust Main Stage for Bottom Nav Bar spacing */
+      .main-stage {
+        padding: 1.5rem 1.2rem 80px 1.2rem;
       }
 
       .grid-3 { grid-template-columns: 1fr; }
@@ -434,264 +481,305 @@
 </head>
 <body>
 
-  <div class="app-viewport">
+  <!-- DESKTOP TOP HEADER NAV -->
+  <header class="desktop-header">
+    <div class="brand-section">
+      <div class="brand-title">MAISON FLEUR</div>
+      <div class="brand-subtitle">Atelier Engine • Kuala Lumpur</div>
+    </div>
 
-    <!-- Sidebar Navigation -->
-    <aside class="sidebar">
-      <div>
-        <div class="brand-section">
-          <div class="brand-title">MAISON FLEUR</div>
-          <div class="brand-subtitle">Atelier Engine • Kuala Lumpur</div>
+    <nav class="desktop-nav">
+      <button class="nav-tab-btn active" onclick="switchPage('page-overview', this)"><span>🌸</span> Studio Overview</button>
+      <button class="nav-tab-btn" onclick="switchPage('page-catalog', this)"><span>💐</span> Fresh Catalog <span class="badge">Dynamic</span></button>
+      <button class="nav-tab-btn" onclick="switchPage('page-builder', this)"><span>🎨</span> Customizer</button>
+      <button class="nav-tab-btn" onclick="switchPage('page-locations', this)"><span>📍</span> Stores</button>
+      <button class="nav-tab-btn" onclick="switchPage('page-reviews', this)"><span>★</span> Reviews</button>
+      <button class="nav-tab-btn" onclick="switchPage('page-contact', this)"><span>📞</span> Direct Support</button>
+    </nav>
+
+    <div class="cart-pill" onclick="checkoutWhatsApp()">
+      <span style="font-size:0.85rem; color:var(--text-muted);">Cart: <strong id="desk-cart-count" style="color:#fff;">0</strong></span>
+      <span style="font-size:0.9rem; font-weight:700; color:var(--gold-primary);" id="desk-cart-total">RM 0.00</span>
+      <span style="font-size:1.1rem;">💬</span>
+    </div>
+  </header>
+
+  <!-- MOBILE TOP STICKY HEADER -->
+  <header class="mobile-header">
+    <div class="mobile-brand">MAISON FLEUR</div>
+    <div class="mobile-cart-badge" onclick="checkoutWhatsApp()">
+      💬 <span id="mob-cart-count">0</span> (<span id="mob-cart-total">RM 0</span>)
+    </div>
+  </header>
+
+  <!-- MOBILE OFF-CANVAS DRAWER OVERLAY -->
+  <div class="drawer-overlay" id="drawer-overlay" onclick="toggleMobileDrawer(false)"></div>
+
+  <!-- MOBILE OFF-CANVAS DRAWER MENU -->
+  <aside class="mobile-drawer" id="mobile-drawer">
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-subtle); padding-bottom:1rem;">
+        <div>
+          <div class="brand-title" style="font-size:1.2rem;">MAISON FLEUR</div>
+          <div style="font-size:0.7rem; color:var(--text-muted);">Atelier Engine KL</div>
         </div>
-
-        <!-- Dynamic Multi-Page Navigation Tabs -->
-        <nav class="nav-tabs">
-          <button class="tab-btn active" onclick="switchPage('page-overview', this)">
-            <div class="tab-btn-content"><span>🌸</span> Studio Overview</div>
-          </button>
-          <button class="tab-btn" onclick="switchPage('page-catalog', this)">
-            <div class="tab-btn-content"><span>💐</span> Fresh Catalog</div>
-            <span class="badge">Dynamic</span>
-          </button>
-          <button class="tab-btn" onclick="switchPage('page-builder', this)">
-            <div class="tab-btn-content"><span>🎨</span> Live Customizer</div>
-          </button>
-          <button class="tab-btn" onclick="switchPage('page-locations', this)">
-            <div class="tab-btn-content"><span>📍</span> Store Locations</div>
-          </button>
-          <button class="tab-btn" onclick="switchPage('page-reviews', this)">
-            <div class="tab-btn-content"><span>★</span> Client Feedback</div>
-          </button>
-          <button class="tab-btn" onclick="switchPage('page-contact', this)">
-            <div class="tab-btn-content"><span>📞</span> Direct Support</div>
-          </button>
-        </nav>
+        <button onclick="toggleMobileDrawer(false)" style="background:none; border:none; color:#fff; font-size:1.4rem; cursor:pointer;">✕</button>
       </div>
 
-      <!-- Live Cart & Direct Action Widget -->
-      <div class="sidebar-widget">
-        <div class="cart-summary-text">Selected Items (<span id="cart-count">0</span>)</div>
-        <div class="cart-total-display" id="cart-total-display">RM 0.00</div>
-        <button class="btn-wa-main" onclick="checkoutWhatsApp()">
-          <span>💬 Order via WhatsApp</span>
-        </button>
+      <nav class="drawer-nav-list">
+        <button class="drawer-nav-item active" onclick="switchPage('page-overview', this); toggleMobileDrawer(false);">🌸 Studio Overview</button>
+        <button class="drawer-nav-item" onclick="switchPage('page-catalog', this); toggleMobileDrawer(false);">💐 Fresh Catalog <span class="badge">Dynamic</span></button>
+        <button class="drawer-nav-item" onclick="switchPage('page-builder', this); toggleMobileDrawer(false);">🎨 Live Customizer</button>
+        <button class="drawer-nav-item" onclick="switchPage('page-locations', this); toggleMobileDrawer(false);">📍 Store Locations</button>
+        <button class="drawer-nav-item" onclick="switchPage('page-reviews', this); toggleMobileDrawer(false);">★ Client Feedback</button>
+        <button class="drawer-nav-item" onclick="switchPage('page-contact', this); toggleMobileDrawer(false);">📞 Direct Support</button>
+      </nav>
+    </div>
+
+    <!-- Drawer Footer Quick Order Widget -->
+    <div style="background:var(--card-bg); border:1px solid var(--border-subtle); padding:1rem; border-radius:14px;">
+      <div style="font-size:0.8rem; color:var(--text-muted);">Operating Hours</div>
+      <div style="font-size:0.85rem; color:#fff; margin-top:0.2rem;">Mon – Sun: 9:00 AM – 9:00 PM</div>
+      <button class="btn-wa-main" style="margin-top:0.8rem;" onclick="checkoutWhatsApp()">
+        <span>💬 Dispatch Order via WhatsApp</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN STAGE CONTENT -->
+  <main class="main-stage">
+
+    <!-- PAGE 1: OVERVIEW -->
+    <div id="page-overview" class="page-panel active">
+      <div class="page-header">
+        <h1>Artisanal Botanical Atelier</h1>
+        <p>Handcrafted daily floral compositions, corporate commissions, and express local dispatch across Klang Valley.</p>
       </div>
-    </aside>
 
-    <!-- Main Dynamic Content Stage -->
-    <main class="main-stage">
+      <div style="background:var(--panel-bg); border:1px solid var(--border); border-radius:20px; padding:2rem; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; align-items:center; margin: 1.5rem 0;">
+        <div>
+          <h3 style="font-family:'Cinzel', serif; font-size:1.6rem; color:var(--gold-primary); margin-bottom:0.8rem;">Direct Atelier Engine</h3>
+          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;">Build your selection, add items to your instant summary, or calculate bespoke bouquet prices live before dispatching to our florists via WhatsApp.</p>
+          <button onclick="switchPage('page-catalog', document.querySelectorAll('.nav-tab-btn')[1])" style="margin-top:1.2rem; background:linear-gradient(135deg, #dfb15b, #b3852d); color:#000; border:none; padding:0.8rem 1.5rem; border-radius:10px; font-weight:800; cursor:pointer;">Launch Interactive Catalog →</button>
+        </div>
+        <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=800&q=80" style="width:100%; height:220px; object-fit:cover; border-radius:14px;" alt="Studio Flowers">
+      </div>
 
-      <!-- PAGE 1: OVERVIEW -->
-      <div id="page-overview" class="page-panel active">
-        <div class="page-header">
-          <h1>Artisanal Botanical Atelier</h1>
-          <p>Handcrafted daily floral compositions, corporate commissions, and express local dispatch across Klang Valley.</p>
+      <div style="font-size:0.8rem; color:var(--text-muted);">Maison Fleur Atelier System</div>
+    </div>
+
+    <!-- PAGE 2: CATALOG -->
+    <div id="page-catalog" class="page-panel">
+      <div class="page-header">
+        <h1>Curated Fresh Catalog</h1>
+        <p>Filter by stem variety and add arrangements directly to your WhatsApp quick order.</p>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-chip active" onclick="filterCatalog('all', this)">All Collections</button>
+        <button class="filter-chip" onclick="filterCatalog('roses', this)">Roses</button>
+        <button class="filter-chip" onclick="filterCatalog('peonies', this)">Peonies</button>
+        <button class="filter-chip" onclick="filterCatalog('sunflowers', this)">Sunflowers</button>
+      </div>
+
+      <div class="grid-3">
+        <div class="card-item" data-category="roses">
+          <img class="card-img" src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=600&q=80" alt="Rose">
+          <div class="card-body">
+            <h3 class="card-title">Ecuadorian Velvet Roses</h3>
+            <div class="card-price">RM 120.00</div>
+            <div class="btn-action-row">
+              <button class="btn-cart-add" onclick="addToCart('Ecuadorian Velvet Roses', 120)">+ Add to Order</button>
+            </div>
+          </div>
         </div>
 
-        <div style="background:var(--panel-bg); border:1px solid var(--border); border-radius:20px; padding:2rem; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; align-items:center; margin: 1.5rem 0;">
+        <div class="card-item" data-category="peonies">
+          <img class="card-img" src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=600&q=80" alt="Peony">
+          <div class="card-body">
+            <h3 class="card-title">Pastel Dutch Peonies</h3>
+            <div class="card-price">RM 180.00</div>
+            <div class="btn-action-row">
+              <button class="btn-cart-add" onclick="addToCart('Pastel Dutch Peonies', 180)">+ Add to Order</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-item" data-category="sunflowers">
+          <img class="card-img" src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=600&q=80" alt="Sunflower">
+          <div class="card-body">
+            <h3 class="card-title">Sunshine Bloom Basket</h3>
+            <div class="card-price">RM 145.00</div>
+            <div class="btn-action-row">
+              <button class="btn-cart-add" onclick="addToCart('Sunshine Bloom Basket', 145)">+ Add to Order</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="font-size:0.8rem; color:var(--text-muted);">Prices inclusive of handcrafted wrapping paper and personalized gift notes.</div>
+    </div>
+
+    <!-- PAGE 3: LIVE CUSTOMIZER ENGINE -->
+    <div id="page-builder" class="page-panel">
+      <div class="page-header">
+        <h1>Live Customizer Engine</h1>
+        <p>Configure stem quantities, wrapping materials, and speed to see real-time pricing estimates.</p>
+      </div>
+
+      <div class="customizer-grid">
+        <div class="form-container">
+          <div class="form-group">
+            <label>Flower Type</label>
+            <select id="cust-flower" onchange="calculateCustomPrice()">
+              <option value="Roses" data-price="10">Ecuadorian Roses (RM 10 / stem)</option>
+              <option value="Peonies" data-price="18">Dutch Peonies (RM 18 / stem)</option>
+              <option value="Sunflowers" data-price="12">Wild Sunflowers (RM 12 / stem)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Stem Count: <span id="stem-count-val" style="color:var(--gold-primary)">12 Stems</span></label>
+            <input type="range" id="cust-stems" min="6" max="50" value="12" oninput="calculateCustomPrice()">
+          </div>
+
+          <div class="form-group">
+            <label>Wrapping Style</label>
+            <select id="cust-wrap" onchange="calculateCustomPrice()">
+              <option value="Matte Matte Paper" data-price="15">Matte Korean Paper (+RM 15)</option>
+              <option value="Satin Ribbon Box" data-price="35">Premium Luxe Box (+RM 35)</option>
+              <option value="Eco Kraft" data-price="10">Eco Rustic Kraft (+RM 10)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Special Instructions / Greeting Note</label>
+            <textarea id="cust-note" rows="3" placeholder="Write your card note message here..."></textarea>
+          </div>
+        </div>
+
+        <div class="live-summary-card">
           <div>
-            <h3 style="font-family:'Cinzel', serif; font-size:1.6rem; color:var(--gold-primary); margin-bottom:0.8rem;">Direct Atelier Engine</h3>
-            <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;">Build your selection, add items to your instant summary, or calculate bespoke bouquet prices live before dispatching to our florists via WhatsApp.</p>
-            <button onclick="switchPage('page-catalog', document.querySelectorAll('.tab-btn')[1])" style="margin-top:1.2rem; background:linear-gradient(135deg, #dfb15b, #b3852d); color:#000; border:none; padding:0.8rem 1.5rem; border-radius:10px; font-weight:800; cursor:pointer;">Launch Interactive Catalog →</button>
+            <h3 style="color:var(--gold-primary); font-family:'Cinzel', serif; font-size:1.3rem; margin-bottom:1rem;">Live Quote Estimate</h3>
+            <div class="summary-line"><span>Base Stem Cost</span><span id="summary-stems-cost">RM 120.00</span></div>
+            <div class="summary-line"><span>Wrapping & Setup</span><span id="summary-wrap-cost">RM 15.00</span></div>
+            <div class="summary-line" style="border:none; margin-top:1rem;"><strong style="color:#fff;">Estimated Total</strong><strong style="color:var(--gold-primary); font-size:1.4rem;" id="summary-grand-total">RM 135.00</strong></div>
           </div>
-          <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=800&q=80" style="width:100%; height:220px; object-fit:cover; border-radius:14px;" alt="Studio Flowers">
-        </div>
 
-        <div style="font-size:0.8rem; color:var(--text-muted);">Maison Fleur Atelier System</div>
+          <button class="btn-wa-main" style="padding:1rem;" onclick="sendCustomizerWhatsApp()">
+            <span>Send Custom Spec on WhatsApp 💬</span>
+          </button>
+        </div>
       </div>
 
-      <!-- PAGE 2: CATALOG -->
-      <div id="page-catalog" class="page-panel">
-        <div class="page-header">
-          <h1>Curated Fresh Catalog</h1>
-          <p>Filter by stem variety and add arrangements directly to your WhatsApp quick order.</p>
-        </div>
+      <div style="font-size:0.8rem; color:var(--text-muted);">Estimates are live. Final confirmation will be provided by on-duty florists.</div>
+    </div>
 
-        <!-- Interactive Category Filters -->
-        <div class="filter-bar">
-          <button class="filter-chip active" onclick="filterCatalog('all', this)">All Collections</button>
-          <button class="filter-chip" onclick="filterCatalog('roses', this)">Roses</button>
-          <button class="filter-chip" onclick="filterCatalog('peonies', this)">Peonies</button>
-          <button class="filter-chip" onclick="filterCatalog('sunflowers', this)">Sunflowers</button>
-        </div>
-
-        <div class="grid-3">
-          <div class="card-item" data-category="roses">
-            <img class="card-img" src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=600&q=80" alt="Rose">
-            <div class="card-body">
-              <h3 class="card-title">Ecuadorian Velvet Roses</h3>
-              <div class="card-price">RM 120.00</div>
-              <div class="btn-action-row">
-                <button class="btn-cart-add" onclick="addToCart('Ecuadorian Velvet Roses', 120)">+ Add to Order</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-item" data-category="peonies">
-            <img class="card-img" src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=600&q=80" alt="Peony">
-            <div class="card-body">
-              <h3 class="card-title">Pastel Dutch Peonies</h3>
-              <div class="card-price">RM 180.00</div>
-              <div class="btn-action-row">
-                <button class="btn-cart-add" onclick="addToCart('Pastel Dutch Peonies', 180)">+ Add to Order</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-item" data-category="sunflowers">
-            <img class="card-img" src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=600&q=80" alt="Sunflower">
-            <div class="card-body">
-              <h3 class="card-title">Sunshine Bloom Basket</h3>
-              <div class="card-price">RM 145.00</div>
-              <div class="btn-action-row">
-                <button class="btn-cart-add" onclick="addToCart('Sunshine Bloom Basket', 145)">+ Add to Order</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div style="font-size:0.8rem; color:var(--text-muted);">Prices inclusive of handcrafted wrapping paper and personalized gift notes.</div>
+    <!-- PAGE 4: LOCATIONS SWITCHER -->
+    <div id="page-locations" class="page-panel">
+      <div class="page-header">
+        <h1>Store Locations & Pickup Points</h1>
+        <p>Switch between our ateliers to view operating hours and pickup instructions.</p>
       </div>
 
-      <!-- PAGE 3: LIVE CUSTOMIZER ENGINE -->
-      <div id="page-builder" class="page-panel">
-        <div class="page-header">
-          <h1>Live Customizer Engine</h1>
-          <p>Configure stem quantities, wrapping materials, and speed to see real-time pricing estimates.</p>
-        </div>
-
-        <div class="customizer-grid">
-          <div class="form-container">
-            <div class="form-group">
-              <label>Flower Type</label>
-              <select id="cust-flower" onchange="calculateCustomPrice()">
-                <option value="Roses" data-price="10">Ecuadorian Roses (RM 10 / stem)</option>
-                <option value="Peonies" data-price="18">Dutch Peonies (RM 18 / stem)</option>
-                <option value="Sunflowers" data-price="12">Wild Sunflowers (RM 12 / stem)</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Stem Count: <span id="stem-count-val" style="color:var(--gold-primary)">12 Stems</span></label>
-              <input type="range" id="cust-stems" min="6" max="50" value="12" oninput="calculateCustomPrice()">
-            </div>
-
-            <div class="form-group">
-              <label>Wrapping Style</label>
-              <select id="cust-wrap" onchange="calculateCustomPrice()">
-                <option value="Matte Matte Paper" data-price="15">Matte Korean Paper (+RM 15)</option>
-                <option value="Satin Ribbon Box" data-price="35">Premium Luxe Box (+RM 35)</option>
-                <option value="Eco Kraft" data-price="10">Eco Rustic Kraft (+RM 10)</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Special Instructions / Greeting Note</label>
-              <textarea id="cust-note" rows="3" placeholder="Write your card note message here..."></textarea>
-            </div>
-          </div>
-
-          <!-- Live Price Estimate Box -->
-          <div class="live-summary-card">
-            <div>
-              <h3 style="color:var(--gold-primary); font-family:'Cinzel', serif; font-size:1.3rem; margin-bottom:1rem;">Live Quote Estimate</h3>
-              <div class="summary-line"><span>Base Stem Cost</span><span id="summary-stems-cost">RM 120.00</span></div>
-              <div class="summary-line"><span>Wrapping & Setup</span><span id="summary-wrap-cost">RM 15.00</span></div>
-              <div class="summary-line" style="border:none; margin-top:1rem;"><strong style="color:#fff;">Estimated Total</strong><strong style="color:var(--gold-primary); font-size:1.4rem;" id="summary-grand-total">RM 135.00</strong></div>
-            </div>
-
-            <button class="btn-wa-main" style="padding:1rem;" onclick="sendCustomizerWhatsApp()">
-              <span>Send Custom Spec on WhatsApp 💬</span>
-            </button>
-          </div>
-        </div>
-
-        <div style="font-size:0.8rem; color:var(--text-muted);">Estimates are live. Final confirmation will be provided by on-duty florists.</div>
+      <div style="display:flex; flex-wrap:wrap; gap:1rem; margin:1.5rem 0;">
+        <button class="location-switch-btn active" onclick="switchLocation('kl', this)">Kuala Lumpur Flagship</button>
+        <button class="location-switch-btn" onclick="switchLocation('bangsar', this)">Bangsar Botanical Studio</button>
       </div>
 
-      <!-- PAGE 4: LOCATIONS SWITCHER -->
-      <div id="page-locations" class="page-panel">
-        <div class="page-header">
-          <h1>Store Locations & Pickup Points</h1>
-          <p>Switch between our ateliers to view operating hours and pickup instructions.</p>
-        </div>
-
-        <div style="display:flex; flex-wrap:wrap; gap:1rem; margin:1.5rem 0;">
-          <button class="location-switch-btn active" onclick="switchLocation('kl', this)">Kuala Lumpur Flagship</button>
-          <button class="location-switch-btn" onclick="switchLocation('bangsar', this)">Bangsar Botanical Studio</button>
-        </div>
-
-        <div id="loc-display-card" style="background:var(--panel-bg); border:1px solid var(--border); border-radius:20px; padding:2rem; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem;">
-          <!-- Populated by JS -->
-        </div>
-
-        <div style="font-size:0.8rem; color:var(--text-muted); margin-top:1rem;">Same-day curbside pickup available for pre-orders.</div>
+      <div id="loc-display-card" style="background:var(--panel-bg); border:1px solid var(--border); border-radius:20px; padding:2rem; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem;">
+        <!-- Populated by JS -->
       </div>
 
-      <!-- PAGE 5: REVIEWS -->
-      <div id="page-reviews" class="page-panel">
-        <div class="page-header">
-          <h1>Verified Client Reviews</h1>
-          <p>Feedback from our valued patrons and corporate partners.</p>
-        </div>
+      <div style="font-size:0.8rem; color:var(--text-muted); margin-top:1rem;">Same-day curbside pickup available for pre-orders.</div>
+    </div>
 
-        <div class="grid-3" style="margin:1.5rem 0;">
-          <div style="background:var(--panel-bg); border:1px solid var(--border-subtle); padding:1.5rem; border-radius:16px;">
-            <p style="color:var(--gold-primary); font-size:0.9rem;">★ ★ ★ ★ ★ (5.0)</p>
-            <p style="color:var(--text); font-size:0.88rem; font-style:italic; margin:0.8rem 0;">"The live customizer on WhatsApp was seamless. Got my roses within 2 hours in KL!"</p>
-            <p style="color:var(--text-muted); font-size:0.8rem;">— Datin Serena K.</p>
-          </div>
-
-          <div style="background:var(--panel-bg); border:1px solid var(--border-subtle); padding:1.5rem; border-radius:16px;">
-            <p style="color:var(--gold-primary); font-size:0.9rem;">★ ★ ★ ★ ★ (5.0)</p>
-            <p style="color:var(--text); font-size:0.88rem; font-style:italic; margin:0.8rem 0;">"Ordered custom peonies for a corporate dinner setup. Exceptional quality."</p>
-            <p style="color:var(--text-muted); font-size:0.8rem;">— Marcus Tan (Event Lead)</p>
-          </div>
-
-          <div style="background:var(--panel-bg); border:1px solid var(--border-subtle); padding:1.5rem; border-radius:16px;">
-            <p style="color:var(--gold-primary); font-size:0.9rem;">★ ★ ★ ★ ★ (5.0)</p>
-            <p style="color:var(--text); font-size:0.88rem; font-style:italic; margin:0.8rem 0;">"Fast WhatsApp replies and the bouquet presentation was top notch."</p>
-            <p style="color:var(--text-muted); font-size:0.8rem;">— Farah A.</p>
-          </div>
-        </div>
-
-        <div style="font-size:0.8rem; color:var(--text-muted);">4.9 / 5.0 Star Rating across Google Business Reviews.</div>
+    <!-- PAGE 5: REVIEWS -->
+    <div id="page-reviews" class="page-panel">
+      <div class="page-header">
+        <h1>Verified Client Reviews</h1>
+        <p>Feedback from our valued patrons and corporate partners.</p>
       </div>
 
-      <!-- PAGE 6: DIRECT CONTACT -->
-      <div id="page-contact" class="page-panel">
-        <div class="page-header">
-          <h1>Direct Atelier Assistance</h1>
-          <p>Get in touch directly with our master florists.</p>
+      <div class="grid-3" style="margin:1.5rem 0;">
+        <div style="background:var(--panel-bg); border:1px solid var(--border-subtle); padding:1.5rem; border-radius:16px;">
+          <p style="color:var(--gold-primary); font-size:0.9rem;">★ ★ ★ ★ ★ (5.0)</p>
+          <p style="color:var(--text); font-size:0.88rem; font-style:italic; margin:0.8rem 0;">"The live customizer on WhatsApp was seamless. Got my roses within 2 hours in KL!"</p>
+          <p style="color:var(--text-muted); font-size:0.8rem;">— Datin Serena K.</p>
         </div>
 
-        <div style="background:var(--panel-bg); border:1px solid var(--border); border-radius:20px; padding:2rem; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; margin:1.5rem 0;">
-          <div>
-            <h3 style="color:var(--gold-primary); font-family:'Cinzel', serif; font-size:1.4rem; margin-bottom:0.8rem;">Direct Channels</h3>
-            <p style="color:var(--text); margin-bottom:0.6rem; font-size:0.9rem;">💬 <strong>WhatsApp Hotline:</strong> +6016-282 3327</p>
-            <p style="color:var(--text); margin-bottom:0.6rem; font-size:0.9rem;">📞 <strong>Telephone:</strong> +6016-282 3327</p>
-            <p style="color:var(--text); margin-bottom:1.2rem; font-size:0.9rem;">✉️ <strong>Email Inquiry:</strong> concierges@maisonfleur.my</p>
-
-            <a href="tel:+60162823327" style="display:inline-block; background:linear-gradient(135deg, #dfb15b, #b3852d); color:#000; text-decoration:none; padding:0.8rem 1.5rem; border-radius:10px; font-weight:800;">Call Concierge Now 📞</a>
-          </div>
-
-          <div style="background:rgba(0,0,0,0.3); padding:1.2rem; border-radius:12px; border:1px solid var(--border-subtle);">
-            <h4 style="color:var(--gold-primary); margin-bottom:0.6rem;">Operating Hours</h4>
-            <p style="color:var(--text-muted); font-size:0.85rem;">Monday – Sunday: 9:00 AM – 9:00 PM</p>
-            <p style="color:var(--text-muted); font-size:0.85rem; margin-top:0.4rem;">Same-Day Order Cut-off: 3:00 PM Daily</p>
-          </div>
+        <div style="background:var(--panel-bg); border:1px solid var(--border-subtle); padding:1.5rem; border-radius:16px;">
+          <p style="color:var(--gold-primary); font-size:0.9rem;">★ ★ ★ ★ ★ (5.0)</p>
+          <p style="color:var(--text); font-size:0.88rem; font-style:italic; margin:0.8rem 0;">"Ordered custom peonies for a corporate dinner setup. Exceptional quality."</p>
+          <p style="color:var(--text-muted); font-size:0.8rem;">— Marcus Tan (Event Lead)</p>
         </div>
 
-        <div style="font-size:0.8rem; color:var(--text-muted);">Maison Fleur Atelier</div>
+        <div style="background:var(--panel-bg); border:1px solid var(--border-subtle); padding:1.5rem; border-radius:16px;">
+          <p style="color:var(--gold-primary); font-size:0.9rem;">★ ★ ★ ★ ★ (5.0)</p>
+          <p style="color:var(--text); font-size:0.88rem; font-style:italic; margin:0.8rem 0;">"Fast WhatsApp replies and the bouquet presentation was top notch."</p>
+          <p style="color:var(--text-muted); font-size:0.8rem;">— Farah A.</p>
+        </div>
       </div>
 
-    </main>
+      <div style="font-size:0.8rem; color:var(--text-muted);">4.9 / 5.0 Star Rating across Google Business Reviews.</div>
+    </div>
 
-  </div>
+    <!-- PAGE 6: DIRECT CONTACT -->
+    <div id="page-contact" class="page-panel">
+      <div class="page-header">
+        <h1>Direct Atelier Assistance</h1>
+        <p>Get in touch directly with our master florists.</p>
+      </div>
+
+      <div style="background:var(--panel-bg); border:1px solid var(--border); border-radius:20px; padding:2rem; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; margin:1.5rem 0;">
+        <div>
+          <h3 style="color:var(--gold-primary); font-family:'Cinzel', serif; font-size:1.4rem; margin-bottom:0.8rem;">Direct Channels</h3>
+          <p style="color:var(--text); margin-bottom:0.6rem; font-size:0.9rem;">💬 <strong>WhatsApp Hotline:</strong> +6016-282 3327</p>
+          <p style="color:var(--text); margin-bottom:0.6rem; font-size:0.9rem;">📞 <strong>Telephone:</strong> +6016-282 3327</p>
+          <p style="color:var(--text); margin-bottom:1.2rem; font-size:0.9rem;">✉️ <strong>Email Inquiry:</strong> concierges@maisonfleur.my</p>
+
+          <a href="tel:+60162823327" style="display:inline-block; background:linear-gradient(135deg, #dfb15b, #b3852d); color:#000; text-decoration:none; padding:0.8rem 1.5rem; border-radius:10px; font-weight:800;">Call Concierge Now 📞</a>
+        </div>
+
+        <div style="background:rgba(0,0,0,0.3); padding:1.2rem; border-radius:12px; border:1px solid var(--border-subtle);">
+          <h4 style="color:var(--gold-primary); margin-bottom:0.6rem;">Operating Hours</h4>
+          <p style="color:var(--text-muted); font-size:0.85rem;">Monday – Sunday: 9:00 AM – 9:00 PM</p>
+          <p style="color:var(--text-muted); font-size:0.85rem; margin-top:0.4rem;">Same-Day Order Cut-off: 3:00 PM Daily</p>
+        </div>
+      </div>
+
+      <div style="font-size:0.8rem; color:var(--text-muted);">Maison Fleur Atelier</div>
+    </div>
+
+  </main>
+
+  <!-- MOBILE FIXED BOTTOM TAB BAR NAVIGATION -->
+  <nav class="mobile-bottom-nav">
+    <button class="bottom-tab active" onclick="switchPage('page-overview', this)">
+      <span class="tab-icon">🌸</span>
+      <span>Home</span>
+    </button>
+    <button class="bottom-tab" onclick="switchPage('page-catalog', this)">
+      <span class="tab-icon">💐</span>
+      <span>Catalog</span>
+    </button>
+    <button class="bottom-tab" onclick="switchPage('page-builder', this)">
+      <span class="tab-icon">🎨</span>
+      <span>Custom</span>
+    </button>
+    <button class="bottom-tab" onclick="switchPage('page-locations', this)">
+      <span class="tab-icon">📍</span>
+      <span>Stores</span>
+    </button>
+    <button class="bottom-tab" onclick="toggleMobileDrawer(true)">
+      <span class="tab-icon">☰</span>
+      <span>More</span>
+    </button>
+  </nav>
 
   <!-- Interactive JavaScript Engine -->
   <script>
-    // State Management
+    // Cart & Location State
     let cart = [];
     const storeLocations = {
       kl: {
@@ -710,17 +798,30 @@
       }
     };
 
-    // Tab Switcher Engine
-    function switchPage(pageId, btnElement) {
-      document.querySelectorAll('.page-panel').forEach(page => page.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    // Page Switching Engine Syncs Desktop, Mobile Drawer, & Mobile Bottom Bar
+    function switchPage(pageId, targetBtn) {
+      document.querySelectorAll('.page-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-tab-btn, .drawer-nav-item, .bottom-tab').forEach(b => b.classList.remove('active'));
 
       document.getElementById(pageId).classList.add('active');
-      btnElement.classList.add('active');
 
-      // Scroll smoothly to top when switching pages on mobile
-      if (window.innerWidth <= 960) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (targetBtn) {
+        targetBtn.classList.add('active');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Drawer Toggle Engine
+    function toggleMobileDrawer(openState) {
+      const drawer = document.getElementById('mobile-drawer');
+      const overlay = document.getElementById('drawer-overlay');
+      if (openState) {
+        drawer.classList.add('open');
+        overlay.classList.add('active');
+      } else {
+        drawer.classList.remove('open');
+        overlay.classList.remove('active');
       }
     }
 
@@ -745,9 +846,15 @@
     }
 
     function updateCartUI() {
-      document.getElementById('cart-count').innerText = cart.length;
       const total = cart.reduce((sum, item) => sum + item.price, 0);
-      document.getElementById('cart-total-display').innerText = `RM ${total.toFixed(2)}`;
+      
+      // Update Desktop Pill UI
+      document.getElementById('desk-cart-count').innerText = cart.length;
+      document.getElementById('desk-cart-total').innerText = `RM ${total.toFixed(2)}`;
+
+      // Update Mobile Badge UI
+      document.getElementById('mob-cart-count').innerText = cart.length;
+      document.getElementById('mob-cart-total').innerText = `RM ${total.toFixed(0)}`;
     }
 
     function checkoutWhatsApp() {
@@ -761,7 +868,7 @@
       window.open(`https://wa.me/60162823327?text=${msg}`, '_blank');
     }
 
-    // Live Customizer Calculator
+    // Live Customizer Price Engine
     function calculateCustomPrice() {
       const flowerSel = document.getElementById('cust-flower');
       const stemCost = parseFloat(flowerSel.options[flowerSel.selectedIndex].dataset.price);
@@ -813,7 +920,7 @@
       `;
     }
 
-    // Initialize Defaults
+    // Initial Setup
     window.onload = function() {
       calculateCustomPrice();
       switchLocation('kl', document.querySelectorAll('.location-switch-btn')[0]);

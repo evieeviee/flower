@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- LOCAL SEO & SCHEMA -->
+  <title>Maison Fleur | Haute Botanique Kuala Lumpur</title>
+  <meta name="description" content="Kuala Lumpur's premier haute botanical studio. Hand-curated seasonal stems, bespoke floral subscriptions, and direct WhatsApp concierge.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Florist",
+    "name": "Maison Fleur Haute Botanique",
+    "telephone": "+60162823327",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "143 Jalan Hang Lekir",
+      "addressLocality": "Kuala Lumpur",
+      "postalCode": "50000",
+      "addressCountry": "MY"
+    },
+    "priceRange": "$$$$"
+  }
+  </script>
+
+  <!-- GOOGLE FONTS: Italiana (Editorial Serif) & Montserrat (Clean Modern Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream-bg: #F9F6F0;
+      --paper-white: #FFFFFF;
+      --deep-forest: #1A2E26;
+      --sage-muted: #8FA499;
+      --terracotta: #C87D55;
+      --gold-accent: #D4AF37;
+      --border-line: rgba(26, 46, 38, 0.12);
+      --wa-green: #25D366;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body, html {
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      background-color: var(--cream-bg);
+      color: var(--deep-forest);
+      font-family: 'Montserrat', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Outer Application Layout Grid */
+    .viewport-grid {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    /* Left Editorial Navigation Deck */
+    .editorial-deck {
+      background: var(--paper-white);
+      border-right: 1px solid var(--border-line);
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 10;
+    }
+
+    .brand-mark {
+      font-family: 'Italiana', serif;
+      font-size: 2.2rem;
+      letter-spacing: 3px;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--deep-forest);
+    }
+
+    .brand-sub {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--sage-muted);
+      margin-top: 0.5rem;
+    }
+
+    .editorial-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin: 2rem 0;
+    }
+
+    .nav-item {
+      background: none;
+      border: none;
+      text-align: left;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--sage-muted);
+      cursor: pointer;
+      padding: 0.6rem 0;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-item:hover, .nav-item.active {
+      color: var(--deep-forest);
+      padding-left: 0.5rem;
+    }
+
+    .nav-item.active::before {
+      content: "—";
+      margin-right: 0.5rem;
+      color: var(--terracotta);
+    }
+
+    /* Floating WhatsApp Direct Concierge Widget */
+    .concierge-card {
+      background: var(--cream-bg);
+      border: 1px solid var(--border-line);
+      padding: 1.2rem;
+      border-radius: 12px;
+    }
+
+    .concierge-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--sage-muted);
+      font-weight: 700;
+    }
+
+    .btn-wa-editorial {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background: var(--deep-forest);
+      color: var(--cream-bg);
+      text-decoration: none;
+      padding: 0.85rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 0.8rem;
+      transition: background 0.3s ease;
+    }
+
+    .btn-wa-editorial:hover {
+      background: var(--terracotta);
+    }
+
+    /* Right Main Presentation Stage */
+    .presentation-stage {
+      position: relative;
+      height: 100vh;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+    }
+
+    /* Page Sections */
+    .page-section {
+      min-height: 100vh;
+      padding: 4rem 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: 1px solid var(--border-line);
+      position: relative;
+    }
+
+    .section-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--terracotta);
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Italiana', serif;
+      font-size: 3.5rem;
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #4a5d55;
+      max-width: 650px;
+    }
+
+    /* PAGE 1: ATELIER HERO SPLIT */
+    .hero-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-img-wrap {
+      position: relative;
+      border-radius: 200px 200px 0 0;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+
+    .hero-img-wrap img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* PAGE 2: SEASONAL COLLECTION (Interactive Grid) */
+    .catalog-controls {
+      display: flex;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .cat-filter {
+      background: transparent;
+      border: 1px solid var(--border-line);
+      padding: 0.6rem 1.4rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .cat-filter.active, .cat-filter:hover {
+      background: var(--deep-forest);
+      color: var(--cream-bg);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: var(--paper-white);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-line);
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 1.5rem;
+    }
+
+    .product-name {
+      font-family: 'Italiana', serif;
+      font-size: 1.4rem;
+    }
+
+    .product-price {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--terracotta);
+      margin: 0.5rem 0 1rem 0;
+    }
+
+    .btn-wa-card {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      background: var(--wa-green);
+      color: #fff;
+      padding: 0.75rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    /* PAGE 3: LIVE BESPOKE BUILDER */
+    .builder-card {
+      background: var(--paper-white);
+      padding: 2.5rem;
+      border-radius: 16px;
+      border: 1px solid var(--border-line);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    .form-field {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-field label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-field select, .form-field input, .form-field textarea {
+      width: 100%;
+      padding: 0.85rem;
+      border: 1px solid var(--border-line);
+      border-radius: 8px;
+      background: var(--cream-bg);
+      font-family: inherit;
+    }
+
+    .builder-summary {
+      background: var(--cream-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* PAGE 4: SUBSCRIPTION */
+    .sub-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .sub-card {
+      background: var(--paper-white);
+      border: 1px solid var(--border-line);
+      padding: 2.5rem;
+      border-radius: 16px;
+      text-align: center;
+      position: relative;
+    }
+
+    .sub-card.featured {
+      border: 2px solid var(--terracotta);
+    }
+
+    .sub-card.featured::before {
+      content: "MOST POPULAR";
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--terracotta);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+    }
+
+    /* PAGE 5: SANCTUARY LOCATIONS */
+    .location-toggle {
+      display: flex;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .loc-btn {
+      background: var(--paper-white);
+      border: 1px solid var(--border-line);
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .loc-btn.active {
+      background: var(--deep-forest);
+      color: var(--cream-bg);
+    }
+
+    /* PAGE 6: PRESS & CONTACT */
+    .testimonial-box {
+      background: var(--paper-white);
+      padding: 2rem;
+      border-radius: 12px;
+      border-left: 4px solid var(--terracotta);
+      margin-top: 1.5rem;
+    }
+
+    /* RESPONSIVE DESIGN (Mobile / Tablet) */
+    @media (max-width: 960px) {
+      .viewport-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+      }
+
+      .editorial-deck {
+        padding: 1.5rem;
+        border-right: none;
+        border-bottom: 1px solid var(--border-line);
+      }
+
+      .editorial-nav {
+        flex-direction: row;
+        overflow-x: auto;
+        margin: 1rem 0 0 0;
+        padding-bottom: 0.5rem;
+      }
+
+      .editorial-nav::-webkit-scrollbar { display: none; }
+
+      .concierge-card { display: none; }
+
+      .presentation-stage { height: calc(100vh - 120px); }
+
+      .page-section { padding: 2.5rem 1.5rem; min-height: auto; }
+
+      .hero-split, .product-grid, .builder-card, .sub-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .section-title { font-size: 2.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="viewport-grid">
+
+    <!-- Left Editorial Navigation Deck -->
+    <aside class="editorial-deck">
+      <div>
+        <div class="brand-mark">Maison Fleur</div>
+        <div class="brand-sub">Haute Botanique • Kuala Lumpur</div>
+
+        <!-- Section Navigation -->
+        <nav class="editorial-nav">
+          <button class="nav-item active" onclick="scrollToSection('sec-atelier')">01. The Atelier</button>
+          <button class="nav-item" onclick="scrollToSection('sec-collection')">02. Collection</button>
+          <button class="nav-item" onclick="scrollToSection('sec-bespoke')">03. Bespoke Studio</button>
+          <button class="nav-item" onclick="scrollToSection('sec-subscriptions')">04. Subscriptions</button>
+          <button class="nav-item" onclick="scrollToSection('sec-sanctuary')">05. Sanctuary</button>
+          <button class="nav-item" onclick="scrollToSection('sec-press')">06. Press & Contact</button>
+        </nav>
+      </div>
+
+      <!-- Quick WhatsApp Concierge Widget -->
+      <div class="concierge-card">
+        <div class="concierge-title">Private Concierge</div>
+        <p style="font-size:0.8rem; color:#4a5d55; margin-top:0.3rem;">Instant consultation with our lead florist.</p>
+        <a href="https://wa.me/60162823327?text=Hi%20Maison%20Fleur!%20I%20would%20like%20to%20inquire%20about%20a%20bespoke%20arrangement." target="_blank" class="btn-wa-editorial">
+          💬 WhatsApp Concierge
+        </a>
+      </div>
+    </aside>
+
+    <!-- Right Presentation Stage -->
+    <main class="presentation-stage" id="main-stage">
+
+      <!-- SECTION 1: THE ATELIER (HERO & STORY) -->
+      <section id="sec-atelier" class="page-section">
+        <div class="hero-split">
+          <div>
+            <div class="section-tag">01 / The Atelier</div>
+            <h1 class="section-title">Poetry Written in Fresh Stems.</h1>
+            <p class="section-desc">Maison Fleur is an artisanal botanical studio located in the historic heart of Kuala Lumpur. We curate rare imported stems and native flora into structural floral art.</p>
+            <button onclick="scrollToSection('sec-collection')" style="margin-top:2rem; background:var(--deep-forest); color:var(--cream-bg); border:none; padding:1rem 2rem; border-radius:30px; font-weight:700; cursor:pointer;">Explore Seasonal Collection →</button>
+          </div>
+          <div class="hero-img-wrap">
+            <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=800&q=80" alt="Floral Atelier">
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: SEASONAL COLLECTION -->
+      <section id="sec-collection" class="page-section">
+        <div class="section-tag">02 / Curated Collection</div>
+        <h2 class="section-title">The Seasonal Edit</h2>
+
+        <div class="catalog-controls">
+          <button class="cat-filter active" onclick="filterGallery('all', this)">All Creations</button>
+          <button class="cat-filter" onclick="filterGallery('roses', this)">Velvet Roses</button>
+          <button class="cat-filter" onclick="filterGallery('peonies', this)">Dutch Peonies</button>
+          <button class="cat-filter" onclick="filterGallery('exotic', this)">Wild Exotics</button>
+        </div>
+
+        <div class="product-grid">
+          <div class="product-card" data-cat="roses">
+            <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=600&q=80" alt="Roses">
+            <div class="product-info">
+              <h3 class="product-name">Grand Velvet Red</h3>
+              <div class="product-price">RM 140.00</div>
+              <a href="https://wa.me/60162823327?text=Hi!%20I%20would%20like%20to%20order%20the%20Grand%20Velvet%20Red%20(RM140)" target="_blank" class="btn-wa-card">Order via WhatsApp</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-cat="peonies">
+            <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=600&q=80" alt="Peonies">
+            <div class="product-info">
+              <h3 class="product-name">Pastel Blush Peonies</h3>
+              <div class="product-price">RM 195.00</div>
+              <a href="https://wa.me/60162823327?text=Hi!%20I%20would%20like%20to%20order%20the%20Pastel%20Blush%20Peonies%20(RM195)" target="_blank" class="btn-wa-card">Order via WhatsApp</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-cat="exotic">
+            <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=600&q=80" alt="Sunflowers">
+            <div class="product-info">
+              <h3 class="product-name">Solstice Sun Gold</h3>
+              <div class="product-price">RM 160.00</div>
+              <a href="https://wa.me/60162823327?text=Hi!%20I%20would%20like%20to%20order%20the%20Solstice%20Sun%20Gold%20(RM160)" target="_blank" class="btn-wa-card">Order via WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: BESPOKE STUDIO -->
+      <section id="sec-bespoke" class="page-section">
+        <div class="section-tag">03 / Bespoke Commission</div>
+        <h2 class="section-title">Design Your Custom Spec</h2>
+
+        <div class="builder-card">
+          <div>
+            <div class="form-field">
+              <label>Botanical Theme</label>
+              <select id="b-theme" onchange="updateBespokeQuote()">
+                <option value="Ecuadorian Roses" data-price="120">Ecuadorian Roses (Base RM 120)</option>
+                <option value="Dutch Peonies" data-price="170">Dutch Peonies (Base RM 170)</option>
+                <option value="Wild Sunflowers" data-price="110">Wild Sunflowers (Base RM 110)</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label>Stem Volume: <span id="stem-label" style="color:var(--terracotta)">12 Stems</span></label>
+              <input type="range" id="b-stems" min="6" max="36" value="12" oninput="updateBespokeQuote()">
+            </div>
+
+            <div class="form-field">
+              <label>Wrapping & Presentation</label>
+              <select id="b-wrap" onchange="updateBespokeQuote()">
+                <option value="Luxe Matte Linen" data-price="20">Luxe Matte Linen (+RM 20)</option>
+                <option value="Architectural Vessel Box" data-price="45">Architectural Vessel Box (+RM 45)</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label>Personal Message</label>
+              <textarea id="b-note" rows="2" placeholder="Card note text..."></textarea>
+            </div>
+          </div>
+
+          <div class="builder-summary">
+            <div>
+              <h4 style="font-family:'Italiana', serif; font-size:1.5rem; margin-bottom:1rem;">Estimate Summary</h4>
+              <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem; font-size:0.9rem;">
+                <span>Stem Selection</span><span id="q-stem">RM 120.00</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem; font-size:0.9rem;">
+                <span>Packaging & Craft</span><span id="q-wrap">RM 20.00</span>
+              </div>
+              <hr style="border:none; border-top:1px dashed var(--border-line); margin:1rem 0;">
+              <div style="display:flex; justify-content:space-between; font-weight:bold; font-size:1.2rem;">
+                <span>Total Quote</span><span id="q-total" style="color:var(--terracotta)">RM 140.00</span>
+              </div>
+            </div>
+
+            <button onclick="sendBespokeWhatsApp()" class="btn-wa-card" style="padding:1rem; margin-top:1rem;">
+              Send Spec via WhatsApp Concierge 💬
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: SUBSCRIPTIONS -->
+      <section id="sec-subscriptions" class="page-section">
+        <div class="section-tag">04 / Recurring Botanicals</div>
+        <h2 class="section-title">Floral Subscription Plans</h2>
+        <p class="section-desc">Elevate your home, boutique, or corporate office with fresh weekly or bi-weekly stem deliveries.</p>
+
+        <div class="sub-grid">
+          <div class="sub-card">
+            <h3 style="font-family:'Italiana', serif; font-size:1.6rem;">Weekly Residence</h3>
+            <div style="font-size:1.5rem; font-weight:700; color:var(--terracotta); margin:0.8rem 0;">RM 380 <span style="font-size:0.8rem; color:#888;">/ mo</span></div>
+            <p style="font-size:0.85rem; color:#666; line-height:1.6; margin-bottom:1.5rem;">4 fresh seasonal vase-ready deliveries directly to your home every Monday.</p>
+            <a href="https://wa.me/60162823327?text=Hi!%20I%20want%20to%20inquire%20about%20the%20Weekly%20Residence%20Subscription" target="_blank" class="btn-wa-card">Subscribe via WhatsApp</a>
+          </div>
+
+          <div class="sub-card featured">
+            <h3 style="font-family:'Italiana', serif; font-size:1.6rem;">Bi-Weekly Grand</h3>
+            <div style="font-size:1.5rem; font-weight:700; color:var(--terracotta); margin:0.8rem 0;">RM 520 <span style="font-size:0.8rem; color:#888;">/ mo</span></div>
+            <p style="font-size:0.85rem; color:#666; line-height:1.6; margin-bottom:1.5rem;">2 large-scale statement compositions crafted with rare imported stems.</p>
+            <a href="https://wa.me/60162823327?text=Hi!%20I%20want%20to%20inquire%20about%20the%20Bi-Weekly%20Grand%20Subscription" target="_blank" class="btn-wa-card">Subscribe via WhatsApp</a>
+          </div>
+
+          <div class="sub-card">
+            <h3 style="font-family:'Italiana', serif; font-size:1.6rem;">Corporate Atelier</h3>
+            <div style="font-size:1.5rem; font-weight:700; color:var(--terracotta); margin:0.8rem 0;">Custom <span style="font-size:0.8rem; color:#888;">/ quote</span></div>
+            <p style="font-size:0.85rem; color:#666; line-height:1.6; margin-bottom:1.5rem;">Bespoke lobby, hotel, and luxury boutique floral installations tailored weekly.</p>
+            <a href="https://wa.me/60162823327?text=Hi!%20I%20want%20to%20inquire%20about%20Corporate%20Atelier%20Subscriptions" target="_blank" class="btn-wa-card">Inquire via WhatsApp</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: SANCTUARY LOCATIONS -->
+      <section id="sec-sanctuary" class="page-section">
+        <div class="section-tag">05 / Physical Spaces</div>
+        <h2 class="section-title">Visit Our Sanctuaries</h2>
+
+        <div class="location-toggle">
+          <button class="loc-btn active" onclick="switchLoc('kl', this)">Kuala Lumpur Atelier</button>
+          <button class="loc-btn" onclick="switchLoc('bangsar', this)">Bangsar Floral Lounge</button>
+        </div>
+
+        <div id="loc-content" style="background:var(--paper-white); padding:2.5rem; border-radius:16px; border:1px solid var(--border-line); margin-top:1rem;">
+          <!-- Content populated via JavaScript -->
+        </div>
+      </section>
+
+      <!-- SECTION 6: PRESS & CONTACT -->
+      <section id="sec-press" class="page-section">
+        <div class="section-tag">06 / Press & Assistance</div>
+        <h2 class="section-title">Client Stories & Direct Support</h2>
+
+        <div class="testimonial-box">
+          <p style="font-size:1rem; font-style:italic; line-height:1.6;">"Maison Fleur transformed our anniversary event with their Dutch Peony arrangements. Seamless WhatsApp concierge service!"</p>
+          <div style="font-weight:700; margin-top:0.8rem; font-size:0.85rem; color:var(--terracotta);">— Tengku A. Shah (Kuala Lumpur)</div>
+        </div>
+
+        <div style="background:var(--paper-white); padding:2rem; border-radius:12px; border:1px solid var(--border-line); margin-top:2rem; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1.5rem;">
+          <div>
+            <h4 style="font-family:'Italiana', serif; font-size:1.2rem;">Direct Telephone</h4>
+            <p style="font-size:0.9rem; color:#666; margin-top:0.3rem;">+6016-282 3327</p>
+          </div>
+          <div>
+            <h4 style="font-family:'Italiana', serif; font-size:1.2rem;">Email Inquiries</h4>
+            <p style="font-size:0.9rem; color:#666; margin-top:0.3rem;">atelier@maisonfleur.my</p>
+          </div>
+          <div>
+            <h4 style="font-family:'Italiana', serif; font-size:1.2rem;">Operating Hours</h4>
+            <p style="font-size:0.9rem; color:#666; margin-top:0.3rem;">Daily: 9:00 AM – 9:00 PM</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- JavaScript Engine -->
+  <script>
+    // Smooth Scroll Navigation
+    function scrollToSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      section.scrollIntoView({ behavior: 'smooth' });
+
+      document.querySelectorAll('.nav-item').forEach(btn => btn.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+    }
+
+    // Catalog Filter
+    function filterGallery(cat, btn) {
+      document.querySelectorAll('.cat-filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      document.querySelectorAll('.product-card').forEach(card => {
+        if (cat === 'all' || card.dataset.cat === cat) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Bespoke Live Price Quote Engine
+    function updateBespokeQuote() {
+      const themeSelect = document.getElementById('b-theme');
+      const basePrice = parseFloat(themeSelect.options[themeSelect.selectedIndex].dataset.price);
+      const stems = parseInt(document.getElementById('b-stems').value);
+      
+      const wrapSelect = document.getElementById('b-wrap');
+      const wrapPrice = parseFloat(wrapSelect.options[wrapSelect.selectedIndex].dataset.price);
+
+      document.getElementById('stem-label').innerText = `${stems} Stems`;
+
+      const stemTotal = basePrice + ((stems - 6) * 5);
+      const grandTotal = stemTotal + wrapPrice;
+
+      document.getElementById('q-stem').innerText = `RM ${stemTotal.toFixed(2)}`;
+      document.getElementById('q-wrap').innerText = `RM ${wrapPrice.toFixed(2)}`;
+      document.getElementById('q-total').innerText = `RM ${grandTotal.toFixed(2)}`;
+    }
+
+    function sendBespokeWhatsApp() {
+      const theme = document.getElementById('b-theme').value;
+      const stems = document.getElementById('b-stems').value;
+      const wrap = document.getElementById('b-wrap').value;
+      const note = document.getElementById('b-note').value;
+      const total = document.getElementById('q-total').innerText;
+
+      const msg = `Hi Maison Fleur! I constructed a bespoke arrangement spec:%0A%0A- Theme: ${theme}%0A- Volume: ${stems} stems%0A- Packaging: ${wrap}%0A- Message Note: ${note}%0A- Total Quote: ${total}`;
+      window.open(`https://wa.me/60162823327?text=${msg}`, '_blank');
+    }
+
+    // Physical Location Toggle
+    const locations = {
+      kl: {
+        name: "Kuala Lumpur City Atelier",
+        address: "143, Jalan Hang Lekir, City Centre, 50000 Kuala Lumpur",
+        hours: "Mon – Sun: 9:00 AM – 9:00 PM",
+        maps: "https://maps.google.com/?q=Jalan+Hang+Lekir+Kuala+Lumpur"
+      },
+      bangsar: {
+        name: "Bangsar Floral Lounge",
+        address: "28, Jalan Telawi 3, Bangsar Baru, 59100 Kuala Lumpur",
+        hours: "Mon – Sun: 10:00 AM – 8:00 PM",
+        maps: "https://maps.google.com/?q=Jalan+Telawi+3+Bangsar"
+      }
+    };
+
+    function switchLoc(key, btn) {
+      document.querySelectorAll('.loc-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const loc = locations[key];
+      document.getElementById('loc-content').innerHTML = `
+        <h3 style="font-family:'Italiana', serif; font-size:1.8rem; margin-bottom:0.5rem;">${loc.name}</h3>
+        <p style="color:#666; margin-bottom:0.4rem;">📍 ${loc.address}</p>
+        <p style="color:#666; margin-bottom:1.5rem;">⏰ ${loc.hours}</p>
+        <a href="${loc.maps}" target="_blank" style="display:inline-block; background:var(--deep-forest); color:var(--cream-bg); padding:0.8rem 1.5rem; border-radius:6px; font-weight:700; text-decoration:none; font-size:0.85rem;">Open Location in Maps 📍</a>
+      `;
+    }
+
+    // Init defaults
+    window.onload = function() {
+      updateBespokeQuote();
+      switchLoc('kl', document.querySelectorAll('.loc-btn')[0]);
+    };
+  </script>
+
+</body>
+</html>

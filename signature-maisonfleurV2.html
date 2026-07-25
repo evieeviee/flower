@@ -47,21 +47,41 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body, html {
-      height: 100vh;
-      width: 100vw;
-      overflow: hidden;
       background-color: var(--bg-dark);
       color: var(--text);
       font-family: 'Plus Jakarta Sans', sans-serif;
       -webkit-font-smoothing: antialiased;
+      width: 100%;
     }
 
-    /* Main Grid Layout */
-    .app-viewport {
-      display: grid;
-      grid-template-columns: 340px 1fr;
-      height: 100vh;
-      width: 100vw;
+    /* Desktop Viewport Rules */
+    @media (min-width: 961px) {
+      body, html {
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .app-viewport {
+        display: grid;
+        grid-template-columns: 340px 1fr;
+        height: 100vh;
+        width: 100vw;
+      }
+
+      .main-stage {
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .page-panel {
+        position: absolute;
+        inset: 0;
+        padding: 3rem 4rem;
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow-y: auto;
+      }
     }
 
     /* Sidebar Styling */
@@ -191,23 +211,13 @@
     /* Main Screen Stage */
     .main-stage {
       position: relative;
-      height: 100vh;
-      overflow: hidden;
       background: radial-gradient(circle at top right, rgba(223, 177, 91, 0.06), transparent 60%);
     }
 
-    .page-panel {
-      position: absolute;
-      inset: 0;
-      padding: 3rem 4rem;
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      overflow-y: auto;
+    .page-panel.active { 
+      display: flex; 
       animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-
-    .page-panel.active { display: flex; }
 
     @keyframes slideUp {
       from { opacity: 0; transform: translateY(12px); }
@@ -226,6 +236,7 @@
     /* Filter Chips for Catalog */
     .filter-bar {
       display: flex;
+      flex-wrap: wrap;
       gap: 0.6rem;
       margin: 1.2rem 0;
     }
@@ -368,13 +379,53 @@
 
     /* Responsive Controls */
     @media (max-width: 960px) {
-      .app-viewport { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
-      .sidebar { padding: 1rem 1.2rem; border-right: none; border-bottom: 1px solid var(--border-subtle); }
-      .nav-tabs { flex-direction: row; overflow-x: auto; margin-top: 0.8rem; padding-bottom: 0.4rem; }
-      .nav-tabs::-webkit-scrollbar { display: none; }
+      body, html {
+        height: auto;
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      .app-viewport { 
+        display: block; 
+        width: 100%;
+      }
+
+      .sidebar { 
+        position: sticky;
+        top: 0;
+        padding: 1rem 1.2rem; 
+        border-right: none; 
+        border-bottom: 1px solid var(--border-subtle); 
+      }
+
+      .nav-tabs { 
+        flex-direction: row; 
+        overflow-x: auto; 
+        margin-top: 0.8rem; 
+        padding-bottom: 0.4rem; 
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .tab-btn {
+        padding: 0.6rem 0.8rem;
+        white-space: nowrap;
+      }
+
       .sidebar-widget { display: none; }
-      .main-stage { height: calc(100vh - 130px); }
-      .page-panel { padding: 1.5rem 1.2rem; }
+
+      .main-stage { 
+        height: auto;
+        min-height: calc(100vh - 130px);
+      }
+
+      .page-panel { 
+        position: relative;
+        display: none;
+        flex-direction: column;
+        padding: 2rem 1.2rem; 
+      }
+
       .grid-3 { grid-template-columns: 1fr; }
       .customizer-grid { grid-template-columns: 1fr; gap: 1rem; }
       .page-header h1 { font-size: 1.8rem; }
@@ -565,7 +616,7 @@
           <p>Switch between our ateliers to view operating hours and pickup instructions.</p>
         </div>
 
-        <div style="display:flex; gap:1rem; margin:1.5rem 0;">
+        <div style="display:flex; flex-wrap:wrap; gap:1rem; margin:1.5rem 0;">
           <button class="location-switch-btn active" onclick="switchLocation('kl', this)">Kuala Lumpur Flagship</button>
           <button class="location-switch-btn" onclick="switchLocation('bangsar', this)">Bangsar Botanical Studio</button>
         </div>
@@ -666,6 +717,11 @@
 
       document.getElementById(pageId).classList.add('active');
       btnElement.classList.add('active');
+
+      // Scroll smoothly to top when switching pages on mobile
+      if (window.innerWidth <= 960) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
 
     // Catalog Filter Engine

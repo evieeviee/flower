@@ -25,7 +25,7 @@
   }
   </script>
 
-  <!-- GOOGLE FONTS: Italiana (Editorial Serif) & Montserrat (Clean Modern Sans) -->
+  <!-- GOOGLE FONTS: Italiana & Montserrat -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -44,29 +44,44 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body, html {
-      height: 100vh;
-      width: 100vw;
-      overflow: hidden;
+    html, body {
       background-color: var(--cream-bg);
       color: var(--deep-forest);
       font-family: 'Montserrat', sans-serif;
       -webkit-font-smoothing: antialiased;
+      width: 100%;
     }
 
-    /* Outer Application Layout Grid */
-    .viewport-grid {
-      display: grid;
-      grid-template-columns: 360px 1fr;
-      height: 100vh;
-      width: 100vw;
+    /* Desktop Viewport Rules */
+    @media (min-width: 961px) {
+      body, html {
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .viewport-grid {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        height: 100vh;
+        width: 100vw;
+      }
+
+      .presentation-stage {
+        height: 100vh;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+      }
+
+      .page-section {
+        min-height: 100vh;
+      }
     }
 
     /* Left Editorial Navigation Deck */
     .editorial-deck {
       background: var(--paper-white);
       border-right: 1px solid var(--border-line);
-      padding: 3rem 2.5rem;
+      padding: 2.5rem 2rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -75,7 +90,7 @@
 
     .brand-mark {
       font-family: 'Italiana', serif;
-      font-size: 2.2rem;
+      font-size: 2rem;
       letter-spacing: 3px;
       line-height: 1;
       text-transform: uppercase;
@@ -126,7 +141,7 @@
       color: var(--terracotta);
     }
 
-    /* Floating WhatsApp Direct Concierge Widget */
+    /* Floating Concierge Card */
     .concierge-card {
       background: var(--cream-bg);
       border: 1px solid var(--border-line);
@@ -167,15 +182,11 @@
     /* Right Main Presentation Stage */
     .presentation-stage {
       position: relative;
-      height: 100vh;
-      overflow-y: auto;
-      scroll-behavior: smooth;
     }
 
     /* Page Sections */
     .page-section {
-      min-height: 100vh;
-      padding: 4rem 5rem;
+      padding: 4rem 3.5rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -194,7 +205,7 @@
 
     .section-title {
       font-family: 'Italiana', serif;
-      font-size: 3.5rem;
+      font-size: 3rem;
       font-weight: 400;
       line-height: 1.1;
       margin-bottom: 1.5rem;
@@ -207,7 +218,7 @@
       max-width: 650px;
     }
 
-    /* PAGE 1: ATELIER HERO SPLIT */
+    /* HERO SPLIT */
     .hero-split {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -224,15 +235,16 @@
 
     .hero-img-wrap img {
       width: 100%;
-      height: 520px;
+      height: 480px;
       object-fit: cover;
       display: block;
     }
 
-    /* PAGE 2: SEASONAL COLLECTION (Interactive Grid) */
+    /* SEASONAL COLLECTION */
     .catalog-controls {
       display: flex;
-      gap: 1rem;
+      flex-wrap: wrap;
+      gap: 0.8rem;
       margin: 2rem 0;
     }
 
@@ -255,7 +267,7 @@
     .product-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
+      gap: 1.5rem;
     }
 
     .product-card {
@@ -305,7 +317,7 @@
       font-size: 0.8rem;
     }
 
-    /* PAGE 3: LIVE BESPOKE BUILDER */
+    /* BESPOKE BUILDER */
     .builder-card {
       background: var(--paper-white);
       padding: 2.5rem;
@@ -348,18 +360,18 @@
       justify-content: space-between;
     }
 
-    /* PAGE 4: SUBSCRIPTION */
+    /* SUBSCRIPTIONS */
     .sub-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
+      gap: 1.5rem;
       margin-top: 2rem;
     }
 
     .sub-card {
       background: var(--paper-white);
       border: 1px solid var(--border-line);
-      padding: 2.5rem;
+      padding: 2rem;
       border-radius: 16px;
       text-align: center;
       position: relative;
@@ -383,9 +395,10 @@
       border-radius: 20px;
     }
 
-    /* PAGE 5: SANCTUARY LOCATIONS */
+    /* SANCTUARY LOCATIONS */
     .location-toggle {
       display: flex;
+      flex-wrap: wrap;
       gap: 1rem;
       margin: 1.5rem 0;
     }
@@ -404,7 +417,7 @@
       color: var(--cream-bg);
     }
 
-    /* PAGE 6: PRESS & CONTACT */
+    /* PRESS & CONTACT */
     .testimonial-box {
       background: var(--paper-white);
       padding: 2rem;
@@ -413,40 +426,72 @@
       margin-top: 1.5rem;
     }
 
-    /* RESPONSIVE DESIGN (Mobile / Tablet) */
+    /* RESPONSIVE DESIGN (Mobile & Tablet) */
     @media (max-width: 960px) {
+      body, html {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: auto;
+      }
+
       .viewport-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr;
+        display: block;
+        width: 100%;
       }
 
       .editorial-deck {
-        padding: 1.5rem;
+        position: sticky;
+        top: 0;
+        padding: 1.2rem 1.5rem;
         border-right: none;
         border-bottom: 1px solid var(--border-line);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       }
 
       .editorial-nav {
         flex-direction: row;
+        white-space: nowrap;
         overflow-x: auto;
         margin: 1rem 0 0 0;
-        padding-bottom: 0.5rem;
+        padding-bottom: 0.3rem;
+        -webkit-overflow-scrolling: touch;
       }
 
-      .editorial-nav::-webkit-scrollbar { display: none; }
+      .nav-item {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+      }
 
-      .concierge-card { display: none; }
+      .nav-item.active::before {
+        display: none;
+      }
 
-      .presentation-stage { height: calc(100vh - 120px); }
+      .concierge-card { 
+        display: none; 
+      }
 
-      .page-section { padding: 2.5rem 1.5rem; min-height: auto; }
+      .page-section {
+        padding: 3rem 1.5rem;
+        min-height: auto;
+      }
 
-      .hero-split, .product-grid, .builder-card, .sub-grid {
+      .hero-split, .builder-card {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .hero-img-wrap img {
+        height: 350px;
+      }
+
+      .product-grid, .sub-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
       }
 
-      .section-title { font-size: 2.4rem; }
+      .section-title { 
+        font-size: 2.2rem; 
+      }
     }
   </style>
 </head>
@@ -462,12 +507,12 @@
 
         <!-- Section Navigation -->
         <nav class="editorial-nav">
-          <button class="nav-item active" onclick="scrollToSection('sec-atelier')">01. The Atelier</button>
-          <button class="nav-item" onclick="scrollToSection('sec-collection')">02. Collection</button>
-          <button class="nav-item" onclick="scrollToSection('sec-bespoke')">03. Bespoke Studio</button>
-          <button class="nav-item" onclick="scrollToSection('sec-subscriptions')">04. Subscriptions</button>
-          <button class="nav-item" onclick="scrollToSection('sec-sanctuary')">05. Sanctuary</button>
-          <button class="nav-item" onclick="scrollToSection('sec-press')">06. Press & Contact</button>
+          <button class="nav-item active" onclick="scrollToSection('sec-atelier', this)">01. The Atelier</button>
+          <button class="nav-item" onclick="scrollToSection('sec-collection', this)">02. Collection</button>
+          <button class="nav-item" onclick="scrollToSection('sec-bespoke', this)">03. Bespoke Studio</button>
+          <button class="nav-item" onclick="scrollToSection('sec-subscriptions', this)">04. Subscriptions</button>
+          <button class="nav-item" onclick="scrollToSection('sec-sanctuary', this)">05. Sanctuary</button>
+          <button class="nav-item" onclick="scrollToSection('sec-press', this)">06. Press & Contact</button>
         </nav>
       </div>
 
@@ -676,12 +721,14 @@
   <!-- JavaScript Engine -->
   <script>
     // Smooth Scroll Navigation
-    function scrollToSection(sectionId) {
+    function scrollToSection(sectionId, btn) {
       const section = document.getElementById(sectionId);
       section.scrollIntoView({ behavior: 'smooth' });
 
-      document.querySelectorAll('.nav-item').forEach(btn => btn.classList.remove('active'));
-      event.currentTarget.classList.add('active');
+      if (btn) {
+        document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
     }
 
     // Catalog Filter

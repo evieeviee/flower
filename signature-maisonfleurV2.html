@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- LOCAL SEO SCHEMA -->
+  <title>Maison Fleur | Premier Local Floral Studio Kuala Lumpur</title>
+  <meta name="description" content="Kuala Lumpur's premier local florist. Multi-page catalog for fresh hand-picked bouquets, direct WhatsApp ordering, and walk-in boutique pickup.">
+  <meta name="keywords" content="florist KL, whatsapp flower order, local boutique florist, fresh bouquet delivery">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Florist",
+    "name": "Maison Fleur by Flower & Blossom",
+    "telephone": "+60162823327",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "143 Jalan Hang Lekir",
+      "addressLocality": "Kuala Lumpur",
+      "postalCode": "50000",
+      "addressCountry": "MY"
+    },
+    "priceRange": "$$$"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold: #dfb15b;
+      --bg-dark: #0a0d0a;
+      --card-glass: rgba(22, 28, 23, 0.85);
+      --border-light: rgba(255, 255, 255, 0.08);
+      --text: #e2e8f0;
+      --wa-green: #25D366;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body, html {
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      background-color: var(--bg-dark);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Main App Layout Grid */
+    .app-viewport {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    /* Sidebar Navigation Panel */
+    .sidebar {
+      background: rgba(14, 18, 15, 0.98);
+      border-right: 1px solid var(--border-light);
+      padding: 2.5rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 10;
+    }
+
+    .brand-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+
+    /* Multi-Tab Navigation Links */
+    .nav-tabs {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 2rem;
+    }
+
+    .tab-link {
+      background: transparent;
+      border: 1px solid transparent;
+      color: #8a9a8e;
+      padding: 0.85rem 1.1rem;
+      border-radius: 12px;
+      text-align: left;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      white-space: nowrap;
+    }
+
+    .tab-link:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .tab-link.active {
+      background: var(--card-glass);
+      border-color: var(--gold);
+      color: var(--gold);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .sidebar-footer {
+      border-top: 1px solid var(--border-light);
+      padding-top: 1.5rem;
+    }
+
+    .btn-wa-sidebar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      background: var(--wa-green);
+      color: #fff;
+      padding: 0.85rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    /* Main Content Stage */
+    .main-stage {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      background: radial-gradient(circle at top right, rgba(223, 177, 91, 0.08), transparent 50%);
+    }
+
+    /* Dynamic Page Panels */
+    .page-panel {
+      position: absolute;
+      inset: 0;
+      padding: 3rem 3.5rem;
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-y: auto;
+      animation: fadeIn 0.4s ease-in-out forwards;
+    }
+
+    .page-panel.active { display: flex; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .page-header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+
+    .page-header p { color: #8a9a8e; font-size: 0.95rem; }
+
+    /* Catalog Cards */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .card-item {
+      background: var(--card-glass);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-img { width: 100%; height: 160px; object-fit: cover; }
+    .card-body { padding: 1.2rem; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
+    .card-title { font-size: 1.05rem; color: #fff; font-family: 'Cinzel', serif; }
+    .card-price { font-size: 1.15rem; font-weight: 700; color: var(--gold); margin-top: 0.4rem; }
+
+    .btn-wa-sm {
+      background: var(--wa-green);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.6rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: inline-block;
+      margin-top: 0.8rem;
+      text-align: center;
+    }
+
+    /* Form Styling */
+    .builder-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin: 1.5rem 0;
+      background: var(--card-glass);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 1px solid var(--border-light);
+    }
+
+    .form-group label { display: block; color: var(--gold); font-size: 0.85rem; margin-bottom: 0.5rem; font-weight: 600; }
+    .form-group select, .form-group input {
+      width: 100%;
+      padding: 0.85rem;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      color: #fff;
+      font-family: inherit;
+    }
+
+    .btn-gold-lg {
+      grid-column: span 2;
+      background: linear-gradient(135deg, #dfb15b, #b3852d);
+      color: #000;
+      border: none;
+      padding: 1rem;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    /* RESPONSIVE BREAKPOINTS (Mobile & Tablet) */
+    @media (max-width: 900px) {
+      .app-viewport {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+      }
+
+      .sidebar {
+        padding: 1rem 1.2rem;
+        border-right: none;
+        border-bottom: 1px solid var(--border-light);
+      }
+
+      .nav-tabs {
+        flex-direction: row;
+        overflow-x: auto;
+        margin-top: 0.8rem;
+        padding-bottom: 0.4rem;
+      }
+
+      .nav-tabs::-webkit-scrollbar { display: none; }
+
+      .sidebar-footer { display: none; }
+
+      .main-stage { height: calc(100vh - 120px); }
+
+      .page-panel { padding: 1.5rem 1.2rem; }
+
+      .page-header h1 { font-size: 1.8rem; }
+
+      .grid-3 { grid-template-columns: 1fr; }
+
+      .builder-form { grid-template-columns: 1fr; padding: 1.2rem; }
+      .btn-gold-lg { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-viewport">
+    
+    <!-- Sidebar / Top Navigation Header -->
+    <aside class="sidebar">
+      <div>
+        <div class="brand-title">MAISON FLEUR</div>
+        <p style="font-size:0.75rem; color:#8a9a8e; margin-top:0.2rem;">Boutique Floral Studio • KL</p>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs">
+          <button class="tab-link active" onclick="switchPage('page-home', this)">
+            <span>🌸</span> Overview
+          </button>
+          <button class="tab-link" onclick="switchPage('page-catalog', this)">
+            <span>💐</span> Floral Catalog
+          </button>
+          <button class="tab-link" onclick="switchPage('page-builder', this)">
+            <span>🎨</span> Custom Builder
+          </button>
+          <button class="tab-link" onclick="switchPage('page-shop', this)">
+            <span>📍</span> Walk-In Studio
+          </button>
+          <button class="tab-link" onclick="switchPage('page-reviews', this)">
+            <span>★</span> Client Reviews
+          </button>
+          <button class="tab-link" onclick="switchPage('page-contact', this)">
+            <span>📞</span> Direct Contact
+          </button>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <a href="https://wa.me/60162823327?text=Hi!%20I%20have%20a%20general%20inquiry." target="_blank" class="btn-wa-sidebar">
+          💬 WhatsApp Direct Line
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Dynamic Content Stage -->
+    <main class="main-stage">
+
+      <!-- PANEL 1: OVERVIEW -->
+      <div id="page-home" class="page-panel active">
+        <div class="page-header">
+          <h1>Artisanal Botanical Studio</h1>
+          <p>Hand-crafted bouquets, event installations, and fresh daily imports tailored for local delivery across Kuala Lumpur.</p>
+        </div>
+
+        <div style="background:var(--card-glass); border:1px solid var(--border-light); border-radius:20px; padding:2rem; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; align-items:center; margin: 1.5rem 0;">
+          <div>
+            <h3 style="font-family:'Cinzel', serif; font-size:1.6rem; color:var(--gold); margin-bottom:0.8rem;">Fresh Stems, Zero Hassle</h3>
+            <p style="color:#8a9a8e; font-size:0.9rem; line-height:1.6;">Browse our seasonal collection, build your own custom arrangement, or order directly via WhatsApp for swift same-day local delivery.</p>
+            <button onclick="switchPage('page-catalog', document.querySelectorAll('.tab-link')[1])" class="btn-gold-lg" style="margin-top:1.2rem; padding:0.8rem 1.5rem; width:auto; display:inline-block;">Explore Collection →</button>
+          </div>
+          <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=800&q=80" style="width:100%; height:200px; object-fit:cover; border-radius:12px;" alt="Studio Flowers">
+        </div>
+
+        <div style="font-size:0.8rem; color:#8a9a8e;">Maison Fleur Studio System</div>
+      </div>
+
+      <!-- PANEL 2: CATALOG -->
+      <div id="page-catalog" class="page-panel">
+        <div class="page-header">
+          <h1>Fresh Flower Collection</h1>
+          <p>Select any arrangement to initiate a direct order inquiry on WhatsApp.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card-item">
+            <img class="card-img" src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=600&q=80" alt="Rose Bouquet">
+            <div class="card-body">
+              <h3 class="card-title">Grand Velvet Red Rose</h3>
+              <div class="card-price">RM 120.00</div>
+              <a href="https://wa.me/60162823327?text=Hi!%20I%20want%20to%20order%20the%20Grand%20Velvet%20Red%20Rose%20(RM120)" target="_blank" class="btn-wa-sm">Order via WhatsApp</a>
+            </div>
+          </div>
+
+          <div class="card-item">
+            <img class="card-img" src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=600&q=80" alt="Pastel Peonies">
+            <div class="card-body">
+              <h3 class="card-title">Pastel Peony Garden</h3>
+              <div class="card-price">RM 180.00</div>
+              <a href="https://wa.me/60162823327?text=Hi!%20I%20want%20to%20order%20the%20Pastel%20Peony%20Garden%20(RM180)" target="_blank" class="btn-wa-sm">Order via WhatsApp</a>
+            </div>
+          </div>
+
+          <div class="card-item">
+            <img class="card-img" src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=600&q=80" alt="Sunflowers">
+            <div class="card-body">
+              <h3 class="card-title">Sunshine Bloom Box</h3>
+              <div class="card-price">RM 145.00</div>
+              <a href="https://wa.me/60162823327?text=Hi!%20I%20want%20to%20order%20the%20Sunshine%20Bloom%20Box%20(RM145)" target="_blank" class="btn-wa-sm">Order via WhatsApp</a>
+            </div>
+          </div>
+        </div>
+
+        <div style="font-size:0.8rem; color:#8a9a8e;">All prices include basic wrapping and card note.</div>
+      </div>
+
+      <!-- PANEL 3: BUILDER -->
+      <div id="page-builder" class="page-panel">
+        <div class="page-header">
+          <h1>Custom Bouquet Builder</h1>
+          <p>Customize your floral preferences and send the specs directly to our head florist.</p>
+        </div>
+
+        <form class="builder-form" onsubmit="sendCustomOrder(event)">
+          <div class="form-group">
+            <label>Primary Stem Choice</label>
+            <select id="p3-stem">
+              <option value="Imported Ecuadorian Red Roses">Imported Ecuadorian Red Roses</option>
+              <option value="Soft Pastel Peonies & Hydrangeas">Soft Pastel Peonies & Hydrangeas</option>
+              <option value="Bright Wild Sunflowers & Chamomile">Bright Wild Sunflowers & Chamomile</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Budget Tier</label>
+            <select id="p3-budget">
+              <option value="RM 100 - RM 180 (Standard)">RM 100 - RM 180 (Standard)</option>
+              <option value="RM 200 - RM 350 (Grand Luxe)">RM 200 - RM 350 (Grand Luxe)</option>
+              <option value="RM 400+ (Custom Event Commission)">RM 400+ (Custom Event Commission)</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="grid-column: span 2;">
+            <label>Special Instructions / Gift Message</label>
+            <input type="text" id="p3-note" placeholder="e.g. Happy Anniversary my love! Please use pink wrapping paper.">
+          </div>
+
+          <button type="submit" class="btn-gold-lg">Send Arrangement Specs on WhatsApp 💬</button>
+        </form>
+
+        <div style="font-size:0.8rem; color:#8a9a8e;">Our on-duty florist will confirm availability within 15 minutes.</div>
+      </div>
+
+      <!-- PANEL 4: WALK-IN STORE -->
+      <div id="page-shop" class="page-panel">
+        <div class="page-header">
+          <h1>Visit Our Physical Studio</h1>
+          <p>Stop by our studio to collect pre-orders or choose fresh stems in person.</p>
+        </div>
+
+        <div style="background:var(--card-glass); border:1px solid var(--border-light); border-radius:20px; padding:2rem; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; margin: 1.5rem 0;">
+          <div>
+            <h3 style="color:var(--gold); font-family:'Cinzel', serif; font-size:1.4rem; margin-bottom:0.8rem;">Kuala Lumpur Atelier</h3>
+            <p style="color:#e2e8f0; margin-bottom:0.5rem; font-size:0.9rem;">📍 <strong>Address:</strong> 143, Jalan Hang Lekir, City Centre, 50000 Kuala Lumpur</p>
+            <p style="color:#8a9a8e; margin-bottom:0.5rem; font-size:0.9rem;">⏰ <strong>Hours:</strong> Open Daily (9:00 AM – 9:00 PM)</p>
+            <p style="color:#8a9a8e; margin-bottom:1.2rem; font-size:0.9rem;">📞 <strong>Phone:</strong> +6016-282 3327</p>
+
+            <a href="https://maps.google.com/?q=Jalan+Hang+Lekir+Kuala+Lumpur" target="_blank" class="btn-gold-lg" style="display:inline-block; text-decoration:none; width:auto; padding:0.8rem 1.2rem;">Open Google Maps 📍</a>
+          </div>
+
+          <div style="background:rgba(0,0,0,0.4); border-radius:12px; padding:1.2rem; border:1px solid var(--border-light); display:flex; flex-direction:column; justify-content:center;">
+            <p style="color:var(--gold); font-size:0.9rem; font-weight:bold;">Express Curbside Pickup</p>
+            <p style="color:#8a9a8e; font-size:0.85rem; margin-top:0.4rem; line-height:1.5;">Simply present your WhatsApp confirmation upon arrival for 5-minute counter handover.</p>
+          </div>
+        </div>
+
+        <div style="font-size:0.8rem; color:#8a9a8e;">Local Same-Day Delivery available across Klang Valley.</div>
+      </div>
+
+      <!-- PANEL 5: REVIEWS -->
+      <div id="page-reviews" class="page-panel">
+        <div class="page-header">
+          <h1>Client Testimonials</h1>
+          <p>Feedback from our valued clients and regular patrons.</p>
+        </div>
+
+        <div class="grid-3">
+          <div style="background:var(--card-glass); border:1px solid var(--border-light); padding:1.4rem; border-radius:16px;">
+            <p style="color:var(--gold); font-size:0.9rem;">★ ★ ★ ★ ★ (5.0)</p>
+            <p style="color:#e2e8f0; font-size:0.88rem; font-style:italic; margin:0.8rem 0;">"10 pink roses for RM80 was super worth it! Beautiful presentation and fast pickup."</p>
+            <p style="color:#8a9a8e; font-size:0.8rem;">— Sarah M.</p>
+          </div>
+
+          <div style="background:var(--card-glass); border:1px solid var(--border-light); padding:1.4rem; border-radius:16px;">
+            <p style="color:var(--gold); font-size:0.9rem;">★ ★ ★ ★ ★ (5.0)</p>
+            <p style="color:#e2e8f0; font-size:0.88rem; font-style:italic; margin:0.8rem 0;">"Ordered custom flowers on WhatsApp at 11 AM, delivered by 2 PM. Top service!"</p>
+            <p style="color:#8a9a8e; font-size:0.8rem;">— Kevin L.</p>
+          </div>
+
+          <div style="background:var(--card-glass); border:1px solid var(--border-light); padding:1.4rem; border-radius:16px;">
+            <p style="color:var(--gold); font-size:0.9rem;">★ ★ ★ ★ ★ (5.0)</p>
+            <p style="color:#e2e8f0; font-size:0.88rem; font-style:italic; margin:0.8rem 0;">"The florists were so helpful with custom color combinations for my birthday event."</p>
+            <p style="color:#8a9a8e; font-size:0.8rem;">— Amanda T.</p>
+          </div>
+        </div>
+
+        <div style="font-size:0.8rem; color:#8a9a8e;">4.8 Stars Average on Google Reviews.</div>
+      </div>
+
+      <!-- PANEL 6: DIRECT CONTACT -->
+      <div id="page-contact" class="page-panel">
+        <div class="page-header">
+          <h1>Direct Contact & Assistance</h1>
+          <p>Get in touch with our studio team directly for custom inquiries and event bookings.</p>
+        </div>
+
+        <div style="background:var(--card-glass); border:1px solid var(--border-light); border-radius:20px; padding:2rem; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; margin: 1.5rem 0;">
+          <div>
+            <h3 style="color:var(--gold); font-family:'Cinzel', serif; font-size:1.4rem; margin-bottom:0.8rem;">Direct Channels</h3>
+            <p style="color:#e2e8f0; margin-bottom:0.6rem; font-size:0.9rem;">💬 <strong>WhatsApp Direct:</strong> +6016-282 3327</p>
+            <p style="color:#e2e8f0; margin-bottom:0.6rem; font-size:0.9rem;">📞 <strong>Telephone:</strong> +6016-282 3327</p>
+            <p style="color:#e2e8f0; margin-bottom:1.2rem; font-size:0.9rem;">✉️ <strong>Email Inquiry:</strong> studio@maisonfleur.my</p>
+
+            <a href="tel:+60162823327" class="btn-gold-lg" style="display:inline-block; text-decoration:none; text-align:center; width:auto; padding:0.8rem 1.5rem;">Call Studio 📞</a>
+          </div>
+
+          <div style="background:rgba(0,0,0,0.3); padding:1.2rem; border-radius:12px; border:1px solid var(--border-light);">
+            <h4 style="color:var(--gold); margin-bottom:0.6rem; font-size:0.95rem;">Operating Hours</h4>
+            <p style="color:#8a9a8e; font-size:0.85rem;">Monday – Sunday: 9:00 AM – 9:00 PM</p>
+            <p style="color:#8a9a8e; font-size:0.85rem; margin-top:0.4rem;">Same-Day Order Cut-off: 3:00 PM</p>
+          </div>
+        </div>
+
+        <div style="font-size:0.8rem; color:#8a9a8e;">Maison Fleur Studio</div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script>
+    function switchPage(pageId, btnElement) {
+      document.querySelectorAll('.page-panel').forEach(page => page.classList.remove('active'));
+      document.querySelectorAll('.tab-link').forEach(btn => btn.classList.remove('active'));
+      
+      document.getElementById(pageId).classList.add('active');
+      btnElement.classList.add('active');
+    }
+
+    function sendCustomOrder(e) {
+      e.preventDefault();
+      const stem = document.getElementById('p3-stem').value;
+      const budget = document.getElementById('p3-budget').value;
+      const note = document.getElementById('p3-note').value;
+
+      const msg = `Hi Maison Fleur! I would like to inquire about a custom bouquet:%0A%0A- Flowers: ${stem}%0A- Budget: ${budget}%0A- Note: ${note}`;
+      window.open(`https://wa.me/60162823327?text=${msg}`, '_blank');
+    }
+  </script>
+
+</body>
+</html>

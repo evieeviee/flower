@@ -1,0 +1,228 @@
+<!-- 
+  Package: Signature Maison Fleur V2 (Pro Multi-Section Package)
+  Theme: Dark Architectural Luxe & Fine Atelier
+  Filename: signature-maisonfleurV2.html
+  Layout: Full Showcase Page (Hero, Flower Showcase, Store Location, WhatsApp/Call Lead Forms)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ==================== LOCAL FLORIST SEO META TAGS ==================== -->
+  <title>Maison Fleur by Flower & Blossom | Premier Local Floral Studio</title>
+  <meta name="description" content="Discover exquisite fresh flower bouquets, wedding floral arrangements, and event styling. Visit our physical store or contact our florists directly via WhatsApp or call.">
+  <meta name="keywords" content="florist shop near me, local flower bouquet, wedding flowers, whatsapp florist order, fresh bloom store">
+  <meta name="robots" content="index, follow">
+
+  <!-- Local Business Schema for Google Search & Maps -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Florist",
+    "name": "Maison Fleur by Flower & Blossom",
+    "image": "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=1200&q=80",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "143 Jalan Hang Lekir, City Centre",
+      "addressLocality": "Kuala Lumpur",
+      "postalCode": "50000",
+      "addressCountry": "MY"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 3.1450,
+      "longitude": 101.6970
+    },
+    "telephone": "+60162823327",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "09:00",
+        "closes": "21:00"
+      }
+    ],
+    "priceRange": "$$"
+  }
+  </script>
+  <!-- ==================================================================== -->
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+    body {
+      background-color: #0f1210;
+      color: #e5ece7;
+      font-family: Georgia, serif;
+      line-height: 1.6;
+    }
+    
+    header {
+      position: fixed;
+      top: 0; width: 100%;
+      background: rgba(15, 18, 16, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      z-index: 1000;
+      padding: 1.2rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand-logo { color: #c5a059; font-size: 1.4rem; letter-spacing: 2px; text-transform: uppercase; }
+    nav a {
+      color: #a3b0a7;
+      text-decoration: none;
+      margin-left: 1.8rem;
+      font-family: -apple-system, sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    nav a:hover { color: #c5a059; }
+
+    .hero-section {
+      height: 100vh;
+      background: linear-gradient(to bottom, rgba(15,18,16,0.3), rgba(15,18,16,0.95)),
+                  url('https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=1600&q=80') center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 4rem;
+    }
+    .hero-title { font-size: 4rem; font-weight: 300; line-height: 1.05; max-width: 700px; color: #fff; }
+    .hero-subtitle { font-family: -apple-system, sans-serif; margin-top: 1.5rem; max-width: 500px; color: #9ba8a0; font-size: 1.1rem; }
+
+    .hero-actions { display: flex; gap: 1rem; margin-top: 2rem; }
+    .btn-primary {
+      padding: 1rem 2rem;
+      background: #25D366;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      font-family: -apple-system, sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .btn-secondary {
+      padding: 1rem 2rem;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 6px;
+      text-decoration: none;
+      font-family: -apple-system, sans-serif;
+      font-weight: 600;
+    }
+
+    section { padding: 6rem 4rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .section-tag { font-family: -apple-system, sans-serif; color: #c5a059; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .section-title { font-size: 2.8rem; font-weight: 300; margin-bottom: 2rem; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+
+    .card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 2rem;
+    }
+    .card h3 { color: #c5a059; font-weight: 400; margin-bottom: 0.5rem; font-size: 1.3rem; }
+    .card p { font-family: -apple-system, sans-serif; color: #8e9c93; font-size: 0.9rem; }
+    .card .price { font-size: 1.2rem; color: #fff; font-weight: bold; margin-top: 1rem; }
+
+    footer { padding: 3rem 4rem; text-align: center; font-family: -apple-system, sans-serif; font-size: 0.85rem; color: #5a665e; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="brand-logo">Maison Fleur</div>
+    <nav>
+      <a href="#showcase">Fresh Bouquet Gallery</a>
+      <a href="#location">Find Our Shop</a>
+      <a href="#contact">Direct Inquiry</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero-section">
+      <p class="section-tag">Signature Package V2</p>
+      <h1 class="hero-title">Artisanal Floral Creations</h1>
+      <p class="hero-subtitle">Hand-crafted bouquets, event installations, and fresh daily stems. Visit our store or order instantly via WhatsApp.</p>
+      
+      <div class="hero-actions">
+        <a href="https://wa.me/60162823327?text=Hi!%20I%20saw%20your%20website%20and%20want%20to%20order%20flowers." target="_blank" class="btn-primary">
+          Order via WhatsApp
+        </a>
+        <a href="#location" class="btn-secondary">Get Shop Directions</a>
+      </div>
+    </section>
+
+    <!-- Showcase / Menu (No Cart, Direct WhatsApp Order) -->
+    <section id="showcase">
+      <p class="section-tag">Fresh Daily Selection</p>
+      <h2 class="section-title">Popular Arrangements</h2>
+      <div class="grid-3">
+        <article class="card">
+          <h3>Pink Rose Romance</h3>
+          <p>10 fresh pink roses with baby's breath and eucalyptus wrapping.</p>
+          <p class="price">RM 80.00</p>
+          <a href="https://wa.me/60162823327?text=Hi,%20I'm%20interested%20in%20the%20Pink%20Rose%20Romance%20bouquet" style="color:#25D366; text-decoration:none; font-family:-apple-system; font-weight:bold; display:inline-block; margin-top:1rem;">Order on WhatsApp →</a>
+        </article>
+        <article class="card">
+          <h3>Pastel Season Bloom</h3>
+          <p>Mixed seasonal lilies, carnations, and pastel garden fillers.</p>
+          <p class="price">RM 120.00</p>
+          <a href="https://wa.me/60162823327?text=Hi,%20I'm%20interested%20in%20the%20Pastel%20Season%20Bloom" style="color:#25D366; text-decoration:none; font-family:-apple-system; font-weight:bold; display:inline-block; margin-top:1rem;">Order on WhatsApp →</a>
+        </article>
+        <article class="card">
+          <h3>Custom Event Styling</h3>
+          <p>Bespoke table centerpieces, bridal bouquets, and grand opening stands.</p>
+          <p class="price">Custom Quote</p>
+          <a href="tel:+60162823327" style="color:#c5a059; text-decoration:none; font-family:-apple-system; font-weight:bold; display:inline-block; margin-top:1rem;">Call Florist Directly →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Location & Store Info -->
+    <section id="location">
+      <div class="grid-2">
+        <div>
+          <p class="section-tag">Walk-In & Pickup</p>
+          <h2 class="section-title">Visit Our Physical Shop</h2>
+          <p style="font-family: -apple-system, sans-serif; color: #a3b0a7; margin-bottom: 1.5rem;">
+            Stop by our store to see today's fresh shipment, select individual stems, or pick up pre-ordered bouquets.
+          </p>
+          <p style="font-family: -apple-system, sans-serif; color: #c5a059;"><strong>Address:</strong> 143, Jalan Hang Lekir, City Centre, 50000 Kuala Lumpur</p>
+          <p style="font-family: -apple-system, sans-serif; color: #a3b0a7; margin-top: 0.5rem;"><strong>Hours:</strong> Open Daily (9:00 AM – 9:00 PM)</p>
+          <p style="font-family: -apple-system, sans-serif; color: #a3b0a7; margin-top: 0.5rem;"><strong>Phone:</strong> 016-282 3327</p>
+          
+          <div style="margin-top: 1.5rem;">
+            <a href="https://maps.google.com/?q=Flower+Movement+Jalan+Hang+Lekir" target="_blank" class="btn-secondary" style="display:inline-block;">Open in Google Maps 📍</a>
+          </div>
+        </div>
+
+        <div class="card" style="padding: 2rem;">
+          <h3 style="color:#fff;">Customer Reviews</h3>
+          <p style="margin-top: 1rem; color:#e5ece7; font-style: italic;">
+            "This is the best where 10 pink roses cost RM80 which is a good price. Flowers were fresh and staff were very friendly!"
+          </p>
+          <p style="margin-top: 1rem; color:#c5a059; font-family:-apple-system; font-size:0.85rem;">
+            ★ ★ ★ ★ ★ (4.4 Rating on Google Reviews)
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Maison Fleur by Flower & Blossom. Local Boutique Florist.</p>
+  </footer>
+
+</body>
+</html>

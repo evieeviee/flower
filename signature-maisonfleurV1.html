@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison Fleur — Signature Floral Studio</title>
+<meta name="description" content="A premium multi-page style flower and blossom website with interactive collection details and Google Maps.">
+<style>
+:root{
+  --cream:#f4efe7;
+  --paper:#fbf8f3;
+  --ink:#18231f;
+  --muted:#7b817d;
+  --plum:#5e394d;
+  --gold:#c5a15d;
+  --sage:#cad6cc;
+  --line:rgba(24,35,31,.14);
+  --shadow:0 25px 80px rgba(41,31,34,.18);
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;font-family:Inter,Arial,sans-serif;background:var(--cream);color:var(--ink)}
+body{overflow:hidden}
+img{display:block;max-width:100%}
+button,a{font:inherit}
+button{cursor:pointer}
+.app{height:100vh;display:grid;grid-template-columns:92px 1fr}
+.side{
+  border-right:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  padding:28px 0;
+  background:#efe8de;
+  z-index:20;
+}
+.monogram{
+  width:50px;height:50px;border:1px solid var(--ink);border-radius:50%;
+  display:grid;place-items:center;font-family:Georgia,serif;font-size:22px;
+}
+.side nav{display:flex;flex-direction:column;gap:11px}
+.side button{
+  width:49px;height:49px;border-radius:50%;border:1px solid transparent;
+  background:transparent;font-weight:800;
+}
+.side button.active,.side button:hover{background:var(--ink);color:white}
+.side small{writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:2px;color:var(--muted)}
+.stage{position:relative;overflow:hidden}
+.top{
+  position:absolute;left:0;right:0;top:0;height:82px;display:flex;
+  align-items:center;justify-content:space-between;padding:0 4vw;z-index:12;
+}
+.logo{font-family:Georgia,serif;font-size:29px;letter-spacing:1px}
+.pill{
+  border:1px solid var(--line);border-radius:999px;padding:11px 16px;
+  background:rgba(255,255,255,.55);
+}
+.page{
+  position:absolute;inset:0;padding:110px 4vw 34px;opacity:0;pointer-events:none;
+  transform:translateY(18px) scale(.992);
+  transition:.44s cubic-bezier(.2,.7,.2,1);
+  overflow:auto;
+}
+.page.active{opacity:1;pointer-events:auto;transform:none}
+.kicker{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--plum);font-weight:800}
+h1,h2,h3{font-family:Georgia,serif;margin:0}
+h1{font-size:clamp(62px,7.4vw,120px);line-height:.88;font-weight:500}
+h1 i{color:var(--plum)}
+.page-title{font-size:clamp(46px,5vw,76px);font-weight:500}
+.sub{max-width:620px;color:var(--muted);font-size:18px;line-height:1.75;margin-top:24px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.primary,.ghost{
+  padding:14px 20px;border-radius:999px;font-weight:700;
+}
+.primary{border:1px solid var(--ink);background:var(--ink);color:white}
+.ghost{border:1px solid var(--line);background:transparent}
+
+.hero{display:grid;grid-template-columns:1.03fr .97fr;gap:3vw;height:100%;align-items:center}
+.hero-visual{height:76vh;position:relative}
+.hero-visual .main-img{
+  width:80%;height:100%;object-fit:cover;border-radius:190px 190px 24px 24px;margin-left:auto;
+}
+.float-card{
+  position:absolute;left:0;bottom:7%;width:270px;background:rgba(251,248,243,.95);
+  padding:17px;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);
+  backdrop-filter:blur(12px);
+}
+.float-card img{width:100%;height:140px;object-fit:cover;border-radius:14px;margin-bottom:12px}
+
+.collection-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:28px}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.product{
+  position:relative;background:var(--paper);border:1px solid var(--line);border-radius:24px;
+  overflow:hidden;transition:.3s;cursor:pointer;
+}
+.product:hover{transform:translateY(-8px);box-shadow:0 18px 55px rgba(45,32,37,.14)}
+.product img{width:100%;height:310px;object-fit:cover}
+.product .info{padding:18px}
+.product h3{font-size:24px;margin-bottom:8px}
+.meta{display:flex;justify-content:space-between;gap:12px;color:var(--muted)}
+.price{color:var(--plum);font-weight:800}
+.view-tag{
+  position:absolute;right:14px;top:14px;background:rgba(255,255,255,.9);
+  border-radius:999px;padding:8px 11px;font-size:12px;font-weight:800;
+}
+
+.story{display:grid;grid-template-columns:.9fr 1.1fr;gap:4vw;align-items:center;min-height:100%}
+.collage{display:grid;grid-template-columns:1fr 1fr;gap:16px;height:72vh}
+.collage img{width:100%;height:100%;object-fit:cover;border-radius:22px}
+.collage img:first-child{margin-top:70px;height:calc(100% - 70px)}
+.values{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px}
+.value{padding:18px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.35)}
+
+.occasions{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:27px}
+.occasion{
+  min-height:410px;border-radius:26px;overflow:hidden;position:relative;cursor:pointer;
+}
+.occasion img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.occasion:hover img{transform:scale(1.05)}
+.occasion:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent,rgba(0,0,0,.78))}
+.occasion-copy{position:absolute;left:24px;right:24px;bottom:24px;color:white;z-index:2}
+.occasion h3{font-size:31px}
+.occasion p{line-height:1.55}
+
+.visit{
+  display:grid;grid-template-columns:.8fr 1.2fr;gap:3vw;align-items:stretch;min-height:100%;
+}
+.visit-card{
+  background:var(--ink);color:white;padding:38px;border-radius:30px;display:flex;flex-direction:column;justify-content:center;
+}
+.visit-card p{color:#cbd4cf;line-height:1.75}
+.hours{display:grid;gap:10px;margin-top:24px}
+.hours div{display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.13);padding-bottom:10px}
+.map{
+  min-height:620px;border-radius:30px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);
+}
+.map iframe{width:100%;height:100%;border:0}
+
+.contact{display:grid;grid-template-columns:.82fr 1.18fr;gap:4vw;min-height:100%;align-items:center}
+.contact-panel{background:var(--ink);color:white;padding:40px;border-radius:30px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form input,.form select,.form textarea{
+  width:100%;padding:15px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.96);
+}
+.form textarea{grid-column:1/-1;min-height:140px}
+.form .full{grid-column:1/-1}
+
+/* Modal */
+.modal{
+  position:fixed;inset:0;z-index:100;background:rgba(18,22,20,.78);
+  display:none;align-items:center;justify-content:center;padding:24px;
+  backdrop-filter:blur(10px);
+}
+.modal.open{display:flex}
+.modal-card{
+  width:min(980px,100%);max-height:90vh;overflow:auto;background:var(--paper);
+  border-radius:30px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 1fr;position:relative;
+}
+.modal-card img{width:100%;height:100%;min-height:560px;object-fit:cover}
+.modal-content{padding:42px}
+.modal-close{
+  position:absolute;right:18px;top:18px;width:42px;height:42px;border-radius:50%;
+  border:1px solid var(--line);background:white;font-size:22px;z-index:2;
+}
+.modal-content h2{font-size:48px;margin:10px 0 14px}
+.modal-content p{color:var(--muted);line-height:1.75}
+.modal-list{display:grid;gap:10px;margin:22px 0}
+.modal-list div{padding:13px 14px;border:1px solid var(--line);border-radius:14px}
+.modal-price{font-size:25px;color:var(--plum);font-weight:800}
+
+.mobile-tabs{display:none}
+@media(max-width:1050px){
+  body{overflow:auto}
+  .app{grid-template-columns:1fr;min-height:100vh}
+  .side{display:none}
+  .top{position:fixed;background:rgba(244,239,231,.94);backdrop-filter:blur(12px)}
+  .stage{min-height:100vh}
+  .page{padding:110px 20px 95px}
+  .hero,.story,.visit,.contact{grid-template-columns:1fr;height:auto}
+  .hero-visual{height:58vh}
+  .products{grid-template-columns:1fr 1fr}
+  .occasions{grid-template-columns:1fr}
+  .collage{height:55vh}
+  .map{min-height:470px}
+  .mobile-tabs{
+    display:flex;position:fixed;left:50%;bottom:12px;transform:translateX(-50%);
+    z-index:90;background:var(--ink);padding:7px;border-radius:999px;gap:3px;max-width:calc(100% - 20px);overflow:auto;
+  }
+  .mobile-tabs button{border:0;background:transparent;color:white;padding:10px 12px;border-radius:999px;white-space:nowrap}
+  .mobile-tabs button.active{background:var(--plum)}
+}
+@media(max-width:700px){
+  .products{grid-template-columns:1fr}
+  .values{grid-template-columns:1fr}
+  .form{grid-template-columns:1fr}
+  .form textarea,.form .full{grid-column:auto}
+  .modal-card{grid-template-columns:1fr}
+  .modal-card img{min-height:300px;height:330px}
+  .modal-content{padding:28px}
+  .collection-head{display:block}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="monogram">MF</div>
+    <nav>
+      <button class="active" data-page="home">01</button>
+      <button data-page="collection">02</button>
+      <button data-page="story">03</button>
+      <button data-page="occasions">04</button>
+      <button data-page="visit">05</button>
+      <button data-page="contact">06</button>
+    </nav>
+    <small>SIGNATURE FLORAL STUDIO</small>
+  </aside>
+
+  <div class="stage">
+    <div class="top">
+      <div class="logo">Maison Fleur</div>
+      <button class="pill" onclick="showPage('contact')">Private Consultation</button>
+    </div>
+
+    <section class="page active" id="home">
+      <div class="hero">
+        <div>
+          <div class="kicker">Artful flowers · Personal gestures</div>
+          <h1>Nature,<br><i>composed.</i></h1>
+          <p class="sub">A refined floral studio creating expressive bouquets, luxury flower boxes and bespoke arrangements for meaningful moments.</p>
+          <div class="actions">
+            <button class="primary" onclick="showPage('collection')">View Collection</button>
+            <button class="ghost" onclick="showPage('story')">Discover Our Studio</button>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img class="main-img" src="https://images.unsplash.com/photo-1507501336603-6e31db2be093?auto=format&fit=crop&w=1400&q=90" alt="Luxury floral bouquet">
+          <div class="float-card">
+            <img src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=700&q=85" alt="">
+            <strong>Seasonal Edit No. 06</strong>
+            <p style="margin:7px 0 0;color:#7b817d">Garden roses, hydrangea and textural greens.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="collection">
+      <div class="collection-head">
+        <div>
+          <div class="kicker">Click any arrangement</div>
+          <h2 class="page-title">The Collection</h2>
+        </div>
+        <p class="sub" style="margin:0">Open each arrangement to view its details, flower selection and recommended occasions.</p>
+      </div>
+      <div class="products">
+        <article class="product" onclick="openProduct('velvet')">
+          <span class="view-tag">View details</span>
+          <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=900&q=86" alt="">
+          <div class="info"><h3>Velvet Bloom</h3><div class="meta"><span>Rose bouquet</span><span class="price">RM229</span></div></div>
+        </article>
+        <article class="product" onclick="openProduct('blanc')">
+          <span class="view-tag">View details</span>
+          <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=900&q=86" alt="">
+          <div class="info"><h3>Maison Blanc</h3><div class="meta"><span>White florals</span><span class="price">RM259</span></div></div>
+        </article>
+        <article class="product" onclick="openProduct('garden')">
+          <span class="view-tag">View details</span>
+          <img src="https://images.unsplash.com/photo-1495231916356-a86217efff12?auto=format&fit=crop&w=900&q=86" alt="">
+          <div class="info"><h3>Garden Reverie</h3><div class="meta"><span>Pastel bouquet</span><span class="price">RM199</span></div></div>
+        </article>
+        <article class="product" onclick="openProduct('golden')">
+          <span class="view-tag">View details</span>
+          <img src="https://images.unsplash.com/photo-1567696153798-9111f9cd3d0d?auto=format&fit=crop&w=900&q=86" alt="">
+          <div class="info"><h3>Golden Hour</h3><div class="meta"><span>Warm seasonal</span><span class="price">RM189</span></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="page" id="story">
+      <div class="story">
+        <div class="collage">
+          <img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=900&q=86" alt="">
+          <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=86" alt="">
+        </div>
+        <div>
+          <div class="kicker">The studio</div>
+          <h2 class="page-title">Floral design with a quiet sense of luxury.</h2>
+          <p class="sub">We work with colour, movement and seasonality to create arrangements that feel personal rather than ordinary. Every piece is made by hand and finished with our signature wrapping.</p>
+          <div class="values">
+            <div class="value"><strong>Seasonal sourcing</strong><br><span style="color:#7b817d">Fresh flowers chosen for quality and character.</span></div>
+            <div class="value"><strong>Bespoke styling</strong><br><span style="color:#7b817d">Custom palettes for gifting, weddings and events.</span></div>
+            <div class="value"><strong>Thoughtful gifting</strong><br><span style="color:#7b817d">Message cards, add-ons and refined wrapping.</span></div>
+            <div class="value"><strong>Local delivery</strong><br><span style="color:#7b817d">Scheduled delivery with WhatsApp confirmation.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="occasions">
+      <div class="kicker">Created for your moment</div>
+      <h2 class="page-title">Occasions</h2>
+      <div class="occasions">
+        <article class="occasion" onclick="openOccasion('Wedding Floral Styling','Bridal bouquets, ceremony flowers, floral arches and intimate table styling tailored to the wedding palette.','Consultation required')">
+          <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=86" alt="">
+          <div class="occasion-copy"><h3>Weddings</h3><p>Bridal bouquets, ceremony flowers and intimate table styling.</p></div>
+        </article>
+        <article class="occasion" onclick="openOccasion('Celebration Florals','Statement arrangements for birthdays, openings, proposals, launches and private parties.','From RM450')">
+          <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=86" alt="">
+          <div class="occasion-copy"><h3>Celebrations</h3><p>Statement florals for birthdays, openings and private events.</p></div>
+        </article>
+        <article class="occasion" onclick="openOccasion('Corporate Floral Service','Brand gifting, recurring reception arrangements, launch flowers and curated client gifts.','Custom quotation')">
+          <img src="https://images.unsplash.com/photo-1492176273113-2d51f47b23b0?auto=format&fit=crop&w=1200&q=86" alt="">
+          <div class="occasion-copy"><h3>Corporate</h3><p>Brand gifting, launch flowers and recurring office arrangements.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="page" id="visit">
+      <div class="visit">
+        <div class="visit-card">
+          <div class="kicker" style="color:#d7b877">Visit the studio</div>
+          <h2 class="page-title" style="margin-top:12px">Come and see what is blooming.</h2>
+          <p>Visit our sample studio in Kuala Lumpur for bouquet pickup, floral consultations and custom event discussions.</p>
+          <div class="hours">
+            <div><span>Monday–Friday</span><strong>10:00–18:00</strong></div>
+            <div><span>Saturday</span><strong>10:00–16:00</strong></div>
+            <div><span>Sunday</span><strong>By appointment</strong></div>
+          </div>
+          <div class="actions">
+            <a class="primary" href="https://maps.google.com/?q=Kuala+Lumpur" target="_blank" style="text-decoration:none">Open in Google Maps</a>
+          </div>
+        </div>
+        <div class="map">
+          <iframe
+            src="https://www.google.com/maps?q=Kuala%20Lumpur%20Malaysia&z=13&output=embed"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Maison Fleur location">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="contact">
+      <div class="contact">
+        <div>
+          <div class="kicker">Begin your order</div>
+          <h2 class="page-title">Let us create something memorable.</h2>
+          <p class="sub">Share the occasion, preferred style and delivery details. Our florist will reply with availability and a personalised recommendation.</p>
+        </div>
+        <div class="contact-panel">
+          <form class="form" onsubmit="sendWhatsApp(event)">
+            <input id="n" placeholder="Your name" required>
+            <input id="p" placeholder="Phone number" required>
+            <select id="t">
+              <option>Signature bouquet</option>
+              <option>Flower box</option>
+              <option>Wedding enquiry</option>
+              <option>Event styling</option>
+              <option>Corporate flowers</option>
+            </select>
+            <input id="b" placeholder="Budget, e.g. RM300">
+            <textarea id="m" placeholder="Tell us the date, recipient, colour preference and delivery location"></textarea>
+            <button class="primary full" type="submit">Continue via WhatsApp</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="mobile-tabs">
+  <button class="active" data-page="home">Home</button>
+  <button data-page="collection">Collection</button>
+  <button data-page="occasions">Occasions</button>
+  <button data-page="visit">Map</button>
+  <button data-page="contact">Contact</button>
+</div>
+
+<div class="modal" id="detailModal" onclick="closeModalOutside(event)">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <img id="modalImage" src="" alt="">
+    <div class="modal-content">
+      <div class="kicker" id="modalKicker">Signature arrangement</div>
+      <h2 id="modalTitle">Arrangement</h2>
+      <p id="modalDescription"></p>
+      <div class="modal-list" id="modalList"></div>
+      <div class="modal-price" id="modalPrice"></div>
+      <div class="actions">
+        <button class="primary" onclick="closeModal();showPage('contact')">Enquire Now</button>
+        <button class="ghost" onclick="closeModal()">Continue Browsing</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const pages=[...document.querySelectorAll('.page')];
+const controls=[...document.querySelectorAll('[data-page]')];
+
+function showPage(id){
+  pages.forEach(page=>page.classList.toggle('active',page.id===id));
+  controls.forEach(control=>control.classList.toggle('active',control.dataset.page===id));
+  history.replaceState(null,'','#'+id);
+}
+controls.forEach(control=>control.addEventListener('click',()=>showPage(control.dataset.page)));
+
+const products={
+  velvet:{
+    title:'Velvet Bloom',
+    image:'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=1200&q=90',
+    description:'A rich romantic bouquet designed with layered pink and red tones, finished with Maison Fleur signature wrapping.',
+    list:['Garden roses and spray roses','Seasonal filler flowers','Premium wrapping and message card','Recommended for anniversaries and romantic gifting'],
+    price:'From RM229'
+  },
+  blanc:{
+    title:'Maison Blanc',
+    image:'https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=1200&q=90',
+    description:'A calm and refined white arrangement created for elegant celebrations, sympathy gestures and modern interiors.',
+    list:['White roses and seasonal blooms','Soft foliage and textural details','Neutral premium wrapping','Recommended for congratulations and sympathy'],
+    price:'From RM259'
+  },
+  garden:{
+    title:'Garden Reverie',
+    image:'https://images.unsplash.com/photo-1495231916356-a86217efff12?auto=format&fit=crop&w=1200&q=90',
+    description:'A soft garden-inspired bouquet with pastel tones, airy movement and a naturally gathered finish.',
+    list:['Pastel seasonal flowers','Garden-style arrangement','Message card included','Recommended for birthdays and thank-you gifts'],
+    price:'From RM199'
+  },
+  golden:{
+    title:'Golden Hour',
+    image:'https://images.unsplash.com/photo-1567696153798-9111f9cd3d0d?auto=format&fit=crop&w=1200&q=90',
+    description:'A warm and cheerful arrangement inspired by late afternoon light, with golden and cream seasonal flowers.',
+    list:['Warm yellow and cream palette','Seasonal foliage','Premium hand-tied finish','Recommended for celebrations and congratulations'],
+    price:'From RM189'
+  }
+};
+
+function openProduct(id){
+  const item=products[id];
+  document.getElementById('modalImage').src=item.image;
+  document.getElementById('modalKicker').textContent='Signature arrangement';
+  document.getElementById('modalTitle').textContent=item.title;
+  document.getElementById('modalDescription').textContent=item.description;
+  document.getElementById('modalList').innerHTML=item.list.map(x=>`<div>${x}</div>`).join('');
+  document.getElementById('modalPrice').textContent=item.price;
+  document.getElementById('detailModal').classList.add('open');
+}
+
+function openOccasion(title,description,price){
+  document.getElementById('modalImage').src='https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=88';
+  document.getElementById('modalKicker').textContent='Bespoke floral service';
+  document.getElementById('modalTitle').textContent=title;
+  document.getElementById('modalDescription').textContent=description;
+  document.getElementById('modalList').innerHTML='<div>Personal floral consultation</div><div>Custom moodboard and colour direction</div><div>Delivery and installation options</div>';
+  document.getElementById('modalPrice').textContent=price;
+  document.getElementById('detailModal').classList.add('open');
+}
+
+function closeModal(){
+  document.getElementById('detailModal').classList.remove('open');
+}
+function closeModalOutside(event){
+  if(event.target.id==='detailModal') closeModal();
+}
+document.addEventListener('keydown',event=>{
+  if(event.key==='Escape') closeModal();
+});
+
+function sendWhatsApp(event){
+  event.preventDefault();
+  const text =
+    `Hello Maison Fleur,%0A%0A` +
+    `Name: ${document.getElementById('n').value}%0A` +
+    `Phone: ${document.getElementById('p').value}%0A` +
+    `Enquiry: ${document.getElementById('t').value}%0A` +
+    `Budget: ${document.getElementById('b').value}%0A` +
+    `Details: ${document.getElementById('m').value}`;
+  window.open(`https://wa.me/60123456789?text=${text}`,'_blank');
+}
+
+if(location.hash && document.getElementById(location.hash.slice(1))){
+  showPage(location.hash.slice(1));
+}
+</script>
+</body>
+</html>

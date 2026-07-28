@@ -1,248 +1,1000 @@
-<!-- 
-  Package: Signature Maison Fleur V2 (Pro Multi-Section Package)
-  Theme: Dark Luxury Atelier & High-Fashion Botanical Studio
-  Filename: signature-maisonfleurV2.html
-  Layout: Full Interactive Portfolio + Interactive Modal + Location Showcase
--->
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Advanced Local SEO Meta Tags -->
-  <title>Maison Fleur by Flower & Blossom | Premium Local Floral Studio</title>
-  <meta name="description" content="Kuala Lumpur's premier luxury florist. Specializing in bespoke bouquets, wedding flower styling, and high-end event installations. Order directly via WhatsApp.">
-  <meta name="keywords" content="luxury florist KL, wedding flower designer, bespoke bouquet, floral atelier">
+<title>Maison Fleur | Essential Garden Market</title>
+<meta name="description" content="Maison Fleur offers fresh flower bouquets, preserved botanicals, indoor plants, plant gifts and local WhatsApp ordering in Kuala Lumpur.">
+<meta name="keywords" content="florist Kuala Lumpur, fresh flower bouquet, preserved flowers, indoor plants, plant gift, WhatsApp florist">
+<meta name="robots" content="index, follow">
 
-  <!-- Schema.org Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Florist",
-    "name": "Maison Fleur by Flower & Blossom",
-    "image": "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=1200&q=80",
-    "telephone": "+60162823327",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "143 Jalan Hang Lekir",
-      "addressLocality": "Kuala Lumpur",
-      "postalCode": "50000",
-      "addressCountry": "MY"
-    },
-    "priceRange": "$$$"
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Florist",
+  "name":"Maison Fleur",
+  "image":"https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1200&q=80",
+  "telephone":"+60168083598",
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"143 Jalan Hang Lekir",
+    "addressLocality":"Kuala Lumpur",
+    "postalCode":"50000",
+    "addressCountry":"MY"
+  },
+  "openingHours":"Mo-Su 09:00-21:00",
+  "priceRange":"RM"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ivory:#fffaf0;
+  --cream:#f7edd8;
+  --terracotta:#d96d4b;
+  --olive:#69754a;
+  --butter:#f4cf6a;
+  --sky:#b9dff2;
+  --ink:#263125;
+  --muted:#717669;
+  --white:#ffffff;
+  --line:#ddd5c5;
+  --green:#25d366;
+  --shadow:0 20px 55px rgba(60,70,48,.14);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"DM Sans",Arial,sans-serif;
+  background:var(--ivory);
+  color:var(--ink);
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%;object-fit:cover}
+button,input,select,textarea{font:inherit}
+.container{width:min(1180px,calc(100% - 38px));margin:auto}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,250,240,.94);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  min-height:78px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:18px;
+}
+.brand{
+  font-family:"Fraunces",serif;
+  font-size:28px;
+  font-weight:700;
+  color:var(--terracotta);
+  white-space:nowrap;
+}
+.menu-wrap{min-width:0;overflow:hidden}
+.menu{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  overflow-x:auto;
+  scrollbar-width:none;
+  scroll-snap-type:x proximity;
+  padding:8px 2px;
+}
+.menu::-webkit-scrollbar{display:none}
+.menu a{
+  flex:0 0 auto;
+  scroll-snap-align:start;
+  padding:9px 13px;
+  border-radius:999px;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:700;
+  white-space:nowrap;
+}
+.menu a:hover{
+  background:var(--cream);
+  color:var(--ink);
+}
+.order-btn{
+  padding:12px 18px;
+  border-radius:999px;
+  background:var(--terracotta);
+  color:#fff;
+  font-weight:800;
+  white-space:nowrap;
+}
+
+.hero{
+  min-height:calc(100vh - 78px);
+  padding:54px 0 70px;
+  display:grid;
+  grid-template-columns:1.04fr .96fr;
+  gap:44px;
+  align-items:center;
+}
+.hero-copy{
+  padding:42px 0;
+}
+.eyebrow{
+  font-size:11px;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  font-weight:800;
+  color:var(--olive);
+}
+h1,h2,h3{font-family:"Fraunces",serif}
+h1{
+  margin-top:18px;
+  font-size:clamp(58px,7vw,98px);
+  line-height:.94;
+  font-weight:700;
+}
+h1 span{
+  display:inline-block;
+  color:var(--terracotta);
+}
+.hero p{
+  margin-top:24px;
+  max-width:610px;
+  font-size:18px;
+  line-height:1.75;
+  color:var(--muted);
+}
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:28px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:14px 20px;
+  border-radius:999px;
+  border:1px solid var(--ink);
+  font-weight:800;
+}
+.btn.primary{
+  background:var(--terracotta);
+  border-color:var(--terracotta);
+  color:#fff;
+}
+.btn.secondary{
+  background:#fff;
+}
+.btn.wa{
+  background:var(--green);
+  border-color:var(--green);
+  color:#fff;
+}
+
+.hero-collage{
+  min-height:650px;
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  grid-template-rows:1fr 1fr;
+  gap:14px;
+  position:relative;
+}
+.hero-collage figure{
+  overflow:hidden;
+  border-radius:26px;
+  box-shadow:var(--shadow);
+}
+.hero-collage figure:first-child{
+  grid-row:1/3;
+}
+.hero-collage img{
+  height:100%;
+}
+.hero-card{
+  position:absolute;
+  left:-24px;
+  bottom:34px;
+  width:250px;
+  padding:18px;
+  border-radius:20px;
+  background:var(--butter);
+  border:2px solid var(--ink);
+  transform:rotate(-3deg);
+}
+.hero-card strong{
+  display:block;
+  font-family:"Fraunces";
+  font-size:24px;
+}
+.hero-card span{
+  display:block;
+  margin-top:6px;
+  color:#5f604f;
+  font-size:13px;
+}
+
+.ribbon{
+  overflow:hidden;
+  border-top:1px solid var(--ink);
+  border-bottom:1px solid var(--ink);
+  background:var(--sky);
+}
+.ribbon-track{
+  display:flex;
+  width:max-content;
+  padding:12px 0;
+  animation:marquee 20s linear infinite;
+  font-weight:800;
+  letter-spacing:.6px;
+}
+.ribbon-track span{padding:0 28px}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+.section{padding:92px 0}
+.alt{background:var(--cream)}
+.section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:30px;
+  margin-bottom:34px;
+}
+.section h2{
+  margin-top:10px;
+  font-size:clamp(42px,5vw,68px);
+  line-height:1;
+}
+.section-copy{
+  max-width:520px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.horizontal-products{
+  display:flex;
+  gap:18px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scrollbar-width:none;
+  padding-bottom:12px;
+}
+.horizontal-products::-webkit-scrollbar{display:none}
+.product{
+  flex:0 0 330px;
+  scroll-snap-align:start;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 10px 28px rgba(70,75,55,.07);
+}
+.product:nth-child(2n){transform:translateY(12px)}
+.product img{height:300px}
+.product-body{padding:22px}
+.product h3{
+  font-size:29px;
+}
+.product p{
+  margin-top:8px;
+  color:var(--muted);
+}
+.price{
+  display:block;
+  margin-top:14px;
+  color:var(--terracotta);
+  font-weight:800;
+}
+.product a{
+  display:inline-block;
+  margin-top:14px;
+  color:var(--olive);
+  font-weight:800;
+}
+
+.category-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+.category{
+  position:relative;
+  min-height:470px;
+  overflow:hidden;
+  border-radius:28px;
+}
+.category img{height:100%}
+.category:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(24,37,25,.76),transparent 64%);
+}
+.category-copy{
+  position:absolute;
+  z-index:2;
+  left:24px;
+  right:24px;
+  bottom:24px;
+  color:#fff;
+}
+.category-copy h3{
+  font-size:36px;
+}
+.category-copy p{
+  margin-top:8px;
+  color:#e9efe5;
+}
+
+.plant-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+.plant-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:22px;
+  overflow:hidden;
+}
+.plant-card img{height:240px}
+.plant-card .product-body{padding:18px}
+.plant-card h3{font-size:24px}
+
+.occasion-strip{
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  scrollbar-width:none;
+  scroll-snap-type:x mandatory;
+  padding-bottom:10px;
+}
+.occasion-strip::-webkit-scrollbar{display:none}
+.occasion{
+  flex:0 0 270px;
+  scroll-snap-align:start;
+  padding:24px;
+  border-radius:22px;
+  border:2px solid var(--ink);
+  background:#fff;
+}
+.occasion:nth-child(2){background:var(--sky)}
+.occasion:nth-child(3){background:var(--butter)}
+.occasion:nth-child(4){background:#f3c3b4}
+.occasion:nth-child(5){background:#dbe5ca}
+.occasion:nth-child(6){background:#eadcf3}
+.occasion h3{
+  font-size:26px;
+}
+.occasion p{
+  margin-top:8px;
+  color:#62675d;
+}
+
+.about{
+  display:grid;
+  grid-template-columns:.95fr 1.05fr;
+  gap:50px;
+  align-items:center;
+}
+.about-image{
+  position:relative;
+}
+.about-image img{
+  height:580px;
+  border-radius:30px;
+}
+.about-badge{
+  position:absolute;
+  right:-20px;
+  bottom:30px;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  background:var(--terracotta);
+  color:#fff;
+  font-family:"Fraunces";
+  font-size:22px;
+  transform:rotate(6deg);
+}
+.about-copy{
+  padding:10px 0;
+}
+.about-copy p{
+  margin-top:18px;
+  color:var(--muted);
+  line-height:1.75;
+}
+.features{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:24px;
+}
+.feature{
+  padding:16px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:#fff;
+}
+
+.delivery-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+.delivery-card{
+  padding:24px;
+  border-radius:20px;
+  border:1px solid var(--line);
+  background:#fff;
+}
+.delivery-card strong{
+  display:block;
+  font-family:"Fraunces";
+  font-size:24px;
+}
+.delivery-card span{
+  display:block;
+  margin-top:8px;
+  color:var(--muted);
+}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:26px;
+}
+.info-card{
+  padding:32px;
+  border-radius:26px;
+  background:var(--olive);
+  color:#fff;
+}
+.info-card h3{
+  font-size:36px;
+}
+.info-card p{
+  margin-top:14px;
+  color:#e6eadf;
+}
+.details{
+  display:grid;
+  gap:11px;
+  margin-top:20px;
+}
+.details div{
+  padding:13px;
+  border-radius:12px;
+  background:rgba(255,255,255,.11);
+}
+.map{
+  margin-top:22px;
+  height:300px;
+  border-radius:18px;
+  overflow:hidden;
+}
+.map iframe{
+  width:100%;
+  height:100%;
+  border:0;
+}
+.form-card{
+  padding:32px;
+  border:1px solid var(--line);
+  border-radius:26px;
+  background:#fff;
+}
+.form{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.form input,.form select,.form textarea{
+  width:100%;
+  padding:14px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#fffdf8;
+}
+.form textarea{
+  grid-column:1/-1;
+  min-height:140px;
+}
+.form button{grid-column:1/-1}
+
+footer{
+  padding:30px 20px;
+  text-align:center;
+  color:var(--muted);
+  border-top:1px solid var(--line);
+  font-size:13px;
+}
+
+.float{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:1100;
+  padding:14px 18px;
+  border-radius:999px;
+  background:var(--green);
+  color:#fff;
+  font-weight:800;
+  box-shadow:0 15px 35px rgba(37,211,102,.28);
+}
+
+@media(max-width:980px){
+  .nav{grid-template-columns:auto 1fr}
+  .order-btn{display:none}
+  .hero,.about,.contact-grid{grid-template-columns:1fr}
+  .hero-collage{min-height:540px}
+  .plant-grid,.delivery-grid{grid-template-columns:1fr 1fr}
+  .section-head{display:block}
+}
+@media(max-width:680px){
+  .container{width:min(100% - 26px,1180px)}
+  .nav{
+    grid-template-columns:1fr;
+    gap:0;
+    padding-top:10px;
   }
-  </script>
-
-  <style>
-    :root {
-      --gold: #d4af37;
-      --gold-light: #f3e5ab;
-      --bg: #0d110e;
-      --card-bg: #161c18;
-      --text: #e2e8f0;
-      --wa-green: #25D366;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Playfair Display', Georgia, serif; }
-    body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
-
-    /* Header Navigation */
-    header {
-      background: rgba(13, 17, 14, 0.95); backdrop-filter: blur(10px);
-      padding: 1.2rem 3rem; display: flex; justify-content: space-between; align-items: center;
-      position: fixed; top: 0; width: 100%; z-index: 100; border-bottom: 1px solid rgba(212,175,55,0.2);
-    }
-    .brand { color: var(--gold); font-size: 1.5rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
-    nav a {
-      color: #a0aec0; text-decoration: none; margin-left: 2rem;
-      font-family: -apple-system, sans-serif; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase;
-      transition: color 0.3s;
-    }
-    nav a:hover { color: var(--gold); }
-
-    /* Hero Section */
-    .hero {
-      height: 90vh;
-      background: linear-gradient(to bottom, rgba(13,17,14,0.4), rgba(13,17,14,0.95)),
-                  url('https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=1600&q=80') center/cover;
-      display: flex; flex-direction: column; justify-content: center; padding: 0 4rem;
-    }
-    .hero-tag { font-family: -apple-system, sans-serif; color: var(--gold); font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; }
-    .hero-title { font-size: 4rem; font-weight: 300; line-height: 1.1; margin: 1rem 0; color: #fff; }
-    .hero-subtitle { font-family: -apple-system, sans-serif; color: #a0aec0; max-width: 500px; font-size: 1.1rem; }
-    .hero-btns { display: flex; gap: 1rem; margin-top: 2rem; font-family: -apple-system, sans-serif; }
-    
-    .btn-gold {
-      background: linear-gradient(135deg, #d4af37, #aa820a); color: #0d110e;
-      padding: 1rem 2rem; border-radius: 4px; text-decoration: none; font-weight: 800;
-      text-transform: uppercase; letter-spacing: 1px; cursor: pointer; border: none;
-    }
-    .btn-wa-gold {
-      background: var(--wa-green); color: #fff;
-      padding: 1rem 2rem; border-radius: 4px; text-decoration: none; font-weight: 800;
-      text-transform: uppercase; letter-spacing: 1px; display: inline-flex; align-items: center; gap: 0.5rem;
-    }
-
-    /* Container & Section Styling */
-    section { padding: 6rem 4rem; }
-    .section-title { font-size: 2.5rem; font-weight: 300; margin-bottom: 2.5rem; color: #fff; text-align: center; }
-
-    /* Gallery Cards Grid */
-    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-    .atelier-card {
-      background: var(--card-bg); border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px; overflow: hidden; transition: all 0.3s ease;
-    }
-    .atelier-card:hover { border-color: var(--gold); transform: translateY(-5px); }
-    .atelier-img { width: 100%; height: 280px; object-fit: cover; }
-    .atelier-body { padding: 1.8rem; font-family: -apple-system, sans-serif; }
-    .atelier-title { font-family: Georgia, serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 0.5rem; }
-    .atelier-price { font-size: 1.2rem; font-weight: 700; color: #fff; margin: 1rem 0; }
-
-    /* Location Section */
-    .location-box {
-      background: var(--card-bg); border: 1px solid rgba(212,175,55,0.3);
-      border-radius: 16px; padding: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
-      align-items: center; font-family: -apple-system, sans-serif;
-    }
-
-    /* Interactive Modal */
-    .modal {
-      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85);
-      z-index: 10000; align-items: center; justify-content: center; padding: 2rem;
-    }
-    .modal-content {
-      background: var(--card-bg); border: 1px solid var(--gold);
-      padding: 2.5rem; border-radius: 16px; max-width: 500px; width: 100%;
-      position: relative; font-family: -apple-system, sans-serif;
-    }
-    .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; color: var(--gold); cursor: pointer; }
-    .modal-content input, .modal-content textarea {
-      width: 100%; padding: 0.8rem; margin: 0.8rem 0;
-      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-      color: #fff; border-radius: 6px;
-    }
-
-    footer { text-align: center; padding: 3rem; font-family: -apple-system, sans-serif; color: #718096; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); }
-  </style>
+  .brand{text-align:center}
+  .menu-wrap{
+    margin:7px -13px 0;
+    padding:0 13px;
+  }
+  .menu a{
+    background:#fff;
+    border:1px solid var(--line);
+  }
+  h1{font-size:54px}
+  .hero{padding-top:36px}
+  .hero-collage{
+    min-height:auto;
+    grid-template-columns:1fr;
+    grid-template-rows:none;
+  }
+  .hero-collage figure:first-child{grid-row:auto}
+  .hero-collage figure{height:340px}
+  .hero-card{
+    left:8px;
+    bottom:20px;
+    width:220px;
+  }
+  .category-grid,.plant-grid,.features,.delivery-grid,.form{grid-template-columns:1fr}
+  .form textarea,.form button{grid-column:auto}
+  .product{flex-basis:280px}
+  .product:nth-child(2n){transform:none}
+  .about-badge{
+    width:140px;
+    height:140px;
+    right:-4px;
+    font-size:18px;
+  }
+  .float{
+    width:58px;
+    height:58px;
+    padding:0;
+    display:grid;
+    place-items:center;
+    font-size:0;
+  }
+  .float:after{
+    content:"💬";
+    font-size:22px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;scroll-behavior:auto!important}
+}
+</style>
 </head>
+
 <body>
 
-  <!-- Top Navigation -->
-  <header>
-    <div class="brand">Maison Fleur</div>
-    <nav>
-      <a href="#collections">Collections</a>
-      <a href="#location">Visit Atelier</a>
-      <a href="#" onclick="openModal()">Get Quote</a>
-    </nav>
-  </header>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home">Maison Fleur</a>
 
-  <!-- Hero Banner -->
-  <section class="hero">
-    <p class="hero-tag">Signature Package V2</p>
-    <h1 class="hero-title">Architectural Floral Art</h1>
-    <p class="hero-subtitle">Bespoke arrangements and floral direction for luxury residences, weddings, and high-profile events.</p>
-    <div class="hero-actions hero-btns">
-      <a href="https://wa.me/60162823327?text=Hi%20Maison%20Fleur,%20I%20would%20like%20to%20inquire%20about%20a%20custom%20bouquet." class="btn-wa-gold">Order via WhatsApp</a>
-      <button class="btn-gold" onclick="openModal()">Request Custom Quote</button>
+    <div class="menu-wrap">
+      <nav class="menu" aria-label="Scrollable navigation">
+        <a href="#fresh">Fresh Flowers</a>
+        <a href="#preserved">Preserved</a>
+        <a href="#plants">Plants</a>
+        <a href="#gifts">Plant Gifts</a>
+        <a href="#occasions">Occasions</a>
+        <a href="#studio">Our Studio</a>
+        <a href="#delivery">Delivery</a>
+        <a href="#order">Order</a>
+      </nav>
     </div>
-  </section>
 
-  <!-- Collections Showcase Grid -->
-  <section id="collections">
-    <h2 class="section-title">Signature Atelier Collections</h2>
-    <div class="gallery-grid">
-      <!-- Collection 1 -->
-      <article class="atelier-card">
-        <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=800&q=80" class="atelier-img" alt="Sculptural Rose">
-        <div class="atelier-body">
-          <h3 class="atelier-title">The Grand Velvet Rose</h3>
-          <p style="color:#a0aec0; font-size:0.9rem;">18 Ecuadorian velvet roses in hand-blown smoked glass vase.</p>
-          <div class="atelier-price">RM 280.00</div>
-          <a href="https://wa.me/60162823327?text=Inquiring%20about%20Grand%20Velvet%20Rose" class="btn-wa-gold" style="padding:0.6rem 1rem; font-size:0.8rem;">Inquire on WhatsApp</a>
-        </div>
-      </article>
+    <a class="order-btn"
+       href="https://wa.me/60168083598?text=Hi%20Maison%20Fleur!%20I%20would%20like%20to%20order%20flowers%20or%20plants."
+       target="_blank">
+       WhatsApp Order
+    </a>
+  </div>
+</header>
 
-      <!-- Collection 2 -->
-      <article class="atelier-card">
-        <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=800&q=80" class="atelier-img" alt="Pastel Installation">
-        <div class="atelier-body">
-          <h3 class="atelier-title">Opulent Peony Meadow</h3>
-          <p style="color:#a0aec0; font-size:0.9rem;">Soft coral peonies, white hydrangeas, and imported garden stems.</p>
-          <div class="atelier-price">RM 450.00</div>
-          <a href="https://wa.me/60162823327?text=Inquiring%20about%20Opulent%20Peony%20Meadow" class="btn-wa-gold" style="padding:0.6rem 1rem; font-size:0.8rem;">Inquire on WhatsApp</a>
-        </div>
-      </article>
+<main>
 
-      <!-- Collection 3 -->
-      <article class="atelier-card">
-        <img src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=800&q=80" class="atelier-img" alt="Event Styling">
-        <div class="atelier-body">
-          <h3 class="atelier-title">Wedding & Event Direction</h3>
-          <p style="color:#a0aec0; font-size:0.9rem;">Full floral styling, entrance arches, and bridal party bouquets.</p>
-          <div class="atelier-price">Custom Commission</div>
-          <button onclick="openModal()" class="btn-gold" style="padding:0.6rem 1rem; font-size:0.8rem;">Request Quote</button>
-        </div>
-      </article>
-    </div>
-  </section>
+<section class="container hero" id="home">
+  <div class="hero-copy">
+    <div class="eyebrow">Essential flower & plant studio</div>
+    <h1>A little garden,<br><span>made for you.</span></h1>
+    <p>
+      Fresh flowers, preserved botanicals, indoor plants and thoughtful
+      plant gifts arranged for homes, celebrations and everyday moments.
+    </p>
 
-  <!-- Location & Walk-In Info -->
-  <section id="location">
-    <div class="location-box">
-      <div>
-        <p style="color:var(--gold); font-size:0.8rem; letter-spacing:2px; text-transform:uppercase;">Flagship Atelier</p>
-        <h2 style="font-size:2.2rem; color:#fff; font-weight:300; margin:0.5rem 0 1rem 0;">Visit Our Studio</h2>
-        <p style="color:#a0aec0; margin-bottom:1rem;">143 Jalan Hang Lekir, City Centre, 50000 Kuala Lumpur</p>
-        <p style="color:#a0aec0; margin-bottom:1.5rem;"><strong>Hours:</strong> Open Daily: 9:00 AM – 9:00 PM</p>
-        <a href="https://maps.google.com/?q=Jalan+Hang+Lekir+Kuala+Lumpur" target="_blank" class="btn-gold" style="display:inline-block; text-decoration:none;">Open in Google Maps 📍</a>
-      </div>
-      <div style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 2rem;">
-        <h4 style="color:var(--gold); font-size:1.2rem; margin-bottom:0.8rem;">Verified Client Review</h4>
-        <p style="font-style:italic; color:#e2e8f0;">"The most tasteful floral arrangements in KL. Handled our wedding decor flawlessly and their WhatsApp response is instant!"</p>
-        <p style="margin-top:1rem; color:#a0aec0; font-size:0.85rem;">— 4.8 ★ ★ ★ ★ ★ on Google Business</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Interactive Modal Widget -->
-  <div class="modal" id="quoteModal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal()">&times;</span>
-      <h3 style="color:var(--gold); font-size:1.5rem; margin-bottom:0.5rem;">Custom Order Inquiry</h3>
-      <p style="color:#a0aec0; font-size:0.85rem; margin-bottom:1rem;">Fill in your details and our florist will respond within 15 minutes on WhatsApp.</p>
-      <form onsubmit="sendToWhatsApp(event)">
-        <input type="text" id="custName" placeholder="Your Name" required>
-        <input type="text" id="custOccasion" placeholder="Occasion (e.g. Birthday, Anniversary, Wedding)" required>
-        <input type="text" id="custBudget" placeholder="Estimated Budget (e.g. RM 150)" required>
-        <textarea id="custDetails" rows="3" placeholder="Any specific flower preference or color theme?"></textarea>
-        <button type="submit" class="btn-wa-gold" style="width:100%; justify-content:center; margin-top:1rem; border:none; cursor:pointer;">
-          Send Inquiry via WhatsApp 💬
-        </button>
-      </form>
+    <div class="actions">
+      <a class="btn primary" href="#fresh">Browse Flowers</a>
+      <a class="btn secondary" href="#plants">Browse Plants</a>
+      <a class="btn wa"
+         href="https://wa.me/60168083598?text=Hi%20Maison%20Fleur!%20I%20would%20like%20to%20ask%20about%20your%20flowers%20and%20plants."
+         target="_blank">
+         WhatsApp Us
+      </a>
     </div>
   </div>
 
-  <footer>
-    <p>© 2026 Maison Fleur by Flower & Blossom Atelier. All rights reserved.</p>
-  </footer>
+  <div class="hero-collage">
+    <figure>
+      <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1000&q=86"
+           alt="Colourful seasonal bouquet">
+    </figure>
 
-  <script>
-    function openModal() { document.getElementById('quoteModal').style.display = 'flex'; }
-    function closeModal() { document.getElementById('quoteModal').style.display = 'none'; }
-    
-    function sendToWhatsApp(e) {
-      e.preventDefault();
-      const name = document.getElementById('custName').value;
-      const occasion = document.getElementById('custOccasion').value;
-      const budget = document.getElementById('custBudget').value;
-      const details = document.getElementById('custDetails').value;
-      
-      const msg = `Hi Maison Fleur! I would like to inquire about a custom order:%0A%0A- Name: ${name}%0A- Occasion: ${occasion}%0A- Budget: ${budget}%0A- Details: ${details}`;
-      window.open(`https://wa.me/60162823327?text=${msg}`, '_blank');
-      closeModal();
-    }
-  </script>
+    <figure>
+      <img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=700&q=86"
+           alt="Indoor potted plants">
+    </figure>
+
+    <figure>
+      <img src="https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=700&q=86"
+           alt="Preserved botanical arrangement">
+    </figure>
+
+    <div class="hero-card">
+      <strong>Fresh every day</strong>
+      <span>Seasonal flowers and living greens selected with care.</span>
+    </div>
+  </div>
+</section>
+
+<div class="ribbon">
+  <div class="ribbon-track">
+    <span>FRESH FLOWERS ✦ PRESERVED BOTANICALS ✦ INDOOR PLANTS ✦ PLANT GIFTS ✦</span>
+    <span>FRESH FLOWERS ✦ PRESERVED BOTANICALS ✦ INDOOR PLANTS ✦ PLANT GIFTS ✦</span>
+  </div>
+</div>
+
+<section class="section alt" id="fresh">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Fresh flower market</div>
+        <h2>Seasonal bouquets</h2>
+      </div>
+      <p class="section-copy">
+        Scroll sideways to browse more arrangements. Each bouquet can be ordered directly through WhatsApp.
+      </p>
+    </div>
+
+    <div class="horizontal-products">
+      <article class="product">
+        <img src="https://images.unsplash.com/photo-1495231916356-a86217efff12?auto=format&fit=crop&w=900&q=86"
+             alt="Wild Garden bouquet">
+        <div class="product-body">
+          <h3>Wild Garden</h3>
+          <p>Loose seasonal flowers with an airy, garden-inspired finish.</p>
+          <span class="price">From RM159</span>
+          <a target="_blank" href="https://wa.me/60168083598?text=Hi%20Maison%20Fleur!%20I%20am%20interested%20in%20Wild%20Garden.">Order on WhatsApp →</a>
+        </div>
+      </article>
+
+      <article class="product">
+        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=86"
+             alt="Forest White bouquet">
+        <div class="product-body">
+          <h3>Forest White</h3>
+          <p>White flowers and layered foliage in a fresh natural palette.</p>
+          <span class="price">From RM179</span>
+          <a target="_blank" href="https://wa.me/60168083598?text=Hi%20Maison%20Fleur!%20I%20am%20interested%20in%20Forest%20White.">Order on WhatsApp →</a>
+        </div>
+      </article>
+
+      <article class="product">
+        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=86"
+             alt="Sunlit colour bouquet">
+        <div class="product-body">
+          <h3>Sunlit Colour</h3>
+          <p>Bright seasonal stems for birthdays and joyful occasions.</p>
+          <span class="price">From RM189</span>
+          <a target="_blank" href="https://wa.me/60168083598?text=Hi%20Maison%20Fleur!%20I%20am%20interested%20in%20Sunlit%20Colour.">Order on WhatsApp →</a>
+        </div>
+      </article>
+
+      <article class="product">
+        <img src="https://images.unsplash.com/photo-1494336934272-fb01d7e0e9f4?auto=format&fit=crop&w=900&q=86"
+             alt="Rose and foliage bouquet">
+        <div class="product-body">
+          <h3>Rose & Leaf</h3>
+          <p>Classic roses softened with fresh greenery and simple wrapping.</p>
+          <span class="price">From RM149</span>
+          <a target="_blank" href="https://wa.me/60168083598?text=Hi%20Maison%20Fleur!%20I%20am%20interested%20in%20Rose%20and%20Leaf.">Order on WhatsApp →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="preserved">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Long-lasting arrangements</div>
+        <h2>Preserved botanicals</h2>
+      </div>
+      <p class="section-copy">
+        Dried and preserved flowers designed to remain beautiful for months.
+      </p>
+    </div>
+
+    <div class="category-grid">
+      <article class="category">
+        <img src="https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=1000&q=86"
+             alt="Preserved meadow flowers">
+        <div class="category-copy">
+          <h3>Everlasting Meadow</h3>
+          <p>Soft dried flowers and grasses in warm neutral tones.</p>
+        </div>
+      </article>
+
+      <article class="category">
+        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=86"
+             alt="Dried flower arrangement">
+        <div class="category-copy">
+          <h3>Harvest Vase</h3>
+          <p>A textured botanical vase for shelves, desks and gifting.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="plants">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Living greens</div>
+        <h2>Indoor plants</h2>
+      </div>
+      <p class="section-copy">
+        Easy-care plants selected for desks, shelves, living rooms and workspaces.
+      </p>
+    </div>
+
+    <div class="plant-grid">
+      <article class="plant-card">
+        <img src="https://images.unsplash.com/photo-1459156212016-c812468e2115?auto=format&fit=crop&w=800&q=86"
+             alt="Leafy statement plant">
+        <div class="product-body">
+          <h3>Leafy Statement</h3>
+          <p>Larger foliage plants for bright living spaces.</p>
+          <span class="price">From RM129</span>
+        </div>
+      </article>
+
+      <article class="plant-card">
+        <img src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=800&q=86"
+             alt="Desk plant">
+        <div class="product-body">
+          <h3>Desk Green</h3>
+          <p>Compact plants for desks, counters and study corners.</p>
+          <span class="price">From RM49</span>
+        </div>
+      </article>
+
+      <article class="plant-card" id="gifts">
+        <img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=800&q=86"
+             alt="Plant and pot gift set">
+        <div class="product-body">
+          <h3>Plant + Pot Gift</h3>
+          <p>A ready-to-gift plant paired with a ceramic pot.</p>
+          <span class="price">From RM89</span>
+        </div>
+      </article>
+
+      <article class="plant-card">
+        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=86"
+             alt="Green plant set">
+        <div class="product-body">
+          <h3>Green Corner Set</h3>
+          <p>A grouped set for shelves, counters and small corners.</p>
+          <span class="price">From RM179</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="occasions">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">By occasion</div>
+        <h2>Flowers and plants for every moment</h2>
+      </div>
+      <p class="section-copy">Scroll sideways to browse gifting ideas.</p>
+    </div>
+
+    <div class="occasion-strip">
+      <article class="occasion"><h3>Birthday Flowers</h3><p>Seasonal bouquets in bright or soft colour palettes.</p></article>
+      <article class="occasion"><h3>Anniversary Flowers</h3><p>Romantic roses and garden-style arrangements.</p></article>
+      <article class="occasion"><h3>New Home Plants</h3><p>Living plant gifts for fresh spaces and new beginnings.</p></article>
+      <article class="occasion"><h3>Thank You Gifts</h3><p>Compact bouquets or potted plants for appreciation.</p></article>
+      <article class="occasion"><h3>Sympathy Flowers</h3><p>Simple floral arrangements in quiet natural tones.</p></article>
+      <article class="occasion"><h3>Corporate Plants</h3><p>Desk plants and green gifts for teams and clients.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="studio">
+  <div class="container about">
+    <div class="about-image">
+      <img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=1100&q=86"
+           alt="Maison Fleur botanical studio">
+      <div class="about-badge">Made with flowers, leaves & care</div>
+    </div>
+
+    <div class="about-copy">
+      <div class="eyebrow">Our botanical studio</div>
+      <h2>Small studio. Thoughtful arrangements.</h2>
+      <p>
+        Maison Fleur creates fresh bouquets, preserved botanical pieces,
+        indoor plants and plant gifts using natural colours and seasonal materials.
+      </p>
+
+      <div class="features">
+        <div class="feature"><strong>Seasonal Flowers</strong><br><span>Selected according to freshness and availability.</span></div>
+        <div class="feature"><strong>Healthy Plants</strong><br><span>Chosen for quality and practical home care.</span></div>
+        <div class="feature"><strong>Custom Palettes</strong><br><span>Colours adapted to the occasion.</span></div>
+        <div class="feature"><strong>Botanical Wrapping</strong><br><span>Simple paper and natural textures.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="delivery">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Pickup & delivery</div>
+        <h2>Simple local ordering</h2>
+      </div>
+      <p class="section-copy">
+        Replace these sample details with the florist's actual delivery areas and conditions.
+      </p>
+    </div>
+
+    <div class="delivery-grid">
+      <article class="delivery-card"><strong>Studio Pickup</strong><span>Collect flowers or plants at your confirmed time.</span></article>
+      <article class="delivery-card"><strong>Local Delivery</strong><span>Selected nearby areas for bouquets and plant gifts.</span></article>
+      <article class="delivery-card"><strong>Same-Day Request</strong><span>Subject to stock and delivery-slot availability.</span></article>
+      <article class="delivery-card"><strong>Care Notes</strong><span>Flower or plant care instructions included.</span></article>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="order">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Direct enquiry</div>
+        <h2>Order flowers or plants</h2>
+      </div>
+      <p class="section-copy">
+        Share your preferred product, budget, colours, date and delivery location.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="info-card">
+        <h3>Maison Fleur</h3>
+        <p>Visit the studio, arrange pickup or request local delivery through WhatsApp.</p>
+
+        <div class="details">
+          <div>📍 143 Jalan Hang Lekir, City Centre, Kuala Lumpur</div>
+          <div>🕒 Daily, 9:00 AM–9:00 PM</div>
+          <div>📞 +60 16-808 3598</div>
+          <div>🌼 Fresh flowers, preserved botanicals and indoor plants</div>
+        </div>
+
+        <div class="map">
+          <iframe src="https://www.google.com/maps?q=Kuala%20Lumpur%20Malaysia&output=embed"
+                  loading="lazy"
+                  title="Maison Fleur location"></iframe>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <form class="form" onsubmit="sendWhatsApp(event)">
+          <input id="name" placeholder="Your name" required>
+          <input id="phone" placeholder="Phone number" required>
+
+          <select id="type">
+            <option>Fresh flower bouquet</option>
+            <option>Preserved flower arrangement</option>
+            <option>Dried botanical arrangement</option>
+            <option>Indoor plant</option>
+            <option>Plant gift set</option>
+            <option>Custom botanical gift</option>
+          </select>
+
+          <input id="budget" placeholder="Budget, e.g. RM200">
+
+          <textarea id="details"
+                    placeholder="Preferred flowers or plants, colours, occasion, delivery date and location"></textarea>
+
+          <button class="btn primary" type="submit">Continue on WhatsApp</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  © 2026 Maison Fleur — Essential Garden Market one-page website
+</footer>
+
+<a class="float"
+   href="https://wa.me/60168083598?text=Hi%20Maison%20Fleur!%20I%20would%20like%20to%20ask%20about%20your%20flowers%20and%20plants."
+   target="_blank">
+   WhatsApp
+</a>
+
+<script>
+function sendWhatsApp(event){
+  event.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const type = document.getElementById("type").value;
+  const budget = document.getElementById("budget").value || "Not specified";
+  const details = document.getElementById("details").value || "None";
+
+  const message =
+`Hi Maison Fleur! I would like to make a flower or plant enquiry.
+
+Name: ${name}
+Phone: ${phone}
+Order type: ${type}
+Budget: ${budget}
+Details: ${details}`;
+
+  window.open(
+    "https://wa.me/60168083598?text=" + encodeURIComponent(message),
+    "_blank"
+  );
+}
+</script>
+
 </body>
 </html>

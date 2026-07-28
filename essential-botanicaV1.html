@@ -1,223 +1,576 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Botanica — Essential Flower Website</title>
-<meta name="description" content="A natural, earthy one-page flower studio website for preserved flowers, dried florals and botanical gifts.">
+<title>Botanica — Essential Flower & Plant Studio</title>
+<meta name="description" content="A one-page flower and plant studio website for fresh bouquets, preserved flowers, indoor plants, plant gifts and local delivery.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+
 <style>
 :root{
   --sand:#f2eee6;
   --paper:#fbfaf7;
-  --forest:#263c33;
-  --sage:#8ea394;
-  --clay:#b07d62;
+  --forest:#243a30;
+  --sage:#8ca08f;
+  --moss:#607967;
+  --clay:#b67857;
+  --leaf:#dce5d8;
+  --pale:#e9ecdf;
   --muted:#6d7771;
-  --line:#dcd4c8;
+  --line:#d8d1c6;
+  --white:#ffffff;
+  --green:#25d366;
   --shadow:0 18px 50px rgba(45,57,50,.12);
 }
+
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   margin:0;
   background:var(--sand);
   color:var(--forest);
-  font-family:Inter,Arial,sans-serif;
+  font-family:"DM Sans",Arial,sans-serif;
+  overflow-x:hidden;
 }
-img{display:block;max-width:100%}
+img{display:block;width:100%;object-fit:cover}
 a{text-decoration:none;color:inherit}
-button{font:inherit}
+button,input,select,textarea{font:inherit}
 .container{width:min(1180px,calc(100% - 40px));margin:auto}
 
 header{
-  position:sticky;top:0;z-index:40;
-  background:rgba(242,238,230,.92);
+  position:sticky;
+  top:0;
+  z-index:40;
+  background:rgba(242,238,230,.94);
   backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);
 }
 .nav{
   min-height:76px;
-  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:18px;
 }
 .brand{
-  display:flex;align-items:center;gap:12px;
-  font-family:Georgia,serif;font-size:27px;font-weight:700;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-family:"Newsreader",serif;
+  font-size:28px;
+  font-weight:600;
+  white-space:nowrap;
 }
 .brand-mark{
-  width:42px;height:42px;border-radius:50%;
+  width:42px;
+  height:42px;
+  border-radius:50%;
   border:1px solid var(--forest);
-  display:grid;place-items:center;font-size:20px;
+  display:grid;
+  place-items:center;
+  font-size:20px;
 }
-.menu{display:flex;gap:7px;flex-wrap:wrap}
-.menu a{padding:10px 14px;border-radius:999px;color:var(--muted)}
-.menu a:hover{background:#e3e8e2;color:var(--forest)}
+
+.menu-wrap{
+  min-width:0;
+  overflow:hidden;
+  position:relative;
+}
+.menu{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  overflow-x:auto;
+  overscroll-behavior-inline:contain;
+  scroll-snap-type:x proximity;
+  scrollbar-width:none;
+  padding:8px 2px;
+}
+.menu::-webkit-scrollbar{display:none}
+.menu a{
+  flex:0 0 auto;
+  scroll-snap-align:start;
+  padding:10px 14px;
+  border-radius:999px;
+  color:var(--muted);
+  border:1px solid transparent;
+  white-space:nowrap;
+  font-size:14px;
+  font-weight:600;
+}
+.menu a:hover{
+  background:var(--leaf);
+  color:var(--forest);
+  border-color:#cbd5c8;
+}
 .order-btn{
-  background:var(--forest);color:white;
-  padding:12px 18px;border-radius:999px;font-weight:700;
+  background:var(--forest);
+  color:white;
+  padding:12px 18px;
+  border-radius:999px;
+  font-weight:700;
+  white-space:nowrap;
 }
 
 .hero{
   min-height:calc(100vh - 76px);
-  display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:52px;
+  align-items:center;
   padding:70px 0;
 }
 .eyebrow{
-  font-size:12px;letter-spacing:3px;text-transform:uppercase;
-  color:var(--clay);font-weight:800;
+  font-size:12px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--clay);
+  font-weight:800;
 }
-h1,h2,h3{font-family:Georgia,serif}
+h1,h2,h3{font-family:"Newsreader",serif}
 h1{
   font-size:clamp(56px,7vw,102px);
-  line-height:.94;margin:16px 0 22px;font-weight:500;
+  line-height:.94;
+  margin:16px 0 22px;
+  font-weight:600;
 }
 h1 span{color:var(--clay)}
-.lead{font-size:18px;line-height:1.75;color:var(--muted);max-width:610px}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.btn{
-  padding:14px 20px;border-radius:999px;border:1px solid var(--line);
-  background:var(--paper);font-weight:700;
+.lead{
+  font-size:18px;
+  line-height:1.75;
+  color:var(--muted);
+  max-width:610px;
 }
-.btn.primary{background:var(--forest);border-color:var(--forest);color:white}
+.actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:28px;
+}
+.btn{
+  padding:14px 20px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:var(--paper);
+  color:var(--forest);
+  font-weight:700;
+  cursor:pointer;
+}
+.btn.primary{
+  background:var(--forest);
+  border-color:var(--forest);
+  color:white;
+}
+.btn.whatsapp{
+  background:var(--green);
+  border-color:var(--green);
+  color:#fff;
+}
 
 .hero-art{
   position:relative;
-  display:grid;grid-template-columns:.8fr 1.2fr;gap:18px;
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:18px;
   min-height:640px;
 }
 .hero-art img{
-  width:100%;height:100%;object-fit:cover;border-radius:180px 180px 24px 24px;
+  height:100%;
+  border-radius:180px 180px 24px 24px;
   box-shadow:var(--shadow);
 }
-.hero-art .small{height:72%;align-self:end;border-radius:120px 120px 24px 24px}
+.hero-art .small{
+  height:72%;
+  align-self:end;
+  border-radius:120px 120px 24px 24px;
+}
 .hero-tag{
-  position:absolute;left:15%;top:8%;
-  background:rgba(251,250,247,.94);
-  padding:15px 17px;border-radius:18px;border:1px solid var(--line);
+  position:absolute;
+  left:15%;
+  top:8%;
+  max-width:250px;
+  background:rgba(251,250,247,.95);
+  padding:15px 17px;
+  border-radius:18px;
+  border:1px solid var(--line);
   box-shadow:var(--shadow);
 }
 
-.section{padding:100px 0}
-.alt{background:#e6e8df}
+.section{padding:96px 0}
+.alt{background:var(--pale)}
 .section-head{
-  display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:34px;
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:30px;
+  margin-bottom:34px;
 }
-.section h2{font-size:clamp(42px,5vw,68px);margin:10px 0 0;font-weight:500}
-.section-copy{max-width:520px;color:var(--muted);line-height:1.7}
+.section h2{
+  font-size:clamp(42px,5vw,68px);
+  margin:10px 0 0;
+  font-weight:600;
+}
+.section-copy{
+  max-width:520px;
+  color:var(--muted);
+  line-height:1.7;
+}
 
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.collection-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
 .card{
-  background:var(--paper);border:1px solid var(--line);border-radius:26px;overflow:hidden;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:26px;
+  overflow:hidden;
   box-shadow:0 12px 30px rgba(45,57,50,.07);
 }
-.card img{width:100%;height:320px;object-fit:cover}
+.card img{height:310px}
 .card-body{padding:22px}
-.card h3{font-size:27px;margin:0 0 8px}
-.card p{color:var(--muted);line-height:1.6}
-.price{color:var(--clay);font-weight:800}
+.card h3{
+  font-size:28px;
+  margin:0 0 8px;
+}
+.card p{
+  color:var(--muted);
+  line-height:1.6;
+  margin:0 0 14px;
+}
+.price{
+  color:var(--clay);
+  font-weight:800;
+}
+
+.plant-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:26px;
+}
+.plant-feature{
+  position:relative;
+  min-height:560px;
+  border-radius:30px;
+  overflow:hidden;
+}
+.plant-feature img{height:100%}
+.plant-feature:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(27,49,39,.82),transparent 58%);
+}
+.plant-copy{
+  position:absolute;
+  z-index:2;
+  left:28px;
+  right:28px;
+  bottom:28px;
+  color:#fff;
+}
+.plant-copy h3{
+  font-size:38px;
+  margin:0 0 8px;
+}
+.plant-copy p{
+  margin:0;
+  color:#e4eee8;
+}
+.plant-side{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+.plant-mini{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:24px;
+  overflow:hidden;
+}
+.plant-mini img{height:210px}
+.plant-mini .card-body{padding:18px}
+.plant-mini h3{font-size:24px}
+
+.occasion-strip{
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scrollbar-width:none;
+  padding-bottom:10px;
+}
+.occasion-strip::-webkit-scrollbar{display:none}
+.occasion{
+  flex:0 0 280px;
+  scroll-snap-align:start;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:24px;
+}
+.occasion h3{
+  margin:0 0 8px;
+  font-size:26px;
+}
+.occasion p{
+  margin:0;
+  color:var(--muted);
+}
 
 .about{
-  display:grid;grid-template-columns:1.1fr .9fr;gap:55px;align-items:center;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:55px;
+  align-items:center;
 }
 .about-copy{
-  background:var(--paper);border:1px solid var(--line);border-radius:30px;
-  padding:42px;box-shadow:var(--shadow);
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:30px;
+  padding:42px;
+  box-shadow:var(--shadow);
 }
-.about img{width:100%;height:590px;object-fit:cover;border-radius:30px}
-.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+.about img{
+  height:590px;
+  border-radius:30px;
+}
+.feature-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:26px;
+}
 .feature{
-  padding:17px;border:1px solid var(--line);border-radius:16px;background:#f7f5ef;
+  padding:17px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:#f7f5ef;
+}
+
+.delivery-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+.delivery-card{
+  padding:24px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:var(--paper);
+}
+.delivery-card strong{
+  display:block;
+  margin-bottom:8px;
+  font-family:"Newsreader";
+  font-size:24px;
+}
+.delivery-card span{
+  color:var(--muted);
+  line-height:1.6;
 }
 
 .contact{
-  display:grid;grid-template-columns:.82fr 1.18fr;gap:42px;align-items:start;
+  display:grid;
+  grid-template-columns:.82fr 1.18fr;
+  gap:42px;
+  align-items:start;
 }
 .contact-panel{
-  background:var(--forest);color:white;padding:38px;border-radius:30px;
+  background:var(--forest);
+  color:white;
+  padding:38px;
+  border-radius:30px;
 }
-.contact-panel p{color:#cad5cf;line-height:1.7}
-.form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.contact-panel p{
+  color:#cad5cf;
+  line-height:1.7;
+}
+.form{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
 .form input,.form select,.form textarea{
-  width:100%;padding:15px;border:1px solid var(--line);border-radius:14px;background:#fff;
+  width:100%;
+  padding:15px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#fff;
 }
-.form textarea{grid-column:1/-1;min-height:140px}
+.form textarea{
+  grid-column:1/-1;
+  min-height:140px;
+}
 .form button{grid-column:1/-1}
 
 footer{
-  padding:28px 0;border-top:1px solid var(--line);text-align:center;
-  color:var(--muted);font-size:13px;
+  padding:28px 0;
+  border-top:1px solid var(--line);
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
 }
-@media(max-width:900px){
-  .menu{display:none}
-  .hero,.about,.contact{grid-template-columns:1fr}
+
+.float-wa{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:50;
+  padding:14px 18px;
+  border-radius:999px;
+  background:var(--green);
+  color:#fff;
+  font-weight:800;
+  box-shadow:0 12px 30px rgba(37,211,102,.28);
+}
+
+@media(max-width:980px){
+  .nav{
+    grid-template-columns:auto 1fr;
+  }
+  .order-btn{display:none}
+  .hero,.about,.contact,.plant-grid{grid-template-columns:1fr}
+  .collection-grid{grid-template-columns:1fr 1fr}
+  .delivery-grid{grid-template-columns:1fr 1fr}
   .hero-art{min-height:520px}
-  .cards{grid-template-columns:1fr}
   .section-head{display:block}
 }
-@media(max-width:620px){
+@media(max-width:680px){
   .container{width:min(100% - 26px,1180px)}
+  .nav{
+    grid-template-columns:1fr;
+    gap:0;
+    padding-top:10px;
+  }
+  .brand{justify-content:center}
+  .menu-wrap{
+    margin:8px -13px 0;
+    padding:0 13px;
+  }
+  .menu{
+    padding-bottom:10px;
+  }
+  .menu a{
+    font-size:13px;
+    padding:9px 12px;
+    background:rgba(255,255,255,.45);
+    border-color:rgba(216,209,198,.7);
+  }
   h1{font-size:52px}
-  .hero-art{grid-template-columns:1fr;min-height:auto}
+  .hero{padding-top:40px}
+  .hero-art{
+    grid-template-columns:1fr;
+    min-height:auto;
+  }
   .hero-art .small{height:300px}
   .hero-art img{height:430px}
-  .feature-grid,.form{grid-template-columns:1fr}
+  .collection-grid,.plant-side,.feature-grid,.form,.delivery-grid{grid-template-columns:1fr}
   .form textarea,.form button{grid-column:auto}
-  .order-btn{font-size:13px;padding:10px 13px}
+  .plant-feature{min-height:470px}
+  .occasion{flex-basis:250px}
+  .float-wa{
+    width:58px;
+    height:58px;
+    padding:0;
+    display:grid;
+    place-items:center;
+    font-size:0;
+  }
+  .float-wa:after{
+    content:"💬";
+    font-size:22px;
+  }
 }
 </style>
 </head>
+
 <body>
+
 <header>
   <div class="container nav">
     <a class="brand" href="#home">
       <span class="brand-mark">B</span>
       Botanica
     </a>
-    <nav class="menu">
-      <a href="#collection">Collection</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a class="order-btn" href="#contact">Order via WhatsApp</a>
+
+    <div class="menu-wrap" aria-label="Scrollable website navigation">
+      <nav class="menu">
+        <a href="#flowers">Fresh Flowers</a>
+        <a href="#preserved">Preserved</a>
+        <a href="#plants">Indoor Plants</a>
+        <a href="#plant-gifts">Plant Gifts</a>
+        <a href="#occasions">Occasions</a>
+        <a href="#studio">Our Studio</a>
+        <a href="#delivery">Delivery</a>
+        <a href="#order">Order</a>
+      </nav>
+    </div>
+
+    <a class="order-btn" href="#order">Order via WhatsApp</a>
   </div>
 </header>
 
 <main>
+
 <section class="container hero" id="home">
   <div>
-    <div class="eyebrow">Botanical gifting · Natural textures</div>
-    <h1>Flowers with a <span>grounded</span> soul.</h1>
+    <div class="eyebrow">Flowers · Plants · Botanical gifts</div>
+    <h1>Nature, arranged with <span>care.</span></h1>
     <p class="lead">
-      Earth-toned bouquets, preserved flowers and botanical gifts designed for quiet, thoughtful moments.
+      Fresh flowers, preserved arrangements, indoor plants and botanical gifts
+      created for homes, celebrations and thoughtful everyday moments.
     </p>
+
     <div class="actions">
-      <a class="btn primary" href="#collection">View Collection</a>
-      <a class="btn" href="#contact">Make an Enquiry</a>
+      <a class="btn primary" href="#flowers">View Flowers</a>
+      <a class="btn" href="#plants">Browse Plants</a>
+      <a class="btn whatsapp"
+         href="https://wa.me/60168083598?text=Hi%20Botanica!%20I%20would%20like%20to%20ask%20about%20your%20flowers%20and%20plants."
+         target="_blank">
+         WhatsApp Us
+      </a>
     </div>
   </div>
 
   <div class="hero-art">
-    <img class="small" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=900&q=86" alt="Dried flower arrangement">
-    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1200&q=88" alt="Natural flower bouquet">
+    <img class="small"
+         src="https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=900&q=86"
+         alt="Preserved botanical arrangement">
+
+    <img src="https://images.unsplash.com/photo-1495231916356-a86217efff12?auto=format&fit=crop&w=1200&q=88"
+         alt="Fresh seasonal flower bouquet">
+
     <div class="hero-tag">
-      <strong>Preserved collection</strong>
-      <div style="color:#6d7771;margin-top:5px">Long-lasting flowers with a natural finish.</div>
+      <strong>Flowers + living greens</strong>
+      <div style="color:#6d7771;margin-top:5px">
+        Thoughtful botanical pieces for gifting and home.
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section alt" id="collection">
+<section class="section alt" id="flowers">
   <div class="container">
     <div class="section-head">
       <div>
-        <div class="eyebrow">Our collection</div>
-        <h2>Natural arrangements</h2>
+        <div class="eyebrow">Fresh flowers</div>
+        <h2>Seasonal bouquets</h2>
       </div>
-      <p class="section-copy">Designed for homes, thoughtful gifting and customers who love soft, organic styling.</p>
+      <p class="section-copy">
+        Fresh arrangements created according to the season, colour preference and occasion.
+      </p>
     </div>
 
-    <div class="cards">
+    <div class="collection-grid">
       <article class="card">
-        <img src="https://images.unsplash.com/photo-1495231916356-a86217efff12?auto=format&fit=crop&w=900&q=86" alt="">
+        <img src="https://images.unsplash.com/photo-1495231916356-a86217efff12?auto=format&fit=crop&w=900&q=86"
+             alt="Wild Garden fresh flower bouquet">
         <div class="card-body">
           <h3>Wild Garden</h3>
           <p>Soft seasonal flowers arranged with a loose, garden-inspired finish.</p>
@@ -226,84 +579,334 @@ footer{
       </article>
 
       <article class="card">
-        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=86" alt="">
+        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=86"
+             alt="Green and white flower bouquet">
         <div class="card-body">
-          <h3>Forest Calm</h3>
-          <p>Green foliage, white blooms and natural textures for a quiet statement.</p>
+          <h3>Forest White</h3>
+          <p>White blooms and layered green foliage for a fresh, calm arrangement.</p>
           <span class="price">From RM179</span>
         </div>
       </article>
 
       <article class="card">
-        <img src="https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=900&q=86" alt="">
+        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=86"
+             alt="Colourful seasonal flower bouquet">
         <div class="card-body">
-          <h3>Everlasting</h3>
-          <p>A preserved arrangement designed to remain beautiful for months.</p>
-          <span class="price">From RM199</span>
+          <h3>Seasonal Colour</h3>
+          <p>A brighter bouquet using the best available seasonal flowers.</p>
+          <span class="price">From RM189</span>
         </div>
       </article>
     </div>
   </div>
 </section>
 
-<section class="section" id="about">
-  <div class="container about">
-    <div class="about-copy">
-      <div class="eyebrow">Our studio</div>
-      <h2>Inspired by nature, made by hand.</h2>
-      <p class="lead">Botanica is a small floral studio focused on natural textures, earthy colour palettes and arrangements that feel warm, calm and personal.</p>
-      <div class="feature-grid">
-        <div class="feature"><strong>Seasonal sourcing</strong><br><span style="color:#6d7771">Flowers selected according to freshness and character.</span></div>
-        <div class="feature"><strong>Eco-minded wrapping</strong><br><span style="color:#6d7771">Simple materials with a refined, low-waste presentation.</span></div>
-        <div class="feature"><strong>Custom palettes</strong><br><span style="color:#6d7771">Natural tones tailored to the occasion.</span></div>
-        <div class="feature"><strong>Local delivery</strong><br><span style="color:#6d7771">Pickup and selected delivery areas available.</span></div>
+<section class="section" id="preserved">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Preserved & dried</div>
+        <h2>Long-lasting botanicals</h2>
       </div>
+      <p class="section-copy">
+        Preserved flowers and dried botanical arrangements designed to remain beautiful for months.
+      </p>
     </div>
-    <img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=1100&q=86" alt="Botanical floral studio">
+
+    <div class="collection-grid">
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=900&q=86"
+             alt="Everlasting preserved flower arrangement">
+        <div class="card-body">
+          <h3>Everlasting Meadow</h3>
+          <p>Soft preserved textures in a relaxed, natural palette.</p>
+          <span class="price">From RM199</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=900&q=86"
+             alt="Dried neutral flower arrangement">
+        <div class="card-body">
+          <h3>Neutral Harvest</h3>
+          <p>Dried grasses and flowers arranged for warm, earthy interiors.</p>
+          <span class="price">From RM169</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=900&q=86"
+             alt="Preserved flowers in vase">
+        <div class="card-body">
+          <h3>Botanical Vase</h3>
+          <p>A vase arrangement combining preserved leaves, flowers and texture.</p>
+          <span class="price">From RM229</span>
+        </div>
+      </article>
+    </div>
   </div>
 </section>
 
-<section class="section alt" id="contact">
+<section class="section alt" id="plants">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Indoor plants</div>
+        <h2>Living greens for every corner</h2>
+      </div>
+      <p class="section-copy">
+        Indoor plants selected for homes, workspaces and easy everyday care.
+      </p>
+    </div>
+
+    <div class="plant-grid">
+      <article class="plant-feature">
+        <img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=1200&q=86"
+             alt="Indoor plants in ceramic pots">
+        <div class="plant-copy">
+          <h3>Home Green Collection</h3>
+          <p>Easy-care foliage plants paired with simple ceramic pots.</p>
+        </div>
+      </article>
+
+      <div class="plant-side">
+        <article class="plant-mini" id="plant-gifts">
+          <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=86"
+               alt="Small green plant gift">
+          <div class="card-body">
+            <h3>Desk Plant Gift</h3>
+            <p>Compact plants for offices, study tables and small spaces.</p>
+            <span class="price">From RM59</span>
+          </div>
+        </article>
+
+        <article class="plant-mini">
+          <img src="https://images.unsplash.com/photo-1459156212016-c812468e2115?auto=format&fit=crop&w=800&q=86"
+               alt="Indoor foliage plant">
+          <div class="card-body">
+            <h3>Leafy Statement</h3>
+            <p>Larger foliage plants for living rooms and entrance areas.</p>
+            <span class="price">From RM129</span>
+          </div>
+        </article>
+
+        <article class="plant-mini">
+          <img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=800&q=86"
+               alt="Plant pot gift set">
+          <div class="card-body">
+            <h3>Plant + Pot Set</h3>
+            <p>A ready-to-gift plant paired with a selected ceramic pot.</p>
+            <span class="price">From RM89</span>
+          </div>
+        </article>
+
+        <article class="plant-mini">
+          <img src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=800&q=86"
+               alt="Green indoor plant collection">
+          <div class="card-body">
+            <h3>Green Corner Set</h3>
+            <p>A small collection of plants grouped for shelves and corners.</p>
+            <span class="price">From RM179</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="occasions">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">By occasion</div>
+        <h2>Botanical gifts for meaningful moments</h2>
+      </div>
+      <p class="section-copy">
+        Scroll sideways to browse flower and plant gifting ideas.
+      </p>
+    </div>
+
+    <div class="occasion-strip">
+      <article class="occasion">
+        <h3>Birthday Flowers</h3>
+        <p>Fresh bouquets in soft, bright or custom colour palettes.</p>
+      </article>
+
+      <article class="occasion">
+        <h3>Anniversary Flowers</h3>
+        <p>Romantic flowers arranged in a natural, elegant style.</p>
+      </article>
+
+      <article class="occasion">
+        <h3>New Home Plants</h3>
+        <p>Living plant gifts for housewarmings and new spaces.</p>
+      </article>
+
+      <article class="occasion">
+        <h3>Thank You Gifts</h3>
+        <p>Compact flower arrangements or small potted plants.</p>
+      </article>
+
+      <article class="occasion">
+        <h3>Sympathy Flowers</h3>
+        <p>Simple, respectful arrangements in calm natural tones.</p>
+      </article>
+
+      <article class="occasion">
+        <h3>Corporate Plants</h3>
+        <p>Desk plants and green gifts for colleagues or clients.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="studio">
+  <div class="container about">
+    <div class="about-copy">
+      <div class="eyebrow">Our botanical studio</div>
+      <h2>Inspired by flowers, foliage and natural form.</h2>
+      <p class="lead">
+        Botanica is a small studio focused entirely on flowers, plants,
+        botanical gifts and natural arrangements.
+      </p>
+
+      <div class="feature-grid">
+        <div class="feature">
+          <strong>Seasonal flowers</strong><br>
+          <span style="color:#6d7771">Selected according to freshness and availability.</span>
+        </div>
+
+        <div class="feature">
+          <strong>Healthy plants</strong><br>
+          <span style="color:#6d7771">Indoor plants chosen for quality and practical care.</span>
+        </div>
+
+        <div class="feature">
+          <strong>Custom palettes</strong><br>
+          <span style="color:#6d7771">Flower colours tailored to the occasion.</span>
+        </div>
+
+        <div class="feature">
+          <strong>Botanical wrapping</strong><br>
+          <span style="color:#6d7771">Simple presentation using paper and natural textures.</span>
+        </div>
+      </div>
+    </div>
+
+    <img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=1100&q=86"
+         alt="Flower and plant studio">
+  </div>
+</section>
+
+<section class="section" id="delivery">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Pickup & delivery</div>
+        <h2>Simple flower and plant delivery</h2>
+      </div>
+      <p class="section-copy">
+        Replace these sample details with the studio’s real delivery areas and timing.
+      </p>
+    </div>
+
+    <div class="delivery-grid">
+      <article class="delivery-card">
+        <strong>Studio Pickup</strong>
+        <span>Collect your flowers or plants at the confirmed pickup time.</span>
+      </article>
+
+      <article class="delivery-card">
+        <strong>Local Delivery</strong>
+        <span>Selected nearby areas available for bouquets and plant gifts.</span>
+      </article>
+
+      <article class="delivery-card">
+        <strong>Same-Day Request</strong>
+        <span>Subject to flower, plant and delivery-slot availability.</span>
+      </article>
+
+      <article class="delivery-card">
+        <strong>Care Notes</strong>
+        <span>Flower or plant care guidance included with every order.</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="order">
   <div class="container contact">
     <div>
-      <div class="eyebrow">Order enquiry</div>
-      <h2>Tell us what you have in mind.</h2>
-      <p class="lead">Share the occasion, preferred style, budget and delivery date. We will confirm availability through WhatsApp.</p>
+      <div class="eyebrow">Flower & plant enquiry</div>
+      <h2>Tell us what you would like.</h2>
+      <p class="lead">
+        Share the flower or plant type, occasion, budget, preferred colours,
+        delivery date and location. We will confirm availability through WhatsApp.
+      </p>
     </div>
 
     <div class="contact-panel">
       <form class="form" onsubmit="sendWhatsApp(event)">
         <input id="name" placeholder="Your name" required>
         <input id="phone" placeholder="Phone number" required>
+
         <select id="type">
-          <option>Fresh bouquet</option>
-          <option>Preserved flowers</option>
-          <option>Dried arrangement</option>
-          <option>Custom gift</option>
+          <option>Fresh flower bouquet</option>
+          <option>Preserved flower arrangement</option>
+          <option>Dried botanical arrangement</option>
+          <option>Indoor plant</option>
+          <option>Plant gift set</option>
+          <option>Custom botanical gift</option>
         </select>
+
         <input id="budget" placeholder="Budget, e.g. RM200">
-        <textarea id="details" placeholder="Preferred colours, flowers, occasion, delivery date and location"></textarea>
+
+        <textarea id="details"
+          placeholder="Preferred flowers or plants, colours, occasion, delivery date and location"></textarea>
+
         <button class="btn primary" type="submit">Continue on WhatsApp</button>
       </form>
     </div>
   </div>
 </section>
+
 </main>
 
-<footer>© 2026 Botanica — Essential package · Botanica theme · V1</footer>
+<footer>
+  © 2026 Botanica — Essential one-page flower & plant website
+</footer>
+
+<a class="float-wa"
+   href="https://wa.me/60168083598?text=Hi%20Botanica!%20I%20would%20like%20to%20ask%20about%20your%20flowers%20and%20plants."
+   target="_blank">
+   WhatsApp
+</a>
 
 <script>
 function sendWhatsApp(event){
   event.preventDefault();
-  const text =
-    `Hi Botanica,%0A%0A` +
-    `Name: ${document.getElementById('name').value}%0A` +
-    `Phone: ${document.getElementById('phone').value}%0A` +
-    `Type: ${document.getElementById('type').value}%0A` +
-    `Budget: ${document.getElementById('budget').value}%0A` +
-    `Details: ${document.getElementById('details').value}`;
-  window.open(`https://wa.me/60123456789?text=${text}`,'_blank');
+
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const type = document.getElementById("type").value;
+  const budget = document.getElementById("budget").value || "Not specified";
+  const details = document.getElementById("details").value || "None";
+
+  const message =
+`Hi Botanica! I would like to make a flower or plant enquiry.
+
+Name: ${name}
+Phone: ${phone}
+Order type: ${type}
+Budget: ${budget}
+Details: ${details}`;
+
+  window.open(
+    "https://wa.me/60168083598?text=" + encodeURIComponent(message),
+    "_blank"
+  );
 }
 </script>
+
 </body>
 </html>
